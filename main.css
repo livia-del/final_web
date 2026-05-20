@@ -15,6 +15,7 @@ body {
     min-height: 100vh;
 }
 
+/*導覽列*/
 /* Sidebar */
 .sidebar {
     width: 260px;
@@ -142,6 +143,7 @@ body {
 
 .hero-content {
     max-width: 620px;
+    
 }
 
 .badge {
@@ -242,7 +244,6 @@ body {
     width: 58px;
     height: 58px;
     border-radius: 16px;
-    background: linear-gradient(135deg, #2f80ed, #0057d8);
     display: flex;
     align-items: center;
     justify-content: center;
