@@ -15,75 +15,6 @@ body {
     min-height: 100vh;
 }
 
-/*導覽列*/
-/* Sidebar */
-.sidebar {
-    width: 260px;
-    background: #ffffff;
-    padding: 36px 24px;
-    border-right: 1px solid #dbe7f7;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    box-shadow: 8px 0 30px rgba(37, 99, 235, 0.08);
-    z-index: 10;
-    
-}
-
-
-.nav a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 18px;
-    margin-bottom: 12px;
-    border-radius: 18px;
-    color: #1f2937;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.25s;
-}
-
-.nav a.active,
-.nav a:hover {
-    background: #eaf2ff;
-    color: #0b63d1;
-    box-shadow: 0 12px 25px rgba(59, 130, 246, 0.12);
-}
-
-.login-box {
-    position: absolute;
-    bottom: 20px;
-    margin-top: 30px;
-}
-
-.login-box label {
-    display: block;
-    font-size: 14px;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.login-box input {
-    width: 90%;
-    padding: 12px 14px;
-    border: 1px solid #d9e2ef;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    outline: none;
-}
-
-.login-box button {
-    width: 90%;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #2f80ed, #0057d8);
-    color: white;
-    font-weight: 800;
-    cursor: pointer;
-}
 
 /*首頁*/
 /* Main */
@@ -447,31 +378,3 @@ body {
     color: #111827;
 }
 
-/*聯絡*/
-
-
-
-/*頂部按鈕*/
-.back-to-top {
-    font-family: 'Noto Serif TC', serif;
-    position: fixed;       /* 固定定位，不隨捲軸移動 */
-    bottom: 50px;          /* 距離底部*/
-    right: 50px;           /* 距離右側*/
-    width: 120px;           /* 寬度 */
-    height: 120px;          /* 高度 */
-    background-color:#4A90E2;
-    color: white;        
-    border: none;          /* 移除邊框 */
-    border-radius: 50%;    /* 圓形按鈕 */
-    cursor: pointer;      /* 滑鼠移上去變手指 */
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 增加陰影感 */
-    z-index: 999;          /* 確保在所有圖層的最上方 */
-    display: none;         /* 預設隱藏 (等滑動後再出現) */
-    transition: background-color 0.3s, transform 0.3s; /* 增加動畫感 */
-}
-.back-to-top:hover {
-    background-color: #0077ff; /* 變深的金色 */
-    transform: scale(1.1);    /* 稍微放大一點 */
-}
