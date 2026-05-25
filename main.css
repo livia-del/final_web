@@ -85,6 +85,7 @@ body {
     cursor: pointer;
 }
 
+/*首頁*/
 /* Main */
 .main {
     margin-left: 260px;
@@ -444,4 +445,33 @@ body {
 .yellow {
     background: linear-gradient(135deg, #ffd85a, #ff9f1c);
     color: #111827;
+}
+
+/*聯絡*/
+
+
+
+/*頂部按鈕*/
+.back-to-top {
+    font-family: 'Noto Serif TC', serif;
+    position: fixed;       /* 固定定位，不隨捲軸移動 */
+    bottom: 50px;          /* 距離底部*/
+    right: 50px;           /* 距離右側*/
+    width: 120px;           /* 寬度 */
+    height: 120px;          /* 高度 */
+    background-color:#4A90E2;
+    color: white;        
+    border: none;          /* 移除邊框 */
+    border-radius: 50%;    /* 圓形按鈕 */
+    cursor: pointer;      /* 滑鼠移上去變手指 */
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 增加陰影感 */
+    z-index: 999;          /* 確保在所有圖層的最上方 */
+    display: none;         /* 預設隱藏 (等滑動後再出現) */
+    transition: background-color 0.3s, transform 0.3s; /* 增加動畫感 */
+}
+.back-to-top:hover {
+    background-color: #0077ff; /* 變深的金色 */
+    transform: scale(1.1);    /* 稍微放大一點 */
 }
