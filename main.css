@@ -102,7 +102,7 @@ body {
 .hero {
     background:
         /*linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(208, 230, 255, 0.72)),*/
-        url("1.jpg");
+        url("2.jpg");
     background-size: cover;
     background-position: center;
     border-radius: 28px;
