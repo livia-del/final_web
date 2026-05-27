@@ -144,3 +144,76 @@
     width: calc(100% - 280px) !important; /* 重新計算寬度，防止超出螢幕 */
     box-sizing: border-box;
 }
+/* ==========================================
+   在你原本的 contact.css 後方加上這些優化樣式
+   ========================================== */
+
+/* 確保 Grid 的排版合適 */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* 強化卡片的視覺效果 */
+.research-card {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-left: 5px solid #0f2d59; /* 學術深藍左邊條 */
+    border-radius: 8px; /* 微圓角更現代 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 滑鼠懸停動畫，讓頁面不呆板 */
+.research-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* 卡片內的小標題 */
+.research-card h3 {
+    color: #0f2d59;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+}
+
+/* 卡片內的文字 */
+.research-card p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    margin: 0;
+    word-break: break-all; /* 防止長網址或信箱衝出卡片 */
+}
+
+/* 針對「備註」卡片做特殊顏色醒目處理 */
+.research-card.notice {
+    border-left-color: #e67e22; /* 橘色邊條 */
+    background-color: #fffaf5; /* 微橘底色 */
+}
+.research-card.notice h3 {
+    color: #d35400;
+}
+
+
+/* ==========================================
+   保留你原本的強制推開側邊欄修正
+   ========================================== */
+.main {
+    margin-left: 280px !important; 
+    width: calc(100% - 280px) !important; 
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .page {
+        flex-direction: column; 
+    }
+    .main {
+        padding: 30px 15px;
+        margin-left: 0 !important; 
+        width: 100% !important;
+    }
+}
