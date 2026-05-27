@@ -32,40 +32,44 @@
         <main class="main">
             <div class="about-container">
 
-                <section class="about-header">
-                    <h1>聯絡我們</h1>
-                    <div class="underline"></div>
-                    <p class="lead-text">
-                        中華民國資訊管理學會成立於民國 79年，係集合群國大專院校資訊管理學門之學者專家與部分資訊業界之精英組合而成。如果您對改進本網站的各項功能有任何建議，歡迎您隨時將改進意見反映給我們，我們的聯絡資料如下：
-                    </p>
-                </section>
+                <div class="contact-container">
+
+                    <h1 class="contact-title">聯絡我們</h1>
+
+                    
+                    <p class="contact-description" style="text-align: center; color: #EB544A;" >請優先利用 email 聯絡，會盡量即時回覆。</p>
+
+                    <p class="contact-description" style="text-align: center;">
+                        中華民國資訊管理學會成立於民國 79年，係集合群國大專院校資訊管理學門之學者專家與部分資訊業界之精英組合而成。</p>
+                    <p class="contact-description" style="text-align: center;">如果您對改進本網站的各項功能有任何建議，歡迎您隨時將改進意見反映給我們，我們的聯絡資料如下：</p>
+                    <br> </br>
+                    
+
+                </div>
 
                 <section class="about-research">
                     <div class="research-grid">
-                        
-                        <div class="research-card">
-                            <h3>地 址</h3>
-                            <p>251301 新北市淡水區英專路151號 (資管系)</p>
-                        </div>
 
-                        <div class="research-card">
-                            <h3>電子信箱</h3>
+                        <a class="research-card" href="https://maps.google.com/?q=251301新北市淡水區英專路151號" target="_blank" style="color: inherit; text-decoration: none; cursor: pointer; display: block;">
+                            <h3>地 址</h3>
+                            <p>
+                                251301 新北市淡水區英專路151號 (資管系) 🔗
+                            </p>
+                        </a>
+
+                        <div class="research-card" onclick="copyEmail(this)" style="cursor: pointer;" title="點擊自動複製 Email">
+                            <h3>官方電子信箱</h3>
                             <p>csim.service@gmail.com</p>
                         </div>
 
-                        <div class="research-card">
+                        <div class="research-card" onclick="copyEmail(this)" style="cursor: pointer;" title="點擊自動複製 Email">
                             <h3>理事長信箱</h3>
-                            <p>251301 新北市淡水區英專路151號 (資管系)</p>
+                            <p>rsshaw@mail.tku.edu.tw</p>
                         </div>
 
-                        <div class="research-card">
+                        <div class="research-card" onclick="copyEmail(this)" style="cursor: pointer;" title="點擊自動複製 Email">
                             <h3>秘書長信箱</h3>
                             <p>james@mail.tku.edu.tw</p>
-                        </div>
-
-                        <div class="research-card notice">
-                            <h3>備 註</h3>
-                            <p>請優先利用email聯繫，會盡量即時回覆。</p>
                         </div>
 
                     </div>
@@ -77,6 +81,23 @@
                 回到頂部
             </button>
         </main>
-    </div> <script src="main.js"></script>
+    </div>
+
+    <script src="main.js"></script>
+
+    <script>
+        function copyEmail(cardElement) {
+            // 抓取卡片內 <p> 標籤底下的 Email 文字
+            const emailText = cardElement.querySelector('p').innerText.trim();
+            
+            // 複製到剪貼簿
+            navigator.clipboard.writeText(emailText).then(() => {
+                alert("已成功複製信箱: " + emailText);
+            }).catch(err => {
+                console.error("複製失敗: ", err);
+            });
+        }
+    </script>
 </body>
+
 </html>
