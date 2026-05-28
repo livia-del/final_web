@@ -92,8 +92,8 @@ body {
     position: fixed;       /* 固定定位，不隨捲軸移動 */
     bottom: 50px;          /* 距離底部*/
     right: 50px;           /* 距離右側*/
-    width: 120px;           /* 寬度 */
-    height: 120px;          /* 高度 */
+    width: 80px;           /* 寬度 */
+    height: 80px;          /* 高度 */
     background-color:#4A90E2;
     color: white;        
     border: none;          /* 移除邊框 */
