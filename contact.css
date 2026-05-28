@@ -1,0 +1,244 @@
+/* ==================== 1. 全域初始化與字體 ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+}
+
+.page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+}
+
+/* ==================== 2. 右側主內容容器 ==================== */
+.main {
+    flex-grow: 1;
+    padding: 60px 40px;
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    box-sizing: border-box;
+}
+
+.about-container {
+    color: #2c3e50;
+    line-height: 1.7;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==================== 3. 標頭樣式 ==================== */
+.about-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-header h1 {
+    font-size: 2.5rem;
+    color: #0f2d59;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.about-header .underline {
+    width: 60px;
+    height: 3px;
+    background-color: #3498db;
+    margin: 0 auto 10px auto;
+}
+
+.about-header .lead-text {
+    font-size: 1.15rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ==================== 4. 聯絡資訊 2x2 網格區塊 ==================== */
+.about-research {
+    margin-bottom: 60px;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.research-card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-left: 5px solid #0f2d59;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease, border-left-color 0.2s ease;
+    /* make sure clickable cards show pointer and behave as blocks (works when the element is an <a>) */
+    cursor: pointer;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.research-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    background-color: #fbfdff; /* subtle highlight */
+    border-left-color: #3498db;
+}
+
+/* keyboard focus (accessibility) */
+.research-card:focus,
+.research-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52,152,219,0.12), 0 12px 28px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+    border-left-color: #3498db;
+}
+
+/* pressed state */
+.research-card:active {
+    transform: translateY(-1px) scale(0.998);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.research-card h3 {
+    color: #0f2d59;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.research-card p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+    word-break: break-all;
+}
+
+.research-card.notice {
+    border-left-color: #e67e22;
+    background-color: #fffaf5;
+}
+
+.research-card.notice h3 {
+    color: #d35400;
+}
+
+/* ==================== 5. 團隊成員區塊 ==================== */
+.about-team {
+    text-align: center;
+}
+
+.about-team h2 {
+    font-size: 2rem;
+    color: #0f2d59;
+    margin-bottom: 40px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    background: #ffffff;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 30px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.member-avatar {
+    width: 90px;
+    height: 90px;
+    background-color: #e9ecef;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f2d59;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid #0f2d59;
+}
+
+.member-card h4 {
+    margin: 10px 0 5px 0;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.member-role {
+    color: #3498db;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.member-bio {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ==================== 6. 響應式：手機平板 ==================== */
+@media (max-width: 768px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .main {
+        padding: 30px 15px;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .about-header {
+        margin-bottom: 25px;
+    }
+
+    .about-header h1 {
+        font-size: 2rem;
+        margin-bottom: 2px;
+    }
+
+    .about-header .underline {
+        margin: 0 auto 8px auto;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== 7. br 間距微調 ==================== */
+br {
+    display: block;
+    content: "";
+    font-size: 0px;
+    margin-top: 4px;
+}
+.contact-title {
+    margin-bottom: 20px;
+}
+.contact-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #0f2d59;
+    margin-bottom: 20px;
+}
