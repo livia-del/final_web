@@ -58,9 +58,98 @@
             <section class="photo-wall">
                 <img src="https://www.csim.org.tw/sites/default/files/2015-11-27_16.31.32.jpg" alt="">
                 <img src="https://www.csim.org.tw/sites/default/files/2015-11-27_16.29.17.jpg" alt="">
+
+        </main>
+</body>
+
+</html>
             </section>
 
         </main>
+
+        <div id="lightbox" class="lightbox" tabindex="-1" aria-hidden="true">
+            <button class="close-btn" id="lightbox-close" aria-label="關閉">×</button>
+            <button class="nav-btn left" id="lightbox-prev" aria-label="上一張">‹</button>
+            <img id="lightbox-img" src="" alt="放大照片">
+            <button class="nav-btn right" id="lightbox-next" aria-label="下一張">›</button>
+            <a id="download-btn" class="download-btn" href="#" download>下載</a>
+        </div>
+
+        <script>
+            (function () {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const downloadBtn = document.getElementById('download-btn');
+                const closeBtn = document.getElementById('lightbox-close');
+                const prevBtn = document.getElementById('lightbox-prev');
+                const nextBtn = document.getElementById('lightbox-next');
+
+                const images = Array.from(document.querySelectorAll('.photo-wall img, .hero-photo img'));
+                let currentIndex = -1;
+
+                function setDownloadHref(src) {
+                    try {
+                        const url = new URL(src);
+                        const parts = url.pathname.split('/');
+                        const name = parts.pop() || 'photo.jpg';
+                        downloadBtn.href = src;
+                        downloadBtn.setAttribute('download', name);
+                    } catch (e) {
+                        downloadBtn.href = src;
+                        downloadBtn.setAttribute('download', 'photo.jpg');
+                    }
+                }
+
+                function openLightboxByIndex(i) {
+                    if (i < 0 || i >= images.length) return;
+                    currentIndex = i;
+                    const img = images[currentIndex];
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt || 'photo';
+                    setDownloadHref(img.src);
+                    lightbox.classList.add('active');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    lightbox.focus();
+                }
+
+                function closeLightbox() {
+                    lightbox.classList.remove('active');
+                    lightbox.setAttribute('aria-hidden', 'true');
+                    lightboxImg.src = '';
+                    currentIndex = -1;
+                }
+
+                images.forEach((img, idx) => {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => openLightboxByIndex(idx));
+                });
+
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); openLightboxByIndex((currentIndex - 1 + images.length) % images.length); });
+                    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); openLightboxByIndex((currentIndex + 1) % images.length); });
+                }
+
+                closeBtn.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+                document.addEventListener('keydown', (e) => {
+                    if (!lightbox.classList.contains('active')) return;
+                    if (e.key === 'Escape') closeLightbox();
+                    else if (e.key === 'ArrowRight') openLightboxByIndex((currentIndex + 1) % images.length);
+                    else if (e.key === 'ArrowLeft') openLightboxByIndex((currentIndex - 1 + images.length) % images.length);
+                });
+
+                // Touch swipe
+                let touchStartX = 0, touchStartY = 0; const SWIPE_THRESHOLD = 40;
+                lightbox.addEventListener('touchstart', (e) => { const t = e.touches[0]; touchStartX = t.clientX; touchStartY = t.clientY; }, { passive: true });
+                lightbox.addEventListener('touchend', (e) => { if (!e.changedTouches || e.changedTouches.length === 0) return; const t = e.changedTouches[0]; const dx = t.clientX - touchStartX; const dy = t.clientY - touchStartY; if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) openLightboxByIndex((currentIndex + 1) % images.length); else openLightboxByIndex((currentIndex - 1 + images.length) % images.length); } }, { passive: true });
+                lightboxImg.addEventListener('touchstart', (e) => { const t = e.touches[0]; touchStartX = t.clientX; touchStartY = t.clientY; }, { passive: true });
+                lightboxImg.addEventListener('touchend', (e) => { if (!e.changedTouches || e.changedTouches.length === 0) return; const t = e.changedTouches[0]; const dx = t.clientX - touchStartX; const dy = t.clientY - touchStartY; if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) openLightboxByIndex((currentIndex + 1) % images.length); else openLightboxByIndex((currentIndex - 1 + images.length) % images.length); } }, { passive: true });
+
+                downloadBtn.addEventListener('click', (e) => { downloadBtn.setAttribute('target', '_blank'); });
+            })();
+        </script>
+
 </body>
 
 </html>

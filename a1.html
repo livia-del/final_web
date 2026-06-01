@@ -33,7 +33,7 @@
 
         <main class="gallery-page">
 
-            
+
 
             <section class="hero-photo">
                 <img src="https://www.csim.org.tw/sites/default/files/dscn0006_diao_zheng_da_xiao_.jpg" alt="專題演講照片">
@@ -50,7 +50,8 @@
                     <div>
                         <h1>第22屆海峽兩岸資訊管理發展與策略學術研討會</h1>
                         <p>
-                            本次(第22屆)海峽兩岸資訊管理發展與策略學術研討會於2016/7/29 ~ 7/31舉辦於臺灣，由國立臺北科技大學資訊與財金管理系承辦，本次會議承襲往年的精神，廣邀臺海兩岸四地的學者們出席共襄盛舉，交流資訊科技領域的研究與實務經驗。
+                            本次(第22屆)海峽兩岸資訊管理發展與策略學術研討會於2016/7/29 ~
+                            7/31舉辦於臺灣，由國立臺北科技大學資訊與財金管理系承辦，本次會議承襲往年的精神，廣邀臺海兩岸四地的學者們出席共襄盛舉，交流資訊科技領域的研究與實務經驗。
                         </p>
                     </div>
 
@@ -67,10 +68,159 @@
                 <img src="https://www.csim.org.tw/sites/default/files/p_20160730_120734_diao_zheng_da_xiao_.jpg">
                 <img src="https://www.csim.org.tw/sites/default/files/20160730_181634_diao_zheng_da_xiao_.jpg">
                 <img src="https://www.csim.org.tw/sites/default/files/20160730_175351_diao_zheng_da_xiao_.jpg">
-                <img class="wide" src="https://www.csim.org.tw/sites/default/files/20160730_175331_diao_zheng_da_xiao_.jpg">
+                <img class="wide"
+                    src="https://www.csim.org.tw/sites/default/files/20160730_175331_diao_zheng_da_xiao_.jpg">
             </section>
 
+
+            </section>
+
+
         </main>
+
+        <!-- Lightbox markup (hidden by default). JS below will control it -->
+        <div id="lightbox" class="lightbox" tabindex="-1" aria-hidden="true">
+            <button class="close-btn" id="lightbox-close" aria-label="關閉">×</button>
+            <button class="nav-btn left" id="lightbox-prev" aria-label="上一張">‹</button>
+            <img id="lightbox-img" src="" alt="放大照片">
+            <button class="nav-btn right" id="lightbox-next" aria-label="下一張">›</button>
+            <a id="download-btn" class="download-btn" href="#" download>下載</a>
+        </div>
+
+        <script>
+            (function () {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const downloadBtn = document.getElementById('download-btn');
+                const closeBtn = document.getElementById('lightbox-close');
+
+                const images = Array.from(document.querySelectorAll('.photo-wall img, .hero-photo img'));
+                let currentIndex = -1;
+
+                function setDownloadHref(src) {
+                    try {
+                        const url = new URL(src);
+                        const parts = url.pathname.split('/');
+                        const name = parts.pop() || 'photo.jpg';
+                        downloadBtn.href = src;
+                        downloadBtn.setAttribute('download', name);
+                    } catch (e) {
+                        downloadBtn.href = src;
+                        downloadBtn.setAttribute('download', 'photo.jpg');
+                    }
+                }
+
+                function openLightboxByIndex(i) {
+                    if (i < 0 || i >= images.length) return;
+                    currentIndex = i;
+                    const img = images[currentIndex];
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt || 'photo';
+                    setDownloadHref(img.src);
+                    lightbox.classList.add('active');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                    lightbox.focus();
+                }
+
+                function closeLightbox() {
+                    lightbox.classList.remove('active');
+                    lightbox.setAttribute('aria-hidden', 'true');
+                    lightboxImg.src = '';
+                    currentIndex = -1;
+                }
+
+                images.forEach((img, idx) => {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => openLightboxByIndex(idx));
+                });
+
+                // prev/next buttons
+                const prevBtn = document.getElementById('lightbox-prev');
+                const nextBtn = document.getElementById('lightbox-next');
+                if (prevBtn && nextBtn) {
+                    prevBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openLightboxByIndex((currentIndex - 1 + images.length) % images.length);
+                    });
+                    nextBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openLightboxByIndex((currentIndex + 1) % images.length);
+                    });
+                }
+
+                closeBtn.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+
+                // keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (!lightbox.classList.contains('active')) return;
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        openLightboxByIndex((currentIndex + 1) % images.length);
+                    } else if (e.key === 'ArrowLeft') {
+                        openLightboxByIndex((currentIndex - 1 + images.length) % images.length);
+                    }
+                });
+
+                // Touch swipe handling for mobile: detect horizontal swipe on lightbox
+                let touchStartX = 0;
+                let touchStartY = 0;
+                const SWIPE_THRESHOLD = 40; // px
+
+                lightbox.addEventListener('touchstart', function (e) {
+                    const t = e.touches[0];
+                    touchStartX = t.clientX;
+                    touchStartY = t.clientY;
+                }, { passive: true });
+
+                lightbox.addEventListener('touchend', function (e) {
+                    if (!e.changedTouches || e.changedTouches.length === 0) return;
+                    const t = e.changedTouches[0];
+                    const dx = t.clientX - touchStartX;
+                    const dy = t.clientY - touchStartY;
+                    // require mostly horizontal movement and exceed threshold
+                    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+                        if (dx < 0) {
+                            // swipe left -> next
+                            openLightboxByIndex((currentIndex + 1) % images.length);
+                        } else {
+                            // swipe right -> prev
+                            openLightboxByIndex((currentIndex - 1 + images.length) % images.length);
+                        }
+                    }
+                }, { passive: true });
+
+                // Also support swipe directly on the image (some browsers register touches only there)
+                lightboxImg.addEventListener('touchstart', function (e) {
+                    const t = e.touches[0];
+                    touchStartX = t.clientX;
+                    touchStartY = t.clientY;
+                }, { passive: true });
+
+                lightboxImg.addEventListener('touchend', function (e) {
+                    if (!e.changedTouches || e.changedTouches.length === 0) return;
+                    const t = e.changedTouches[0];
+                    const dx = t.clientX - touchStartX;
+                    const dy = t.clientY - touchStartY;
+                    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+                        if (dx < 0) {
+                            openLightboxByIndex((currentIndex + 1) % images.length);
+                        } else {
+                            openLightboxByIndex((currentIndex - 1 + images.length) % images.length);
+                        }
+                    }
+                }, { passive: true });
+
+                // download fallback for cross-origin
+                downloadBtn.addEventListener('click', (e) => {
+                    downloadBtn.setAttribute('target', '_blank');
+                });
+            })();
+        </script>
+
 </body>
 
 </html>
