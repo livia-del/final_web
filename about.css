@@ -5,6 +5,9 @@
     font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 
+/* fix: ensure all opened blocks are closed */
+
+
 body {
     background: linear-gradient(135deg, #f5f9ff, #eef4ff);
     color: #1f2937;
@@ -17,8 +20,9 @@ body {
 
 /* main */
 .main {
-    margin-left: 260px; 
-    padding: 32px;
+    margin-left: 260px;
+    /* reduced top padding so the fixed tabs sit attached to the content */
+    padding: 80px 32px 32px;
     width: calc(100% - 260px);
 }
 
@@ -103,8 +107,7 @@ body {
 .hero {
     height: 360px;
     background:
-        linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.1) 100%),
-        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80");
+        linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.1) 100%);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -133,34 +136,120 @@ body {
     color: #111827;
 }
 
-/* 上方四個按鈕 */
 .tab-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    padding: 35px 55px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 0px 0px 0px; /* 💡 把底部 padding 設為 0，讓按鈕貼底 */
+    margin-bottom: -1px;       /* 💡 關鍵：讓整個按鈕列的外殼往下一像素，去疊在下方的邊框上 */
+    position: relative;
+    z-index: 2;  
+                 /* 💡 確保按鈕排在下方框框的上面，才能蓋掉線 */
 }
 
-.tab {
-    padding: 18px;
-    border: 1px solid #d5dfed;
-    background: white;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 30, 90, 0.06);
+.tab-content {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff; /* 要跟 active 標籤的背景色完全一樣 */
+    border: 1px solid #d5dfed; /* 檔案夾的邊框線 */
+    gap: 0; /* tabs will touch each other and fill the width */
+    /* left padding matches .main internal padding so tabs align with content */
+    padding: 0 55px 0 32px;
 }
 
 .tab.active {
-    background: linear-gradient(135deg, #2f80ff, #005bea);
-    color: white;
+    background: #ffffff; 
+    color: #005bea;
+    border-bottom: 1px solid #ffffff; /* 💡 關鍵：把 active 標籤的底邊框變成白色，用來融化下方大框框的線 */
+    z-index: 3; /* 確保它在最上層 */
+}
+
+/* adjust fixed offsets when the sidebar width changes */
+@media (max-width: 1024px) {
+    .main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 100px 28px 28px;
+    }
+
+    .main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 88px 28px 28px;
+    }
+
+    .tab-buttons {
+        left: 210px;
+        width: calc(100% - 210px);
+        top: 20px;
+        justify-content: flex-start;
+        padding: 30px 40px 18px 28px;
+    }
+}
+
+/* On small screens revert to normal flow (not fixed) so layout is simpler */
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 32px;
+    }
+
+    .tab-buttons {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        grid-template-columns: 1fr;
+        padding: 25px;
+        width: auto;
+    }
+}
+
+    
+
+.tab.active {
+    background: #ffffff; /* active looks like attached paper */
+    color: #005bea;
+    z-index: 90; /* sit above other tabs */
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    border-radius: 20px 20px 0 0; /* match the non-active tabs, but only on the top corners */
+}
+
+/* subtle hover lift */
+.tab:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Mobile: stack tabs and remove separators */
+@media (max-width: 768px) {
+    .tab-buttons {
+        display: block;
+        padding: 18px 24px;
+    }
+
+    .tab-buttons .tab {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid #eef3fb;
+    }
+
+    .tab-buttons .tab:not(:last-child)::after {
+        display: none;
+    }
 }
 
 /* 簡介 */
 .intro {
     text-align: center;
     padding: 25px 60px;
+}
+
+/* make sure the section title is centered and pushed down so it's not hidden by the fixed tabs */
+.intro h2 {
+    text-align: center;
+    margin-top: 28px;
 }
 
 .intro h2,
@@ -208,18 +297,42 @@ body {
     color: #06245c;
 }
 
-.card p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #333;
-}
-
-/* 發展歷程 */
-.timeline-section {
+.tab {
+    flex: 1 1 0;
+    display: inline-block;
+    padding: 14px 12px;
     text-align: center;
-    padding: 10px 55px 60px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #172554;
+    cursor: pointer;
+    position: relative;
+    background: #f3f7fb; /* light tab background */
+    border: 1px solid #d5dfed;
+    border-bottom: 0; /* visually connect to content */
+    border-radius: 10px 10px 0px 0px; /* will set corners on first/last */
+    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
 }
 
+/* separator line between tabs (single-pixel) */
+.tab:not(:first-child) {
+    border-left: 1px solid #d5dfed;
+}
+
+/* rounded corners on the leftmost and rightmost tabs */
+.tab:first-child {
+    border-radius: 10px 0 0 0;
+}
+.tab:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.tab:first-child {
+    border-radius: 10px 10px 0 0;
+}
+.tab:last-child {
+    border-radius: 10px 10px 0 0;
+}
 .timeline {
     position: relative;
     display: grid;
