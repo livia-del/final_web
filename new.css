@@ -103,7 +103,7 @@ body {
     color: #005bea;
     z-index: 90; /* sit above other tabs */
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-    border-radius: 20px 20px 0 0; /* match the non-active tabs, but only on the top corners */
+    border-radius: 10px 10px 0 0; /* match the non-active tabs, but only on the top corners */
 }
 
 /* subtle hover lift */
