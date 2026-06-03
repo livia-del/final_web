@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="section-title">
+            <div class="icon-box-emoji">🚀</div>
+            <h2>四大核心任務</h2>
+        </div>
+        <div class="mission-carousel-container">
+            <div class="mission-carousel-window">
+                <div class="mission-carousel-track" id="carouselTrack">
+                    <div class="mission-text-item">
+                        <h3>辦理頂尖學術研討會</h3>
+                        <p>每年定期舉辦 ICIM 與 IMP 研討會，吸引數百篇論文投稿，促進學者專家共同切磋。</p>
+                    </div>
+                    <div class="mission-text-item">
+                        <h3>主辦全國性指標競賽</h3>
+                        <p>共同主辦資訊服務創新競賽暨資管專題競賽，提供學生展現實作能力的舞台。</p>
+                    </div>
+                    <div class="mission-text-item">
+                        <h3>促進跨國與兩岸交流</h3>
+                        <p>舉辦海峽兩岸資訊管理發展與策略學術研討會，拓展資管人的國際視野。</p>
+                    </div>
+                    <div class="mission-text-item">
+                        <h3>引領資管教育方向</h3>
+                        <p>協助政府與學校規劃課程架構、出版專業期刊，推動台灣資管教育前進。</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev-btn" id="prevBtn">&#10094;</button>
+            <button class="carousel-btn next-btn" id="nextBtn">&#10095;</button>
+
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const windowEl = document.querySelector(".mission-carousel-window");
+            const track = document.getElementById("carouselTrack");
+            const items = document.querySelectorAll(".mission-text-item");
+            const dots = document.querySelectorAll(".dot");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            let currentIndex = 0;
+            let autoPlay;
+
+            function updateCarousel(index) {
+                // 處理邊界條件
+                if (index >= items.length) currentIndex = 0;
+                else if (index < 0) currentIndex = items.length - 1;
+                else currentIndex = index;
+
+                // 動態抓取外層視窗的寬度，精準計算滑動距離
+                const windowWidth = windowEl.getBoundingClientRect().width;
+
+                // 更新每一頁的寬度，確保與外層視窗完美等寬
+                items.forEach(item => {
+                    item.style.width = `${windowWidth}px`;
+                });
+
+                // 移動軌道
+                track.style.transform = `translateX(-${currentIndex * windowWidth}%)`;
+                track.style.transform = `translateX(-${currentIndex * windowWidth}px)`;
+
+                // 更新分頁圓點狀態
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add("active");
+                    } else {
+                        dot.classList.remove("active");
+                    }
+                });
+            }
+
+            // 初始化寬度與定位
+            updateCarousel(0);
+
+            // 監聽視窗縮放（RWD），防止螢幕大小改變時錯位
+            window.addEventListener("resize", () => {
+                updateCarousel(currentIndex);
+            });
+
+            // 按鈕點擊滑動
+            nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+            prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+
+            // 圓點點擊滑動
+            dots.forEach((dot, i) => {
+                dot.addEventListener("click", () => updateCarousel(i));
+            });
+
+            // 開啟自動輪播（每 5 秒）
+            function startAutoPlay() {
+                autoPlay = setInterval(() => {
+                    updateCarousel(currentIndex + 1);
+                }, 5000);
+            }
+
+            startAutoPlay();
+
+            // 當滑鼠移入時停止自動輪播，移出時重啟
+            const container = document.querySelector(".mission-carousel-container");
+            container.addEventListener("mouseenter", () => clearInterval(autoPlay));
+            container.addEventListener("mouseleave", startAutoPlay);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -69,7 +69,9 @@ body {
     transform: scale(1.05);
 }
 
-
+/* ==========================================
+   核心任務
+   ========================================== */
 .section {
     margin-top: 28px;
     background: white;
@@ -80,54 +82,126 @@ body {
 
 .section-title {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 20px;
-    margin-bottom: 24px;
-}
-
-
-.icon-box-emoji {
-    font-size: 28px;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: 26px;
+    text-align: center;
+    margin-bottom: 26px;
 }
 
-
-/* ==========================================
-   核心任務
-   ========================================== */
-.mission-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+.section-title span {
+    width: 76px;
+    height: 3px;
+    background: #2563eb;
+    border-radius: 99px;
+}
+.section-title h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 34px;
 }
 
-.mission-card {
+.mission-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
     border: 1px solid #e5edf8;
     border-radius: 20px;
-    padding: 24px;
-    transition: 0.25s;
-    background: #fff;
+    padding: 40px 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
 }
 
-/*.mission-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
-}*/
-
-.mission-card h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
+/* 裁剪視窗，只顯示當前那一組純文字 */
+.mission-carousel-window {
+    width: 100%;
+    overflow: hidden;
 }
 
-.mission-card p {
-    font-size: 14px;
+/* 橫向軌道：改為 max-content 讓寬度隨內容自動撐開，避免計算不準 */
+.mission-carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 每一頁文字：寬度精準鎖定為外層 window 的 100% */
+.mission-text-item {
+    width: 100%;
+    max-width: 680px; /* 扣除 container padding 後的實際可用寬度 */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.mission-text-item h3 {
+    font-size: 22px;
+    color: #006aff;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.mission-text-item p {
+    font-size: 15px;
     line-height: 1.8;
     color: #4b5563;
 }
 
+/* 左右按鈕樣式 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f3f4f6;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #4b5563;
+    cursor: pointer;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.carousel-btn:hover {
+    background: #eaf2ff;
+    color: #0b63d1;
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* 下方圓點樣式 */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e5edf8;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.dot.active, .dot:hover {
+    background: #0b63d1;
+    width: 20px;
+    border-radius: 4px;
+}
 /* 數據 */
 .stats {
     display: grid;
@@ -374,12 +448,22 @@ body {
     font-size: 16px;
 }
 
+.footer-card a {
+
+    text-decoration: none;
+}
 
 
 /* ==========================================
    最新消息
    ========================================== */
-.side-cards {
+.icon-box-emoji {
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+   .side-cards {
     display: flex;
     flex-direction: column;
     gap: 20px;           
