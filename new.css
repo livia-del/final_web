@@ -1,12 +1,12 @@
+/* ==========================================================================
+   1. 全域設定與佈局 (Global & Layout)
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
-
-/* fix: ensure all opened blocks are closed */
-
 
 body {
     background: linear-gradient(135deg, #f5f9ff, #eef4ff);
@@ -18,125 +18,88 @@ body {
     min-height: 100vh;
 }
 
-/* main */
+/* ==========================================================================
+   2. 右側主要內容容器 (Main Content Container)
+   ========================================================================== */
 .main {
     margin-left: 260px;
-    /* reduced top padding so the fixed tabs sit attached to the content */
     padding: 80px 32px 32px;
     width: calc(100% - 260px);
 }
 
+/* ==========================================================================
+   3. 頁籤按鈕區塊 (Tab Buttons)
+   ========================================================================== */
 .tab-buttons {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 0;
-    padding: 0 0px 0px 0px; /* 💡 把底部 padding 設為 0，讓按鈕貼底 */
-    margin-bottom: -1px;       /* 💡 關鍵：讓整個按鈕列的外殼往下一像素，去疊在下方的邊框上 */
+    padding: 0;           /* 💡 把底部 padding 設為 0，讓按鈕貼底 */
+    margin-bottom: -1px;  /* 💡 關鍵：讓整個按鈕列的外殼往下一像素，去疊在下方的邊框上 */
     position: relative;
-    z-index: 2;  
-                 /* 💡 確保按鈕排在下方框框的上面，才能蓋掉線 */
+    z-index: 2;           /* 💡 確保按鈕排在下方框框的上面，才能蓋掉線 */
 }
 
-.tab-content {
-    width: 100%;
-    box-sizing: border-box;
-    background: #ffffff; /* 要跟 active 標籤的背景色完全一樣 */
-    border: 1px solid #d5dfed; /* 檔案夾的邊框線 */
-    gap: 0; /* tabs will touch each other and fill the width */
-    /* left padding matches .main internal padding so tabs align with content */
-    padding: 0 55px 0 32px;
+.tab {
+    flex: 1 1 0;
+    display: inline-block;
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #172554;
+    cursor: pointer;
+    position: relative;
+    background: #f3f7fb;  /* light tab background */
+    border: 1px solid #d5dfed;
+    border-bottom: 0;     /* visually connect to content */
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
 }
 
-.tab.active {
-    background: #ffffff; 
-    color: #005bea;
-    border-bottom: 1px solid #ffffff; /* 💡 關鍵：把 active 標籤的底邊框變成白色，用來融化下方大框框的線 */
-    z-index: 3; /* 確保它在最上層 */
+/* 頁籤之間的單像素分隔線 */
+.tab:not(:first-child) {
+    border-left: 1px solid #d5dfed;
 }
 
-/* adjust fixed offsets when the sidebar width changes */
-@media (max-width: 1024px) {
-    .main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
-        padding: 100px 28px 28px;
-    }
-
-    .main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
-        padding: 88px 28px 28px;
-    }
-
-    .tab-buttons {
-        left: 210px;
-        width: calc(100% - 210px);
-        top: 20px;
-        justify-content: flex-start;
-        padding: 30px 40px 18px 28px;
-    }
-}
-
-/* On small screens revert to normal flow (not fixed) so layout is simpler */
-@media (max-width: 768px) {
-    .main {
-        margin-left: 0;
-        width: 100%;
-        padding: 32px;
-    }
-
-    .tab-buttons {
-        position: static;
-        box-shadow: none;
-        background: transparent;
-        grid-template-columns: 1fr;
-        padding: 25px;
-        width: auto;
-    }
-}
-
-    
-
-.tab.active {
-    background: #ffffff; /* active looks like attached paper */
-    color: #005bea;
-    z-index: 90; /* sit above other tabs */
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-    border-radius: 10px 10px 0 0; /* match the non-active tabs, but only on the top corners */
-}
-
-/* subtle hover lift */
+/* 滑鼠懸停微幅升起效果 */
 .tab:hover {
     transform: translateY(-3px);
 }
 
-
-/* Mobile: stack tabs and remove separators */
-@media (max-width: 768px) {
-    .tab-buttons {
-        display: block;
-        padding: 18px 24px;
-    }
-
-    .tab-buttons .tab {
-        display: block;
-        padding: 14px 0;
-        border-bottom: 1px solid #eef3fb;
-    }
-
-    .tab-buttons .tab:not(:last-child)::after {
-        display: none;
-    }
+/* 💡 已合併原本重複分開寫的 active 樣式 */
+.tab.active {
+    background: #ffffff;  /* active looks like attached paper */
+    color: #005bea;
+    border-bottom: 1px solid #ffffff; /* 💡 關鍵：把 active 標籤的底邊框變成白色，用來融化下方大框框的線 */
+    z-index: 90;          /* sit above other tabs */
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    border-radius: 10px 10px 0 0;
 }
 
-/* 簡介 */
+/* ==========================================================================
+   4. 頁籤內容主包裹框 (Tab Content Main Container)
+   ========================================================================== */
+.tab-content {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;        /* 要跟 active 標籤的背景色完全一樣 */
+    border: 1px solid #d5dfed;  /* 檔案夾的邊框線 */
+    padding: 0 55px 0 32px;
+}
+
+/* ==========================================================================
+   5. 頁籤內部各子區塊樣式 (Content Sections)
+   ========================================================================== */
+
+/* --- 5.1 學會簡介 (Intro Section) --- */
 .intro {
     text-align: center;
     padding: 25px 60px;
 }
 
-/* make sure the section title is centered and pushed down so it's not hidden by the fixed tabs */
 .intro h2 {
     text-align: center;
     margin-top: 28px;
@@ -159,7 +122,7 @@ body {
     color: #111827;
 }
 
-/* 卡片 */
+/* --- 5.2 四張核心任務卡片 (Cards Section) --- */
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -187,44 +150,7 @@ body {
     color: #06245c;
 }
 
-.tab {
-    flex: 1 1 0;
-    display: inline-block;
-    padding: 14px 12px;
-    text-align: center;
-    font-size: 18px;
-    text-decoration: none;
-
-    font-weight: 700;
-    color: #172554;
-    cursor: pointer;
-    position: relative;
-    background: #f3f7fb; /* light tab background */
-    border: 1px solid #d5dfed;
-    border-bottom: 0; /* visually connect to content */
-    border-radius: 10px 10px 0px 0px; /* will set corners on first/last */
-    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
-}
-
-/* separator line between tabs (single-pixel) */
-.tab:not(:first-child) {
-    border-left: 1px solid #d5dfed;
-}
-
-/* rounded corners on the leftmost and rightmost tabs */
-.tab:first-child {
-    border-radius: 10px 0 0 0;
-}
-.tab:last-child {
-    border-radius: 0 10px 0 0;
-}
-
-.tab:first-child {
-    border-radius: 10px 10px 0 0;
-}
-.tab:last-child {
-    border-radius: 10px 10px 0 0;
-}
+/* --- 5.3 發展歷程時間軸 (Timeline Section) --- */
 .timeline {
     position: relative;
     display: grid;
@@ -233,6 +159,7 @@ body {
     margin-top: 35px;
 }
 
+/* 時間軸橫線 */
 .timeline::before {
     content: "";
     position: absolute;
@@ -248,6 +175,7 @@ body {
     padding-top: 40px;
 }
 
+/* 時間軸節點圓圈 */
 .item span {
     position: absolute;
     top: 5px;
@@ -272,7 +200,11 @@ body {
     color: #222;
 }
 
-/* 平板 */
+/* ==========================================================================
+   6. 響應式網頁設計 (Media Queries / RWD)
+   ========================================================================== */
+
+/* --- 6.1 平板尺寸 (Max-width: 1024px) --- */
 @media (max-width: 1024px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
@@ -283,15 +215,29 @@ body {
     }
 }
 
-/* 手機 */
+/* --- 6.2 手機尺寸 (Max-width: 768px) --- */
 @media (max-width: 768px) {
+    /* 註：若 HTML 中外層非 .layout 而是 .page，可依需求調整此處名稱 */
     .layout {
         flex-direction: column;
     }
 
-    
+    .tab-buttons {
+        display: block;
+        padding: 18px 24px;
+    }
 
-    .tab-buttons,
+    .tab-buttons .tab {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid #eef3fb;
+    }
+
+    /* 手機版直向排列時，隱藏原橫向專用的 pseudo 分隔線 */
+    .tab-buttons .tab:not(:last-child)::after {
+        display: none;
+    }
+
     .cards {
         grid-template-columns: 1fr;
         padding: 25px;
@@ -301,6 +247,7 @@ body {
         grid-template-columns: 1fr;
     }
 
+    /* 手機版隱藏橫向時間軸線 */
     .timeline::before {
         display: none;
     }
