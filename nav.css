@@ -19,6 +19,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 260px;
+    height:100%;
     background: #ffffff;
     padding: 36px 24px;
     border-right: 1px solid #dbe7f7;
@@ -45,10 +46,13 @@ body {
     transition: 0.25s;
 }
 
-.nav a.active,
-.nav a:hover {
+.nav a.active {
     background: #eaf2ff;
     color: #0b63d1;
+    box-shadow: 0 12px 25px rgba(59, 130, 246, 0.12);
+}
+.nav a:hover {
+    background: #eaf2ff;
     box-shadow: 0 12px 25px rgba(59, 130, 246, 0.12);
 }
 
