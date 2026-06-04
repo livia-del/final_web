@@ -1,3 +1,6 @@
+/* ==========================================
+   1. 全域初始化 & 基礎設定
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,23 +8,27 @@
     font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 
-/* fix: ensure all opened blocks are closed */
-
-
 body {
     background: linear-gradient(135deg, #f5f9ff, #eef4ff);
     color: #1f2937;
 }
 
+/* ==========================================
+   2. 版面主要外殼 (Layout)
+   ========================================== */
 .page {
     display: flex;
     min-height: 100vh;
 }
 
-/* main */
+/* 側邊欄 (雖然 HTML 內有 sidebar，但原 CSS 漏掉寬度等基礎設定，這裡保留結構位置) */
+.sidebar {
+    /* 依據你的 .main margin-left，側邊欄寬度應為 260px */
+}
+
 .main {
     margin-left: 260px;
-    padding: 32px 32px 32px;
+    padding: 32px;
     width: calc(100% - 260px);
     position: fixed;
     height: 100%;
@@ -30,181 +37,93 @@ body {
     bottom: 0;
 }
 
-
-
-/* Hero */
-.hero {
-    height: 360px;
-    background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.1) 100%);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding-left: 70px;
-}
-
-.hero-text h1 {
-    font-size: 54px;
-    letter-spacing: 8px;
-    color: #06245c;
-}
-
-.line,
-.small-line {
-    width: 56px;
-    height: 4px;
-    background: #1479ff;
-    border-radius: 99px;
-    margin: 20px 0;
-}
-
-/*.hero-text p {
-    font-size: 20px;
-    line-height: 1.9;
-    color: #111827;
-} */
-
+/* ==========================================
+   3. 頁籤按鈕區 (Tab Buttons)
+   ========================================== */
 .tab-buttons {
     width: 100%;
     height: 50px;
-    top: 0;
-    right: 0;
-    bottom: auto;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 0;
-    padding: 0 0px 0px 0px;
-    /* 💡 把底部 padding 設為 0，讓按鈕貼底 */
-    margin-bottom: -1px;
-    /* 💡 關鍵：讓整個按鈕列的外殼往下一像素，去疊在下方的邊框上 */
+    margin-bottom: -1px; /* 讓按鈕列貼底，蓋掉下方內容框的頂線 */
     position: relative;
     z-index: 2;
-    /* 💡 確保按鈕排在下方框框的上面，才能蓋掉線 */
 }
 
-.tab-content {
-    width: 100%;
-    box-sizing: border-box;
-    background: #ffffff;
-    /* 要跟 active 標籤的背景色完全一樣 */
-    border: 1px solid #d5dfed;
-    /* 檔案夾的邊框線 */
-    gap: 0;
-    /* tabs will touch each other and fill the width */
-    /* left padding matches .main internal padding so tabs align with content */
-    padding: 0 52px 0 55px;
+.tab {
+    flex: 1 1 0;
+    display: inline-block;
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #172554;
+    cursor: pointer;
     position: relative;
-    height: calc(100vh - 100px);
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow-y: auto;
-    border-radius: 0 0 10px 10px;
-}
-
-
-/* adjust fixed offsets when the sidebar width changes */
-@media (max-width: 1024px) {
-    .main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
-        padding: 100px 28px 28px;
-    }
-
-    .main {
-        margin-left: 210px;
-        width: calc(100% - 210px);
-        padding: 88px 28px 28px;
-    }
-
-    .tab-buttons {
-        left: 210px;
-        width: calc(100% - 210px);
-        top: 20px;
-        justify-content: flex-start;
-        padding: 30px 40px 18px 28px;
-    }
-}
-
-/* On small screens revert to normal flow (not fixed) so layout is simpler */
-@media (max-width: 768px) {
-    .main {
-        margin-left: 0;
-        width: 100%;
-        padding: 32px;
-    }
-
-    .tab-buttons {
-        position: static;
-        box-shadow: none;
-        background: transparent;
-        grid-template-columns: 1fr;
-        padding: 25px;
-        width: auto;
-    }
-}
-
-
-
-.tab.active {
-    background: #ffffff;
-    /* active looks like attached paper */
-    color: #005bea;
-    z-index: 90;
-    /* sit above other tabs */
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    background: #f3f7fb;
+    border: 1px solid #d5dfed;
+    border-bottom: 0;
     border-radius: 10px 10px 0 0;
-    /* match the non-active tabs, but only on the top corners */
+    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
+    transition: transform 0.2s ease;
 }
 
-/* subtle hover lift */
+/* 頁籤之間的分隔線（除第一個外，左邊補線） */
+.tab:not(:first-child) {
+    border-left: 1px solid #d5dfed;
+}
+
 .tab:hover {
     transform: translateY(-3px);
 }
 
-
-/* Mobile: stack tabs and remove separators */
-@media (max-width: 768px) {
-    .tab-buttons {
-        display: block;
-        padding: 18px 24px;
-    }
-
-    .tab-buttons .tab {
-        display: block;
-        padding: 14px 0;
-        border-bottom: 1px solid #eef3fb;
-    }
-
-    .tab-buttons .tab:not(:last-child)::after {
-        display: none;
-    }
+.tab.active {
+    background: #ffffff;
+    color: #005bea;
+    z-index: 90;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    border-radius: 10px 10px 0 0;
 }
 
-/* 簡介 */
+/* ==========================================
+   4. 頁籤主要內容區 (Tab Content)
+   ========================================== */
+.tab-content {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #d5dfed;
+    padding: 0 52px 0 55px;
+    position: relative;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    border-radius: 0 0 10px 10px;
+}
+
+/* ==========================================
+   5. 學會簡介區 (Intro Section)
+   ========================================== */
 .intro {
     text-align: center;
     padding: 25px 60px;
 }
 
-/* make sure the section title is centered and pushed down so it's not hidden by the fixed tabs */
 .intro h2 {
     text-align: center;
     margin-top: 28px;
-}
-
-.intro h2,
-.timeline-section h2 {
     font-size: 30px;
     color: #06245c;
 }
 
-.intro .small-line,
-.timeline-section .small-line {
-    margin: 14px auto 18px;
+.small-line {
+    width: 56px;
+    height: 4px;
+    background: #1479ff;
+    border-radius: 99px;
+    margin: 14px auto 18px; /* 置中對齊 */
 }
 
 .intro p {
@@ -213,11 +132,11 @@ body {
     color: #111827;
 }
 
-/* 卡片 */
+/* ==========================================
+   6. 手風琴卡片區 (Cards / Accordion)
+   ========================================== */
 .cards {
     display: block;
-    /* switch to stacked (one-per-row) */
-    gap: 0;
     padding: 20px 55px;
 }
 
@@ -230,7 +149,6 @@ body {
     box-shadow: 0 6px 16px rgba(0, 40, 100, 0.04);
 }
 
-/* Accordion toggle button */
 .card-toggle {
     width: 100%;
     text-align: left;
@@ -264,145 +182,38 @@ body {
     opacity: 0;
 }
 
-.card[open] .card-body,
-.card-body[open] {
-    opacity: 1;
-}
-
+/* 當 JS 觸發加上 .expanded 時的動畫樣式 */
 .card.expanded .card-body {
     max-height: 1000px;
-    /* large enough to fit content; fine for small cards */
     opacity: 1;
 }
 
-.icon {
-    font-size: 42px;
-    color: #005bea;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #06245c;
-}
-
-.tab {
-    flex: 1 1 0;
-    display: inline-block;
-    padding: 14px 12px;
-    text-align: center;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: 700;
-    color: #172554;
-    cursor: pointer;
-    position: relative;
-    background: #f3f7fb;
-    /* light tab background */
-    border: 1px solid #d5dfed;
-    border-bottom: 0;
-    /* visually connect to content */
-    border-radius: 10px 10px 0px 0px;
-    /* will set corners on first/last */
-    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
-}
-
-/* separator line between tabs (single-pixel) */
-.tab:not(:first-child) {
-    border-left: 1px solid #d5dfed;
-}
-
-/* rounded corners on the leftmost and rightmost tabs */
-.tab:first-child { border-radius: 10px 10px 0 0; }
-.tab:last-child { border-radius: 10px 10px 0 0; }
-
-/* Horizontal timeline: prefer flex + overflow for slider control */
-.timeline {
-    position: relative;
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 10px 12px 6px 12px;
-    margin-top: 35px;
-}
-
-.timeline::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: #b9d3f5;
-}
-
-.timeline .item { min-width: 220px; background: #f7f7f7; border-radius: 6px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-
-/* slider styles */
-.timeline-slider-wrap { margin-top: 10px; padding: 0 6px; }
-.timeline-range { width: 100%; }
-
-.item {
-    position: relative;
-    padding-top: 40px;
-}
-
-.item span {
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    width: 18px;
-    height: 18px;
-    background: #006eff;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 0 8px #e3f0ff;
-}
-
-.item h4 {
-    font-size: 20px;
-    color: #005bea;
-    margin-bottom: 10px;
-}
-
-.item p {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #222;
-}
-
-/* 2. 放置表格的展開容器 */
+/* ==========================================
+   7. 歷任理事長表格區 (Table Container)
+   ========================================== */
 .accordion-content {
     padding: 0 24px 24px 24px;
-    /* 留出內距 */
 }
 
-/* 3. 滾動格子本體（寬度 100% 自適應） */
 .scroll-container {
     width: 100%;
-    height: 250px;
-    /* 固定高度，超出就會有拉桿 */
+    height: 250px; /* 固定高度，超出時觸發拉桿 */
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     overflow-y: auto;
-    /* 開啟垂直捲軸 */
     background-color: #ffffff;
 }
 
-/* 表格樣式 */
 .data-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 15px;
 }
 
-/* 固定不動的表頭 */
 .sticky-header {
     position: sticky;
     top: 0;
     background-color: #2563eb;
-    /* 改為跟你網頁搭配的藍色系 */
     color: white;
     z-index: 10;
 }
@@ -413,7 +224,6 @@ body {
     font-weight: 600;
 }
 
-/* 資料列樣式 */
 .data-table td {
     padding: 12px 16px;
     border-bottom: 1px solid #f1f5f9;
@@ -425,74 +235,57 @@ body {
     background-color: #f8fafc;
 }
 
+/* ==========================================
+   8. 響應式媒體查詢 (RWD)
+   ========================================== */
 
-/* 平板 */
+/* 1024px 平板尺寸 */
 @media (max-width: 1024px) {
     .sidebar {
         width: 210px;
     }
 
-    .hero {
-        padding-left: 40px;
-    }
-
-    .hero-text h1 {
-        font-size: 44px;
-    }
-
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
+    .main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+        padding: 88px 28px 28px;
     }
 
     .tab-buttons {
-        grid-template-columns: repeat(2, 1fr);
+        left: 210px;
+        width: calc(100% - 210px);
+        top: 20px;
+        padding: 30px 40px 18px 28px;
     }
 }
 
-/* 手機 */
+/* 768px 手機尺寸 */
 @media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
-    }
-
-    .sidebar {
+    .main {
+        margin-left: 0;
         width: 100%;
-        padding: 20px;
+        padding: 32px;
+        position: static; /* 手機端取消 fixed 固定定位，改回正常流動 */
+        height: auto;
     }
 
-    .side-nav {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    .tab-buttons {
+        position: static;
+        display: block; /* 手機上直式排列 */
+        height: auto;
+        padding: 18px 24px;
+        background: transparent;
+        box-shadow: none;
     }
 
-    .login-box {
-        margin-top: 25px;
+    .tab-buttons .tab {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid #eef3fb;
+        border-radius: 0; /* 移除圓角 */
     }
 
-    .hero {
-        height: 300px;
-        padding: 30px;
-    }
-
-    .hero-text h1 {
-        font-size: 38px;
-    }
-
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    .tab-buttons,
     .cards {
-        grid-template-columns: 1fr;
         padding: 25px;
-    }
-
-    .timeline {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline::before {
-        display: none;
     }
 }
