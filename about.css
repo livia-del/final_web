@@ -88,63 +88,6 @@ body {
     padding: 0 52px 0 32px;
 }
 
-.tab.active {
-    background: #ffffff;
-    color: #005bea;
-    border-bottom: 1px solid #ffffff;
-    /* 💡 關鍵：把 active 標籤的底邊框變成白色，用來融化下方大框框的線 */
-    z-index: 3;
-    /* 確保它在最上層 */
-}
-
-.scroll-container {
-    width: 400px;
-    height: 300px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    overflow-y: auto;
-    /* 內容超出時自動顯示垂直拉桿 */
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-}
-
-/* 內容表格：讓寬度撐滿 */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* 最上方的標籤行（關鍵所在：使用 position: sticky） */
-.sticky-header {
-    position: sticky;
-    top: 0;
-    /* 固定在最上方 */
-    background-color: #4CAF50;
-    /* 表頭背景顏色 */
-    color: white;
-    z-index: 10;
-    /* 確保表頭蓋在內容上方 */
-}
-
-/* 表頭的單元格樣式 */
-.sticky-header th {
-    padding: 12px;
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 2px solid #3e8e41;
-}
-
-/* 資料列的單元格樣式 */
-.data-table td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-    color: #333;
-}
-
-/* 斑馬線效果（讓資料更易讀，可選） */
-.data-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
 
 /* adjust fixed offsets when the sidebar width changes */
 @media (max-width: 1024px) {
@@ -354,27 +297,16 @@ body {
 }
 
 /* rounded corners on the leftmost and rightmost tabs */
-.tab:first-child {
-    border-radius: 10px 0 0 0;
-}
+.tab:first-child { border-radius: 10px 10px 0 0; }
+.tab:last-child { border-radius: 10px 10px 0 0; }
 
-.tab:last-child {
-    border-radius: 0 10px 0 0;
-}
-
-.tab:first-child {
-    border-radius: 10px 10px 0 0;
-}
-
-.tab:last-child {
-    border-radius: 10px 10px 0 0;
-}
-
+/* Horizontal timeline: prefer flex + overflow for slider control */
 .timeline {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 10px 12px 6px 12px;
     margin-top: 35px;
 }
 
@@ -387,6 +319,12 @@ body {
     height: 2px;
     background: #b9d3f5;
 }
+
+.timeline .item { min-width: 220px; background: #f7f7f7; border-radius: 6px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+
+/* slider styles */
+.timeline-slider-wrap { margin-top: 10px; padding: 0 6px; }
+.timeline-range { width: 100%; }
 
 .item {
     position: relative;
