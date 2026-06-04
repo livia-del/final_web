@@ -6,16 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>關於學會</title>
     <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>中華民國資訊管理學會 CSIM</title>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <link rel="stylesheet" href="a.css">
-        <link rel="stylesheet" href="nav.css">
-    </head>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</head>
 
 <body>
     <div class="page">
@@ -42,10 +37,10 @@
 
             <!-- 四個切換按鈕 -->
             <section class="tab-buttons">
-                <button class="tab active">關於學會</button>
-                <button class="tab">學會組織</button>
-                <button class="tab">學術活動</button>
-                <button class="tab">會員專區</button>
+                <a href="about.html" class="tab active">關於學會</a>
+                <a href="about1.html" class="tab">學會組織</a>
+                <a href="about2.html" class="tab">學術活動</a>
+                <a href="about3.html" class="tab">會員專區</a>
             </section>
 
             <div class="tab-content">
@@ -61,75 +56,192 @@
                     </p>
                 </section>
 
-                <!-- 四張卡片 -->
-                <section class="cards">
+                <!-- 四張卡片（手風琴式） -->
+                <section class="cards" aria-label="學會資訊手風琴">
                     <div class="card">
-                        <div class="icon">◎</div>
-                        <h3>宗旨</h3>
-                        <p>推動學術研究發展，促進學術交流合作，提升學術研究品質。</p>
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">簡介</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>● 中華民國資訊管理學會成立於民國 79年，係集合群國大專院校資訊管理學門之學者專家與部分資訊業界之精英組合而成。</p>
+                            <p>● 為內政部登記的學術研究性社團法人。學會主要成員是全國所有資訊管理系教授。</p>
+                            <p>● 全國大專院校中，計有119所資訊管理系所。</p>
+                            <p>● 全國大專院校資訊管理學系每年約有 2萬多名畢業生。</p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <div class="icon">◉</div>
-                        <h3>願景</h3>
-                        <p>成為國內外具影響力的學術團體，引領學術創新。</p>
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">宗旨</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>● 本會之宗旨為促進資訊管理學術之研究發展，推廣資訊管理學術之實務應用，整合資訊管理學術之理論及實務，與提昇資訊管理學域之教育水準。</p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <div class="icon">◇</div>
-                        <h3>價值</h3>
-                        <p>專業、創新、合作、服務、永續發展。</p>
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">願景</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>● 使資管學會成為最具活力及影響力的學術團體。</p>
+                            <p>● 強化資訊管理學域之可視度，提升資管人才的學術，專技與產學互動達到最優良的品質。</p>
+                        </div>
                     </div>
 
                     <div class="card">
-                        <div class="icon">♙</div>
-                        <h3>對象</h3>
-                        <p>學者專家、研究人員、學生及對學術研究有興趣之社會人士。</p>
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">任務</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>● 從事資訊管理學術及實務之整合研究；</p>
+                            <p>● 舉辦及參加國內外資訊管理之相關學術會議及活動；</p>
+                            <p>● 建議資訊管理之課程架構；</p>
+                            <p>● 辦理資訊管理進修教育；</p>
+                            <p>● 發行期刊及著譯叢書；</p>
+                            <p>● 接受政府及民間之委託，辦理與資訊管理之相關研究、諮詢與服務；</p>
+                            <p>● 符合本會宗旨之其他事項。</p>
+                        </div>
                     </div>
+
+                    <div class="card">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">歷任理事長</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>● 《79~80 年》第一屆 中央大學資訊管理系 宋鎧 教授</p>
+                            <p>● 《80~82 年》第二屆 中央大學資訊管理系 宋鎧 教授</p>
+                            <p>● 《82~84 年》第三屆 中央大學資訊管理系 范錚強 教授</p>
+                            <p>● 《84~86 年》第四屆 中央大學資訊管理系 范錚強 教授</p>
+                            <p>● 《86~88 年》第五屆 元智工學院資訊學院 鄭鳳生 教授</p>
+                            <p>● 《88~90 年》第六屆 政治大學資訊管理系 周宣光 教授</p>
+                            <p>● 《90~92 年》第七屆 政治大學資訊管理系 周宣光 教授</p>
+                            <p>● 《92~94 年》第八屆 淡江大學資訊管理系 黃明達 教授</p>
+                            <p>● 《94~96 年》第九屆 淡江大學資訊管理系 黃明達 教授</p>
+                            <p>● 《96~98 年》第十屆 輔仁大學資訊管理系 楊銘賢 教授</p>
+                            <p>● 《98~100 年》第十一屆 輔仁大學資訊管理系 楊銘賢 教授</p>
+                            <p>● 《100~102 年》第十二屆 台灣大學工管系 游張松 教授
+                            <p>● 《102~104 年》第十三屆 台灣大學工管系 游張松 教授
+                            <p>● 《104~106 年》第十四屆 臺北科技大學資訊與財金管理系 翁頌舜 教授
+                            <p>● 《106~108年》第十五屆 臺北科技大學資訊與財金管理系 翁頌舜 教授
+                            <p>● 《108~110年》第十六屆 中正大學資訊管理學系暨研究所 廖則竣 教授
+                            <p>● 《110~112年》第十七屆 銘傳大學資訊管理學系暨研究所 廖則竣 教授
+                            <p>● 《112~至今》第十八屆 淡江大學資訊管理學系 蕭瑞祥 教授兼總務長</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">活動</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body" hidden>
+                            <p>學會除透過十二個委員會推動會務外，學會之常態活動計有：</p>
+                            <p>1. 國際資訊管理學術研討會 (CSIM ICIM)：</p>
+                            <p>已舉辦三十四屆。最近幾年，研討會的投稿論文已成長到400~500篇，錄取率約50~60%，參與盛會的各界人士近800人。</p>
+                            <p>2. 資訊管理暨實務研討會 (CSIM IMP)：</p>
+                            <p>已舉辦二十八屆。最近幾年，研討會的投稿論文已成長到350~400篇，錄取率約60~70%，參與盛會的各界人士近600人。</p>
+                            <p>3. 全國大專院校資訊服務創新競賽暨資訊管理專題競賽：</p>
+                            <p>已舉辦二十八屆。於111年，參賽的各校校隊隊數已達250隊。</p>
+                            <p>4. 海峽兩岸資訊管理發展與策略學術研討會(每年八月份舉行)</p>
+                            <p>已舉辦二十六屆。最近幾年，兩岸三地投稿論文約120~250篇(台灣、大陸、港澳三地，四年為週期輪流主辦，亦即兩年在大陸，一年在台灣，一年在港澳的模式舉行)，大陸地區參與人數約100人致150人，台灣參與人數約50人~150人不等。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+
+                        <div class="scroll-container">
+                            <table class="data-table">
+                                <thead class="sticky-header">
+                                    <tr>
+                                        <th>日期</th>
+                                        <th>名稱</th>
+                                        <th>備註</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2026-07-10</td>
+                                        <td>夏季學術研討會</td>
+                                        <td>第一會議廳</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-08-15</td>
+                                        <td>專題演講：AI與學術研究</td>
+                                        <td>線上視訊</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-09-20</td>
+                                        <td>會員大會暨聚餐</td>
+                                        <td>大飯店 B1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-10-05</td>
+                                        <td>論文投稿截止</td>
+                                        <td>官方網站系統</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-11-12</td>
+                                        <td>秋季成果發表展</td>
+                                        <td>第二展覽館</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </section>
 
-                <!-- 發展歷程 -->
-                <section class="timeline-section">
-                    <h2>發展歷程</h2>
-                    <div class="small-line"></div>
-
-                    <div class="timeline">
-                        <div class="item">
-                            <span></span>
-                            <h4>2001年</h4>
-                            <p>學會籌備成立，開始推動學術交流與合作。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2005年</h4>
-                            <p>正式立案成立，舉辦第一屆學術研討會。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2010年</h4>
-                            <p>擴大國際學術交流，建立合作關係。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2015年</h4>
-                            <p>成立學術期刊，推廣研究成果。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2020年</h4>
-                            <p>持續創新與成長，邁向國際化發展。</p>
-                        </div>
-                    </div>
-                </section>
             </div>
 
         </main>
 
     </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggles = document.querySelectorAll('.card-toggle');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const card = toggle.closest('.card');
+                    const body = card.querySelector('.card-body');
+                    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                    // collapse all
+                    document.querySelectorAll('.card').forEach(c => {
+                        c.classList.remove('expanded');
+                        const t = c.querySelector('.card-toggle');
+                        const b = c.querySelector('.card-body');
+                        if (t) t.setAttribute('aria-expanded', 'false');
+                        if (b) {
+                            b.style.maxHeight = null;
+                            b.hidden = true;
+                        }
+                    });
+
+                    if (!expanded) {
+                        card.classList.add('expanded');
+                        toggle.setAttribute('aria-expanded', 'true');
+                        body.hidden = false;
+                        body.style.maxHeight = body.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
 
 </body>
 
