@@ -27,21 +27,103 @@ body {
 
 
 
-/* 右側主要區域背景 */
+/* ==========================================
+   通用基礎設定
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft JhengHei", Arial, sans-serif;
+}
+
+body {
+    background-color: #f2f6fc;
+    color: #333;
+}
+
+/* 右側主內容外殼 */
 .main-content {
-    flex-grow: 1;
     padding: 40px;
-    background-color: #f4f7fc;
+    background-color: #f2f6fc;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   上方分頁標籤切換區 (還原手寫圖框架樣式)
+   ========================================== */
+.tabs-container {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #e1e8f5;
+    border-bottom: none;
+    overflow: hidden;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+    background-color: #f8fafc;
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:not(:last-child) {
+    border-right: 1px solid #e1e8f5;
+}
+
+.tab-btn:hover {
+    background-color: #f0f4f8;
+    color: #1a73e8;
+}
+
+/* 作用中的分頁標籤 (藍色字體與底部藍條) */
+.tab-btn.active {
+    background-color: #ffffff;
+    color: #1a73e8;
+    border-bottom: 3px solid #1a73e8;
+}
+
+/* ==========================================
+   內容面板
+   ========================================== */
+.content-panel {
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+    border: 1px solid #e1e8f5;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+/* 分頁內容預設隱藏 */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .page-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
-    color: #000;
+    color: #333;
     margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a73e8;
+    display: inline-block;
 }
 
-/* 篩選工具列佈局 */
+/* ==========================================
+   篩選工具列 (圖二樣式)
+   ========================================== */
 .filter-section {
     display: flex;
     align-items: flex-end;
@@ -53,91 +135,107 @@ body {
 .filter-group {
     display: flex;
     flex-direction: column;
+    gap: 6px;
 }
 
 .filter-label {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 6px;
+    color: #666;
 }
 
-/* 輸入框與下拉選單樣式 */
-.input-search {
-    width: 250px;
-    padding: 6px 10px;
-    border: 1px solid #b5b5b5;
-    border-radius: 4px;
+.input-search, .select-box {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
     font-size: 14px;
+    outline: none;
+    background-color: #fff;
 }
 
-.select-box {
-    padding: 5px 10px;
-    border: 1px solid #b5b5b5;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: white;
-}
+.input-search { width: 240px; }
+.select-box { width: 110px; }
 
-/* 套用按鈕（還原圖中立體漸層） */
+/* 現代化扁平套用按鈕 */
 .btn-apply {
-    background-color: #e0e0e0;
-    color: #333;
-    border: 1px solid #adadad;
-    padding: 6px 20px;
-    border-radius: 15px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 9px 24px;
+    border-radius: 6px;
     font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: background 0.2s;
 }
 
 .btn-apply:hover {
-    background: #e0e0e0;
+    background-color: #155cb8;
 }
 
-/* 表格樣式 */
+/* ==========================================
+   資料表格與下載按鈕 (整合圖二、圖三)
+   ========================================== */
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fdfdfa; /* 圖二特有的偏米白底色 */
-    border: 1px solid #d3d3d3;
+    margin-top: 10px;
+    text-align: left;
 }
 
 .data-table th {
-    background-color: #e3e3dc; /* 圖二灰色表頭 */
-    color: #333;
+    background-color: #f8fafc;
+    color: #475569;
     font-weight: bold;
-    text-align: left;
-    padding: 10px 15px;
+    padding: 14px 16px;
     font-size: 15px;
-    border: 1px solid #cbd5e1;
-}
-
-/* 年份欄位特殊灰色 */
-.data-table th.th-year {
-    color: #7a8b99;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 .data-table td {
-    padding: 12px 15px;
-    font-size: 15px;
-    border-bottom: 1px solid #e5e5e5;
-    color: #333;
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+    color: #334155;
+    vertical-align: middle;
 }
 
-/* 斑馬線效果 */
-.data-table tr:nth-child(even) {
-    background-color: #f7f7f2;
+.data-table tr:hover {
+    background-color: #fcfdfe;
 }
 
-/* 藍色文字點擊效果（點入後有額外介面） */
 .clickable-link {
     color: #1a73e8;
     text-decoration: none;
+    font-weight: 500;
     cursor: pointer;
 }
 
 .clickable-link:hover {
     text-decoration: underline;
+}
+
+/* PDF 下載按鈕 (圖三樣式) */
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    color: #e02424;
+    background-color: #fdf2f2;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-download:hover {
+    background-color: #fde8e8;
+}
+
+/* 下方動態載入的論文二級區塊 */
+.sub-paper-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px dashed #e1e8f5;
 }
