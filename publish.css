@@ -23,3 +23,121 @@ body {
     padding: 32px;
     width: calc(100% - 260px);
 }
+
+
+
+
+/* 右側主要區域背景 */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #f4f7fc;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+/* 篩選工具列佈局 */
+.filter-section {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+/* 輸入框與下拉選單樣式 */
+.input-search {
+    width: 250px;
+    padding: 6px 10px;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.select-box {
+    padding: 5px 10px;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* 套用按鈕（還原圖中立體漸層） */
+.btn-apply {
+    background-color: #e0e0e0;
+    color: #333;
+    border: 1px solid #adadad;
+    padding: 6px 20px;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.btn-apply:hover {
+    background: #e0e0e0;
+}
+
+/* 表格樣式 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fdfdfa; /* 圖二特有的偏米白底色 */
+    border: 1px solid #d3d3d3;
+}
+
+.data-table th {
+    background-color: #e3e3dc; /* 圖二灰色表頭 */
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 1px solid #cbd5e1;
+}
+
+/* 年份欄位特殊灰色 */
+.data-table th.th-year {
+    color: #7a8b99;
+}
+
+.data-table td {
+    padding: 12px 15px;
+    font-size: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #333;
+}
+
+/* 斑馬線效果 */
+.data-table tr:nth-child(even) {
+    background-color: #f7f7f2;
+}
+
+/* 藍色文字點擊效果（點入後有額外介面） */
+.clickable-link {
+    color: #1a73e8;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clickable-link:hover {
+    text-decoration: underline;
+}

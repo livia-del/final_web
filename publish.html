@@ -30,6 +30,72 @@
         <!-- 右側內容 -->
         <main class="main">
 
+            <div class="main-content">
+    <h2 class="page-title">研討會</h2>
+
+    <div class="filter-section">
+        <div class="filter-group">
+            <label class="filter-label">主辦單位</label>
+            <input type="text" class="input-search">
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">排序資料</label>
+            <select class="select-box">
+                <option>年份</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">排序</label>
+            <select class="select-box">
+                <option>遞減</option>
+                <option>遞增</option>
+            </select>
+        </div>
+        <button type="button" class="btn-apply" onclick="alert('已套用篩選條件')">套用</button>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 45%;">研討會名稱</th>
+                <th style="width: 35%;">主辦單位</th>
+                <th class="th-year" style="width: 10%;">年份</th>
+                <th style="width: 10%;">論文集</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#" class="clickable-link" onclick="alert('進入：第十九屆國際資訊管理學術研討會 的詳細介面')">
+                        第十九屆國際資訊管理學術研討會
+                    </a>
+                </td>
+                <td>中華民國資訊管理學會，暨南國際大學資管系</td>
+                <td>2008</td>
+                <td>
+                    <a href="#" class="clickable-link" onclick="alert('額外介面：開啟 2008 年論文集檢視與下載彈窗')">
+                        檢視
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#" class="clickable-link" onclick="alert('進入：第十五屆國際資訊管理學術研討會 的詳細介面')">
+                        第十五屆國際資訊管理學術研討會
+                    </a>
+                </td>
+                <td>中華民國資訊管理學會</td>
+                <td>2004</td>
+                <td>
+                    <a href="#" class="clickable-link" onclick="alert('額外介面：開啟 2004 年論文集檢視與下載彈窗')">
+                        檢視
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
         
         </main>
 
