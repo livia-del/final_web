@@ -1,39 +1,119 @@
-/* 全域設定與字型重設 */
+/* ==========================================================================
+   1. 全域設定與側邊欄佈局 (Global & Sidebar Layout)
+   ========================================================================== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 
 body {
-    font-family: 'PingFang TC', 'Microsoft JhengHei', -apple-system, sans-serif;
-    background-color: #f8fafc;
-    color: #334155;
+    background: linear-gradient(135deg, #f5f9ff, #eef4ff);
+    color: #1f2937;
+    overflow: hidden; /* 避免整頁出現雙重捲軸 */
+}
+
+.page {
+    display: flex;
     min-height: 100vh;
-    padding: 24px;
 }
 
-/* 主容器 */
-.container {
-    max-width: 1152px;
+
+/* ==========================================================================
+   2. 右側主要內容容器 (Main Content Container)
+   ========================================================================== */
+.main {
+    margin-left: 260px;
+    padding: 32px;
+    width: calc(100% - 260px);
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+}
+
+/* ==========================================================================
+   3. 頁籤按鈕區塊 (Tab Buttons)
+   ========================================================================== */
+.tab-buttons {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+.tab {
+    flex: 1 1 0;
+    display: inline-block;
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #172554;
+    cursor: pointer;
+    background: #f3f7fb;
+    border: 1px solid #d5dfed;
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
+}
+
+.tab:not(:first-child) {
+    border-left: 1px solid #d5dfed;
+}
+
+.tab:hover {
+    background: #e9f1f8;
+}
+
+.tab.active {
+    background: #ffffff;
+    color: #005bea;
+    border-bottom: 1px solid #ffffff;
+    z-index: 90;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* ==========================================================================
+   4. 頁籤內容主包裹框 (Tab Content Main Container)
+   ========================================================================= */
+.tab-content {
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f1f5f9;
+    background: #ffffff;
+    border: 1px solid #d5dfed;
     padding: 24px;
+    border-radius: 0 0 10px 10px;
+    
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px); 
+    overflow: hidden; 
 }
 
-/* ==================== 頂部篩選列排版 ==================== */
+/* ==========================================================================
+   5. 頁籤內部各子區塊樣式 (Content Sections)
+   ========================================================================== */
 .filter-bar {
-    display: block;
-    padding-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #f1f5f9;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    flex-shrink: 0; 
 }
 
 .filter-item {
-    margin-bottom: 16px;
+    flex: 1;
+    min-width: 150px;
 }
 
 .filter-label {
@@ -44,7 +124,6 @@ body {
     font-weight: 500;
 }
 
-/* 輸入框與選擇器共同樣式 */
 input[type="text"], select {
     width: 100%;
     padding: 8px 12px;
@@ -63,7 +142,6 @@ input[type="text"]:focus, select:focus {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* 帶有圖標的包裹器 */
 .search-box, .date-input-wrapper, .select-wrapper {
     position: relative;
 }
@@ -83,15 +161,14 @@ input[type="text"]:focus, select:focus {
     padding-left: 36px;
 }
 
-/* 日期範圍排版 */
 .date-input-group {
-    display: table;
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 
 .date-input-wrapper {
-    display: table-cell;
-    width: 48%;
+    flex: 1;
 }
 
 .date-input-wrapper input {
@@ -99,14 +176,10 @@ input[type="text"]:focus, select:focus {
 }
 
 .date-separator {
-    display: table-cell;
-    width: 4%;
-    text-align: center;
+    padding: 0 8px;
     color: #94a3b8;
-    vertical-align: middle;
 }
 
-/* 下拉選單客製化外觀 */
 .select-wrapper select {
     appearance: none;
     padding-right: 32px;
@@ -123,9 +196,9 @@ input[type="text"]:focus, select:focus {
     pointer-events: none;
 }
 
-/* 重設按鈕 */
 .btn-reset {
     width: 100%;
+    height: 38px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -138,53 +211,91 @@ input[type="text"]:focus, select:focus {
     background-color: #eff6ff;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    align-self: flex-end;
 }
 
 .btn-reset:hover {
     background-color: #dbeafe;
 }
 
-.btn-reset i {
-    width: 14px;
-    height: 14px;
-}
 
-/* ==================== 列表卡片排版 ==================== */
 .list-wrapper {
-    display: block;
+    flex: 1;            
+    overflow-y: auto;   
+    margin-bottom: 8px;
+    padding: 4px 0;                 
+    scroll-snap-type: y mandatory;  /* 強制垂直磁吸 */
+    scroll-behavior: smooth;        /* 點擊時維持平滑滾動 */
+    
+
+    scroll-padding-top: 4px;        
+    overscroll-behavior-y: contain; /* 防止滾動溢出到 body */
+    
+    /* 隱藏原生滾動條 */
+    scrollbar-width: none; 
+}
+.list-wrapper::-webkit-scrollbar {
+    display: none; 
 }
 
-.card {
-    display: block;
-    padding: 20px;
+
+.scroll-page {
+    height: 100%;               
+    display: flex;
+    flex-direction: column;
+    gap: 14px;                
+    scroll-snap-align: start;   /* 磁吸對齊頂部 */
+    scroll-snap-stop: always;   /* 限制一次只滾動一頁*/
+    box-sizing: border-box;
+    
+    opacity: 0.35;
+    transform: scale(0.98);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+
+.scroll-page.active-page {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 卡片高度平均分攤 */
+.tab-content .card {
+    flex: 1;                    
+    min-height: 0;              
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px;         
     border: 1px solid #f1f5f9;
     border-radius: 12px;
     background-color: #ffffff;
-    margin-bottom: 16px;
     transition: all 0.3s ease;
 }
 
-.card:hover {
+.tab-content .card:hover {
     border-color: #cbd5e1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px); 
 }
 
-.card-main {
-    display: block;
+
+.tab-content .card-main {
+    display: flex;
+    align-items: center;        
+    width: 85%;
+    height: 100%;
 }
 
-/* 左側圓形標籤分類 */
 .category-block {
-    display: block;
     text-align: center;
-    width: 80px;
-    margin: 0 auto 16px auto;
+    width: 90px;
+    margin-right: 24px;
+    flex-shrink: 0;
 }
 
 .badge-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -192,20 +303,9 @@ input[type="text"]:focus, select:focus {
     color: #ffffff;
 }
 
-.badge-icon i {
-    width: 24px;
-    height: 24px;
-}
+.badge-icon i { width: 20px; height: 20px; }
+.category-text { display: block; font-size: 12px; font-weight: 500; margin-top: 8px; white-space: nowrap; }
 
-.category-text {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 8px;
-    white-space: nowrap;
-}
-
-/* 各別類別的色彩計畫 */
 .group-blue .badge-icon { background-color: #2563eb; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
 .group-blue .category-text { color: #2563eb; }
 .group-blue .card-title { color: #1d4ed8; }
@@ -218,212 +318,44 @@ input[type="text"]:focus, select:focus {
 .group-indigo .category-text { color: #3730a3; }
 .group-indigo .card-title { color: #312e81; }
 
-/* 中間文字內容 */
-.content-block {
-    flex: 1;
-}
+.content-block { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-title:hover { text-decoration: underline; }
+.card-summary { font-size: 14px; color: #94a3b8; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 
-.card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    cursor: pointer;
-}
+.card-side { text-align: right; width: 15%; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; height: 100%; padding: 4px 0; }
+.date-info { font-size: 12px; color: #94a3b8; display: inline-flex; align-items: center; gap: 4px; }
+.date-info i { width: 14px; height: 14px; }
+.more-link { font-size: 14px; color: #2563eb; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; transition: transform 0.2s ease; }
+.tab-content .card:hover .more-link { transform: translateX(4px); }
 
-.card-title:hover {
-    text-decoration: underline;
-}
-
-.card-summary {
-    font-size: 14px;
-    color: #94a3b8;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* 右側時間與按鈕 */
-.card-side {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #f1f5f9;
-}
-
-.date-info {
-    font-size: 12px;
-    color: #94a3b8;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.date-info i {
-    width: 14px;
-    height: 14px;
-}
-
-.more-link {
-    font-size: 14px;
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: transform 0.2s ease;
-}
-
-.card:hover .more-link {
-    transform: translateX(4px);
-}
-
-.more-link i {
-    width: 16px;
-    height: 16px;
-}
-
-/* ==================== 底部底部分頁導覽 ==================== */
+/* 分頁列 */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 4px;
-    margin-top: 32px;
-    padding-top: 24px;
+    padding-top: 16px;
     border-top: 1px solid #f1f5f9;
+    flex-shrink: 0; 
 }
 
-.page-num, .page-btn {
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s;
-}
+.page-num, .page-btn { border: none; background: transparent; font-size: 14px; cursor: pointer; border-radius: 8px; transition: all 0.2s; }
+.page-num { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; color: #64748b; }
+.page-num:hover { background-color: #f1f5f9; }
+.page-num.active { background-color: #eff6ff; color: #2563eb; font-weight: 600; }
+.page-dots { color: #94a3b8; padding: 0 4px; }
+.page-btn { height: 32px; padding: 0 12px; color: #2563eb; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
+.page-btn:hover { background-color: #eff6ff; }
 
-.page-num {
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #64748b;
-}
-
-.page-num:hover {
-    background-color: #f1f5f9;
-}
-
-.page-num.active {
-    background-color: #eff6ff;
-    color: #2563eb;
-    font-weight: 600;
-}
-
-.page-dots {
-    color: #94a3b8;
-    padding: 0 4px;
-}
-
-.page-btn {
-    height: 32px;
-    padding: 0 12px;
-    color: #2563eb;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.page-btn:hover {
-    background-color: #eff6ff;
-}
-
-.page-btn i {
-    width: 16px;
-    height: 16px;
-}
-
-
-/* ==================== 電腦版主流排版寬度 (RWD 斷點提升) ==================== */
-@media (min-width: 1024px) {
-    body {
-        padding: 48px;
-    }
-    
-    .container {
-        padding: 32px;
-    }
-
-    /* 頂部篩選列轉換為單行橫向並排 */
-    .filter-bar {
-        display: table;
-        width: 100%;
-    }
-
-    .filter-item {
-        display: table-cell;
-        vertical-align: middle;
-        padding-right: 16px;
-        margin-bottom: 0;
-    }
-
-    .search-box { width: 25%; }
-    .date-range { width: 33%; }
-    .select-group { width: 17%; }
-    .reset-group { 
-        width: 8%; 
-        padding-right: 0;
-        vertical-align: bottom;
-    }
-
-    /* 列表卡片轉換為橫向左右佈局 */
-    .card {
-        display: table;
-        width: 100%;
-        padding: 24px;
-    }
-
-    .card-main {
-        display: table-cell;
-        vertical-align: center;
-        width: 85%;
-    }
-
-    .category-block {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0 24px 0 0;
-    }
-
-    .content-block {
-        display: inline-block;
-        vertical-align: top;
-        width: calc(100% - 110px);
-    }
-
-    .card-side {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: right;
-        width: 15%;
-        margin-top: 0;
-        padding-top: 0;
-        border-top: none;
-    }
-
-    .date-info {
-        display: block;
-        margin-bottom: 16px;
-    }
-
-    .more-link {
-        display: inline-flex;
-    }
+/* 響應式佈局 */
+@media (max-width: 1024px) {
+    .search-box { flex: 1 1 100%; }
+    .reset-group { flex: 1 1 100%; }
+    .tab-content { height: auto; min-height: calc(100vh - 120px); overflow: visible; }
+    .list-wrapper { overflow-y: visible; scroll-snap-type: none; }
+    .scroll-page { height: auto; opacity: 1 !important; transform: none !important; }
+    .tab-content .card { flex-direction: column; gap: 16px; flex: none; height: auto; }
+    .tab-content .card-main { width: 100%; }
+    .card-side { width: 100%; flex-direction: row; border-top: 1px solid #f1f5f9; padding-top: 12px; }
 }
