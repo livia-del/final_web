@@ -1,124 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>公告列表網頁設計</title>
     <link rel="stylesheet" href="test.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-    <section class="section">
-        <div class="section-title">
-            <div class="icon-box-emoji">🚀</div>
-            <h2>四大核心任務</h2>
-        </div>
-        <div class="mission-carousel-container">
-            <div class="mission-carousel-window">
-                <div class="mission-carousel-track" id="carouselTrack">
-                    <div class="mission-text-item">
-                        <h3>辦理頂尖學術研討會</h3>
-                        <p>每年定期舉辦 ICIM 與 IMP 研討會，吸引數百篇論文投稿，促進學者專家共同切磋。</p>
+
+    <div class="container">
+        
+        <div class="filter-bar">
+            
+            <div class="filter-item search-box">
+                <i data-lucide="search" class="icon-left"></i>
+                <input type="text" placeholder="搜尋標題、關鍵字...">
+            </div>
+
+            <div class="filter-item date-range">
+                <span class="filter-label">搜尋日期</span>
+                <div class="date-input-group">
+                    <div class="date-input-wrapper">
+                        <i data-lucide="calendar" class="icon-left"></i>
+                        <input type="text" placeholder="開始日期">
                     </div>
-                    <div class="mission-text-item">
-                        <h3>主辦全國性指標競賽</h3>
-                        <p>共同主辦資訊服務創新競賽暨資管專題競賽，提供學生展現實作能力的舞台。</p>
-                    </div>
-                    <div class="mission-text-item">
-                        <h3>促進跨國與兩岸交流</h3>
-                        <p>舉辦海峽兩岸資訊管理發展與策略學術研討會，拓展資管人的國際視野。</p>
-                    </div>
-                    <div class="mission-text-item">
-                        <h3>引領資管教育方向</h3>
-                        <p>協助政府與學校規劃課程架構、出版專業期刊，推動台灣資管教育前進。</p>
+                    <span class="date-separator">~</span>
+                    <div class="date-input-wrapper">
+                        <i data-lucide="calendar" class="icon-left"></i>
+                        <input type="text" placeholder="結束日期">
                     </div>
                 </div>
             </div>
 
-            <button class="carousel-btn prev-btn" id="prevBtn">&#10094;</button>
-            <button class="carousel-btn next-btn" id="nextBtn">&#10095;</button>
+            <div class="filter-item select-group">
+                <span class="filter-label">類別篩選</span>
+                <div class="select-wrapper">
+                    <select>
+                        <option>全部類別</option>
+                    </select>
+                    <i data-lucide="chevron-down" class="icon-right"></i>
+                </div>
+            </div>
 
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+            <div class="filter-item select-group">
+                <span class="filter-label">排序方式</span>
+                <div class="select-wrapper">
+                    <select>
+                        <option>最新發布</option>
+                    </select>
+                    <i data-lucide="chevron-down" class="icon-right"></i>
+                </div>
+            </div>
+
+            <div class="filter-item reset-group">
+                <button class="btn-reset">
+                    <i data-lucide="refresh-cw"></i>
+                    <span>重設</span>
+                </button>
             </div>
         </div>
-    </section>
+
+        <div class="list-wrapper">
+            
+            <div class="card group-blue">
+                <div class="card-main">
+                    <div class="category-block">
+                        <div class="badge-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <span class="category-text">資訊管理學會</span>
+                    </div>
+                    <div class="content-block">
+                        <h3 class="card-title">【最後延長徵稿】ICIM 2026暨 高...</h3>
+                        <p class="card-summary">壹、活動宗旨隨著人工智慧 (AI) 等新興數位科技快速演進，AI 已成為驅動產業升級與社會創新的核心引擎。為回應智慧化時代對前瞻研究與創新應用的需求，財團法人育秀教育基金會特設立「育秀 AI 數位科技論文獎」...</p>
+                    </div>
+                </div>
+                <div class="card-side">
+                    <span class="date-info">
+                        <i data-lucide="calendar"></i> 
+                        <span>2026-02-05</span>
+                    </span>
+                    <a href="#" class="more-link">
+                        <span>閱讀更多</span> 
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card group-emerald">
+                <div class="card-main">
+                    <div class="category-block">
+                        <div class="badge-icon">
+                            <i data-lucide="landmark"></i>
+                        </div>
+                        <span class="category-text">學校</span>
+                    </div>
+                    <div class="content-block">
+                        <h3 class="card-title">【徵稿公告】2026第六屆數位醫療與醫療...</h3>
+                        <p class="card-summary">由國立高雄科技大學、高雄醫學大會、英國雪菲爾爾大學 (The University of Sheffield) 及醫療系統聯盟聯合主辦之「2026第六屆數位醫療與醫療數據分析國際研討會 (DHA 2026)」，由以下五位教授擔任大會主席：...</p>
+                    </div>
+                </div>
+                <div class="card-side">
+                    <span class="date-info">
+                        <i data-lucide="calendar"></i> 
+                        <span>2026-02-04</span>
+                    </span>
+                    <a href="#" class="more-link">
+                        <span>閱讀更多</span> 
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card group-indigo">
+                <div class="card-main">
+                    <div class="category-block">
+                        <div class="badge-icon">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <span class="category-text">業界</span>
+                    </div>
+                    <div class="content-block">
+                        <h3 class="card-title">【徵聘教師】臺科大資工系聘專任導理教授...</h3>
+                        <p class="card-summary">國立臺灣科技大學資訊工程學系誠徵專任教師公告 一、職稱：專任助理教授職級（含）以上。二、擬聘員額：專任教師2名，本職缺得視成績增列候補人員1名，候補期間自甄選結果確定之翌日起3個月內有效，...</p>
+                    </div>
+                </div>
+                <div class="card-side">
+                    <span class="date-info">
+                        <i data-lucide="calendar"></i> 
+                        <span>2026-01-15</span>
+                    </span>
+                    <a href="#" class="more-link">
+                        <span>閱讀更多</span> 
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pagination">
+            <button class="page-num active">1</button>
+            <button class="page-num">2</button>
+            <button class="page-num">3</button>
+            <button class="page-num">4</button>
+            <button class="page-num">5</button>
+            <button class="page-num">6</button>
+            <button class="page-num">7</button>
+            <button class="page-num">8</button>
+            <button class="page-num">9</button>
+            <span class="page-dots">...</span>
+            <button class="page-btn">
+                <span>下一頁</span> 
+                <i data-lucide="chevron-right"></i>
+            </button>
+            <button class="page-btn">
+                <span>最後一頁</span> 
+                <i data-lucide="chevrons-right"></i>
+            </button>
+        </div>
+
+    </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const windowEl = document.querySelector(".mission-carousel-window");
-            const track = document.getElementById("carouselTrack");
-            const items = document.querySelectorAll(".mission-text-item");
-            const dots = document.querySelectorAll(".dot");
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
-            let currentIndex = 0;
-            let autoPlay;
-
-            function updateCarousel(index) {
-                // 處理邊界條件
-                if (index >= items.length) currentIndex = 0;
-                else if (index < 0) currentIndex = items.length - 1;
-                else currentIndex = index;
-
-                // 動態抓取外層視窗的寬度，精準計算滑動距離
-                const windowWidth = windowEl.getBoundingClientRect().width;
-
-                // 更新每一頁的寬度，確保與外層視窗完美等寬
-                items.forEach(item => {
-                    item.style.width = `${windowWidth}px`;
-                });
-
-                // 移動軌道
-                track.style.transform = `translateX(-${currentIndex * windowWidth}%)`;
-                track.style.transform = `translateX(-${currentIndex * windowWidth}px)`;
-
-                // 更新分頁圓點狀態
-                dots.forEach((dot, i) => {
-                    if (i === currentIndex) {
-                        dot.classList.add("active");
-                    } else {
-                        dot.classList.remove("active");
-                    }
-                });
-            }
-
-            // 初始化寬度與定位
-            updateCarousel(0);
-
-            // 監聽視窗縮放（RWD），防止螢幕大小改變時錯位
-            window.addEventListener("resize", () => {
-                updateCarousel(currentIndex);
-            });
-
-            // 按鈕點擊滑動
-            nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
-            prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
-
-            // 圓點點擊滑動
-            dots.forEach((dot, i) => {
-                dot.addEventListener("click", () => updateCarousel(i));
-            });
-
-            // 開啟自動輪播（每 5 秒）
-            function startAutoPlay() {
-                autoPlay = setInterval(() => {
-                    updateCarousel(currentIndex + 1);
-                }, 5000);
-            }
-
-            startAutoPlay();
-
-            // 當滑鼠移入時停止自動輪播，移出時重啟
-            const container = document.querySelector(".mission-carousel-container");
-            container.addEventListener("mouseenter", () => clearInterval(autoPlay));
-            container.addEventListener("mouseleave", startAutoPlay);
-        });
+        lucide.createIcons();
     </script>
-
 </body>
-
 </html>
