@@ -90,7 +90,7 @@ body {
    ========================================== */
 .content-panel {
     background-color: #ffffff;
-    border-radius: 0 12px 12px 12px;
+    border-radius: 12px; /* 全圓角設計，切換分頁時邊角依然完美 */
     border: 1px solid #cbd5e1;
     padding: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
@@ -179,12 +179,17 @@ body {
     display: table-row; /* 激活時顯示 */
 }
 
+/* 針對展開行內的 td 設定獨立內距，推開灰色面板 */
+.detail-row td {
+    padding: 0 16px 16px 16px;
+    background-color: #ffffff;
+}
+
 .detail-box {
     background-color: #f8fafc;
     padding: 20px 25px;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    margin: 5px 16px 15px 16px;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 }
 
@@ -198,27 +203,38 @@ body {
     margin-bottom: 0;
 }
 
+/* 寬度設為 auto，讓後方內容緊貼著冒號 */
 .detail-label {
     display: inline-block;
     font-weight: bold;
     color: #475569;
-    width: 90px;
+    width: auto;
     vertical-align: top;
 }
 
 .detail-value {
     color: #334155;
     display: inline-block;
-    width: calc(100% - 100px);
+    width: auto;
     vertical-align: top;
 }
 
 /* 論文本文摘要專用樣式 */
 .abstract-box {
-    margin-top: 8px;
+    margin-top: 12px;
     padding-top: 12px;
     border-top: 1px dashed #cbd5e1;
     color: #4a5568;
     text-align: justify;
-    text-indent: 2em; /* 首行縮進進場 */
+    text-indent: 0; /* 取消空兩格，達成左邊完美對齊 */
+    line-height: 1.6;
 }
+
+/* 摘要粗體標題 */
+.abstract-title {
+    font-weight: bold;
+    color: #475569;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
