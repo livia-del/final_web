@@ -49,19 +49,19 @@ body {
 }
 
 /* ==========================================
-   上方年份分頁標籤 (Tabs) - 完全還原圖七
+   上方年份分頁標籤 (Tabs)
    ========================================== */
 .tabs-container {
     display: flex;
     background-color: transparent;
-    margin-bottom: -1px; /* 讓作用中的標籤與下方卡片邊框完美融合 */
+    margin-bottom: -1px;
     padding-left: 10px;
 }
 
 .tab-btn {
     padding: 14px 28px;
     text-align: center;
-    background-color: #e2e8f0; /* 非作用中的灰色底 */
+    background-color: #e2e8f0;
     color: #475569;
     font-size: 15px;
     font-weight: bold;
@@ -78,16 +78,15 @@ body {
     color: #1a73e8;
 }
 
-/* 當前選中的年份標籤 */
 .tab-btn.active {
     background-color: #ffffff;
     color: #1a73e8;
-    border-top: 3px solid #1a73e8; /* 頂部加粗藍條 */
+    border-top: 3px solid #1a73e8;
     padding-top: 12px;
 }
 
 /* ==========================================
-   下方主要內容白底面板
+   主要白底面板容器
    ========================================== */
 .content-panel {
     background-color: #ffffff;
@@ -97,19 +96,17 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-/* 動態標題樣式 */
 .section-subtitle {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: bold;
     color: #1e293b;
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid #1a73e8;
-    display: block;
 }
 
 /* ==========================================
-   相關論文表格樣式
+   手風琴式表格設計
    ========================================== */
 .data-table {
     width: 100%;
@@ -126,38 +123,40 @@ body {
     border-bottom: 2px solid #e2e8f0;
 }
 
-.data-table td {
-    padding: 14px 16px;
-    font-size: 14px;
+.main-row td {
+    padding: 16px;
+    font-size: 15px;
     border-bottom: 1px solid #edf2f7;
     color: #334155;
-    vertical-align: middle;
+    background-color: #ffffff;
 }
 
-/* 懸浮列變色效果 */
-.data-table tbody tr:hover {
-    background-color: #fcfdfe;
+.main-row:hover td {
+    background-color: #f8fafc;
 }
 
-/* 藍色可點擊連結 */
-.clickable-link {
+/* 藍色可點擊的論文名稱 */
+.clickable-title {
     color: #1a73e8;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
+    display: inline-block;
+    transition: color 0.2s;
 }
 
-.clickable-link:hover {
+.clickable-title:hover {
     text-decoration: underline;
+    color: #114fa3;
 }
 
-/* 論文下載 PDF 樣式 */
+/* 紅標 PDF 下載按鈕 */
 .btn-download {
     display: inline-flex;
     align-items: center;
     color: #ef4444;
     background-color: #fdf2f2;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 6px;
     text-decoration: none;
     font-size: 13px;
@@ -169,6 +168,57 @@ body {
     background-color: #fde8e8;
 }
 
-.pdf-icon {
-    margin-right: 6px;
+/* ==========================================
+   手風琴展開細節面板
+   ========================================== */
+.detail-row {
+    display: none; /* 預設隱藏 */
+}
+
+.detail-row.open {
+    display: table-row; /* 激活時顯示 */
+}
+
+.detail-box {
+    background-color: #f8fafc;
+    padding: 20px 25px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin: 5px 16px 15px 16px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.detail-item {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    display: inline-block;
+    font-weight: bold;
+    color: #475569;
+    width: 90px;
+    vertical-align: top;
+}
+
+.detail-value {
+    color: #334155;
+    display: inline-block;
+    width: calc(100% - 100px);
+    vertical-align: top;
+}
+
+/* 論文本文摘要專用樣式 */
+.abstract-box {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed #cbd5e1;
+    color: #4a5568;
+    text-align: justify;
+    text-indent: 2em; /* 首行縮進進場 */
 }
