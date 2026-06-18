@@ -33,158 +33,176 @@
 <div class="main-content">
 
     <div class="tabs-container">
-        <button type="button" class="tab-btn active" onclick="switchTab(event, 'tab-conference')">研討會論文集</button>
-        <button type="button" class="tab-btn" onclick="switchTab(event, 'tab-search')">論文查詢</button>
+        <button type="button" class="tab-btn active" id="tab-2008" onclick="switchConference('2008')">
+            第十九屆國際資訊管理學術研討會(2008)
+        </button>
+        <button type="button" class="tab-btn" id="tab-2004" onclick="switchConference('2004')">
+            第十五屆國際資訊管理學術研討會(2004)
+        </button>
     </div>
 
     <div class="content-panel">
         
-        <div id="tab-conference" class="tab-content active">
-            <h3 class="page-title">研討會列表</h3>
-            
-            <div class="filter-section">
-                <div class="filter-group">
-                    <label class="filter-label">主辦單位</label>
-                    <input type="text" class="input-search" id="search-org" placeholder="請輸入主辦單位">
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">排序資料</label>
-                    <select class="select-box" id="sort-type">
-                        <option value="year">年份</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">排序</label>
-                    <select class="select-box" id="sort-dir">
-                        <option value="desc">遞減</option>
-                        <option value="asc">遞增</option>
-                    </select>
-                </div>
-                <button type="button" class="btn-apply" onclick="sortConference()">套用排序</button>
-            </div>
+        <h3 class="section-subtitle" id="dynamic-title">
+            相關論文
+        </h3>
 
-            <table class="data-table" id="conference-table">
-                <thead>
-                    <tr>
-                        <th style="width: 45%;">研討會名稱</th>
-                        <th style="width: 35%;">主辦單位</th>
-                        <th style="width: 10%;">年份</th>
-                        <th style="width: 10%;">論文集</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-year="2008">
-                        <td><span class="clickable-link" onclick="loadPapers('2008 第十九屆國際資訊管理學術研討會')">第十九屆國際資訊管理學術研討會</span></td>
-                        <td>中華民國資訊管理學會，暨南國際大學資管系</td>
-                        <td>2008</td>
-                        <td><span class="clickable-link" onclick="loadPapers('2008 第十九屆國際資訊管理學術研討會')">檢視</span></td>
-                    </tr>
-                    <tr data-year="2004">
-                        <td><span class="clickable-link" onclick="loadPapers('2004 第十五屆國際資訊管理學術研討會')">第十五屆國際資訊管理學術研討會</span></td>
-                        <td>中華民國資訊管理學會</td>
-                        <td>2004</td>
-                        <td><span class="clickable-link" onclick="loadPapers('2004 第十五屆國際資訊管理學術研討會')">檢視</span></td>
-                    </tr>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">論文名稱</th>
+                    <th style="width: 15%;">應用領域</th>
+                    <th style="width: 25%;">關鍵字</th>
+                    <th style="width: 12%;">作者</th>
+                    <th style="width: 8%;">論文下載</th>
+                </tr>
+            </thead>
+            <tbody id="paper-list-body">
                 </tbody>
-            </table>
-
-            <div id="sub-paper-area" class="sub-paper-section" style="display: none;">
-                <h3 class="page-title" id="current-conf-title">相關論文列表</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 40%;">論文名稱</th>
-                            <th style="width: 15%;">應用領域</th>
-                            <th style="width: 25%;">關鍵字</th>
-                            <th style="width: 10%;">作者</th>
-                            <th style="width: 10%;">論文下載</th>
-                        </tr>
-                    </thead>
-                    <tbody id="paper-list-body">
-                        </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="tab-search" class="tab-content">
-            <h3 class="page-title">進階論文查詢</h3>
-            <p style="color: #666; font-size: 14px;">此功能介面維護中，可在這裡加入關鍵字、作者、年份等進階欄位檢索功能。</p>
-        </div>
-
+        </table>
+        
     </div>
 </div>
 
 <script>
-    // 模擬圖三的論文資料庫
-    const mockPaperData = {
-        "2008 第十九屆國際資訊管理學術研討會": [
-            { title: "Web Service與定位技術的整合及應用", area: "通訊網路", keywords: "Context Awareness, Web Service, 位置資訊", author: "卓忠志, 潘志勝", file: "20080011.pdf" },
-            { title: "無線區域網路之位置導向服務品質監測", area: "通訊網路/路技術", keywords: "無線區域網路, 服務品質, 效能管理, SNMP", author: "陳彥錚, 陳秋彰", file: "20080010.pdf" },
-            { title: "非集中式點對點環境下之快速與低頻寬需求之服務搜尋方法設計", area: "通訊網路/路技術", keywords: "點對點, 網域名稱伺服器, 服務搜尋", author: "陳青文, 楊朝翔", file: "20080009.pdf" }
-        ],
-        "2004 第十五屆國際資訊管理學術研討會": [
-            { title: "結合IC卡之校園安全網頁系統之設計與實現", area: "通訊網路/路技術", keywords: "IC卡, WWW, AES, RSA, PHP", author: "陳軒正, 楊中皇", file: "20040005.pdf" },
-            { title: "行動商務應用之動態使用者查詢系統", area: "通訊網路/路技術", keywords: "定位化服務, 動態查詢, 行動服務", author: "翁頌舜, 周尹禎", file: "20040003.pdf" }
-        ]
+    // 包含 2008 與 2004 完整真實論文資料庫
+    const paperDatabase = {
+        "2008": {
+            fullName: "第十九屆國際資訊管理學術研討會",
+            papers: [
+                { 
+                    title: "併購企業資訊系統整合自製與委外決策模式研究", 
+                    area: "資訊管理", 
+                    keywords: "併購企業, 資訊整合, 自製與委外決策模式", 
+                    author: "盧春芳, 黃世禎, 傅上珍", 
+                    file: "20080002.pdf" 
+                },
+                { 
+                    title: "知識鏈之探討: 以顧客、供應商與競爭者", 
+                    area: "資訊管理", 
+                    keywords: "知識鏈, 顧客知識, 供應商知識, 競爭者知識", 
+                    author: "曾淑美, 吳俊儀", 
+                    file: "20080001.pdf" 
+                }
+            ]
+        },
+        "2004": {
+            fullName: "第十五屆國際資訊管理學術研討會",
+            papers: [
+                { 
+                    title: "Web Service與定位技術的整合及應用", 
+                    area: "通訊網路技術", 
+                    keywords: "Context Awareness, Web Service, 位置資訊", 
+                    author: "卓忠志, 潘志勝, 古東明", 
+                    file: "20040011.pdf" 
+                },
+                { 
+                    title: "無線區域網路之位置導向服務品質監測", 
+                    area: "通訊網路技術", 
+                    keywords: "無線區域網路, 服務品質, 效能管理, SNMP", 
+                    author: "陳彥錚, 陳秋彰", 
+                    file: "20040010.pdf" 
+                },
+                { 
+                    title: "非集中式點對點環境下之快速與低頻寬需求之服務搜尋方法設計", 
+                    area: "通訊網路技術", 
+                    keywords: "點對點, 網域名稱伺服器, 非集中式點對點網路, 服務搜尋", 
+                    author: "陳青文, 楊朝翔, 顏佩詩", 
+                    file: "20040009.pdf" 
+                },
+                { 
+                    title: "在多重通道隨意網路上利用控制與資料通道頻寬比例使效能最大化之策略", 
+                    area: "通訊網路技術", 
+                    keywords: "無線隨意網路, 媒體存取層, 效能, 資料通道, 控制通道", 
+                    author: "陳青文, 方清宏, 賴俊良, 洪瑞聰", 
+                    file: "20040008.pdf" 
+                },
+                { 
+                    title: "Misuse Detection of New Malicious Emails", 
+                    area: "通訊網路技術", 
+                    keywords: "email virus detection, self-organizing maps, network security", 
+                    author: "Dong-Her Shih, Chun-Pin Chang, Hsiu-Sen Chiang", 
+                    file: "20040007.pdf" 
+                },
+                { 
+                    title: "協同過濾技術在商品推薦系統上之應用與成效評估", 
+                    area: "通訊網路技術", 
+                    keywords: "電子商務, 消費者行為, 協同過濾, 推薦系統", 
+                    author: "吳肇銘, 金志聿, 林怡秀", 
+                    file: "20040006.pdf" 
+                },
+                { 
+                    title: "結合IC卡之校園安全網頁系統之設計與實現", 
+                    area: "通訊網路技術", 
+                    keywords: "IC卡, WWW, AES, RSA, PHP", 
+                    author: "陳軒正, 楊中皇", 
+                    file: "20040005.pdf" 
+                },
+                { 
+                    title: "以電力能源為基礎的蜂巢式階層管理", 
+                    area: "通訊網路技術", 
+                    keywords: "隨意式無線網路, 無基礎建設的網路結構, 蜂巢式階層管理架構, 行動代理人, 行動設備", 
+                    author: "王淑卿, 嚴國慶, 周雨韻", 
+                    file: "20040004.pdf" 
+                },
+                { 
+                    title: "行動商務應用之動態使用者查詢系統", 
+                    area: "通訊網路技術", 
+                    keywords: "定址化服務, 動態查詢, 查詢系統, 行動服務", 
+                    author: "翁頌舜, 周尹禎", 
+                    file: "20040003.pdf" 
+                },
+                { 
+                    title: "行動網路環境下付款機制之研究", 
+                    area: "通訊網路技術", 
+                    keywords: "預付服務, 行動付款, 無線智慧網路", 
+                    author: "羅濟群, 黃俊龍", 
+                    file: "20040001.pdf" 
+                }
+            ]
+        }
     };
 
-    // 上方大分頁標籤切換
-    function switchTab(event, tabId) {
-        // 切換按鈕 active 樣式
+    // 點擊標籤切換年份資料
+    function switchConference(year) {
+        // 1. 切換標籤 active 狀態
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.currentTarget.classList.add('active');
+        const targetTab = document.getElementById(`tab-${year}`);
+        if (targetTab) targetTab.classList.add('active');
 
-        // 切換內容區顯示
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-    }
+        // 2. 獲取對應年份資料
+        const targetData = paperDatabase[year];
+        if (!targetData) return;
 
-    // 點擊「檢視」動態載入下方論文清單
-    function loadPapers(confTitle) {
-        const subArea = document.getElementById('sub-paper-area');
-        const titleSpan = document.getElementById('current-conf-title');
+        // 3. 更新動態標題
+        document.getElementById('dynamic-title').innerText = `相關論文 (當前選擇：${targetData.fullName})`;
+
+        // 4. 清空舊列表並重新建構表格內容
         const tbody = document.getElementById('paper-list-body');
-        
-        titleSpan.innerText = `📁 ${confTitle} - 相關論文`;
-        tbody.innerHTML = ''; 
-        
-        const papers = mockPaperData[confTitle] || [];
-        
-        papers.forEach(paper => {
+        tbody.innerHTML = '';
+
+        targetData.papers.forEach(paper => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><span class="clickable-link" onclick="alert('點擊論文查看詳情')">${paper.title}</span></td>
+                <td><span class="clickable-link" onclick="alert('開啟論文詳細資訊：${paper.title}')">${paper.title}</span></td>
                 <td>${paper.area}</td>
-                <td><small style="color:#667085">${paper.keywords}</small></td>
+                <td><small style="color:#64748b">${paper.keywords}</small></td>
                 <td>${paper.author}</td>
-                <td><a href="#" class="btn-download" onclick="alert('開始下載: ${paper.file}')">📄 PDF</a></td>
+                <td>
+                    <a href="#" class="btn-download" onclick="alert('開始下載論文檔案: ${paper.file}')">
+                        <span class="pdf-icon">📄</span>${paper.file}
+                    </a>
+                </td>
             `;
             tbody.appendChild(tr);
         });
-        
-        subArea.style.display = 'block';
-        subArea.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // 研討會列表遞增/遞減排序功能
-    function sortConference() {
-        const tableBody = document.querySelector('#conference-table tbody');
-        const rows = Array.from(tableBody.querySelectorAll('tr'));
-        const direction = document.getElementById('sort-dir').value;
-
-        rows.sort((rowA, rowB) => {
-            const yearA = parseInt(rowA.getAttribute('data-year'), 10);
-            const yearB = parseInt(rowB.getAttribute('data-year'), 10);
-            return direction === 'asc' ? yearA - yearB : yearB - yearA;
-        });
-
-        tableBody.innerHTML = '';
-        rows.forEach(row => tableBody.appendChild(row));
-    }
+    // 網頁初始載入預設顯示 2008 年
+    window.onload = function() {
+        switchConference('2008');
+    };
 </script>
-
-
-
         </main>
 
     </div>

@@ -42,7 +42,6 @@ body {
     color: #333;
 }
 
-/* 右側主內容外殼 */
 .main-content {
     padding: 40px;
     background-color: #f2f6fc;
@@ -50,136 +49,71 @@ body {
 }
 
 /* ==========================================
-   上方分頁標籤切換區 (還原手寫圖框架樣式)
+   上方年份分頁標籤 (Tabs) - 完全還原圖七
    ========================================== */
 .tabs-container {
     display: flex;
-    background-color: #ffffff;
-    border-radius: 12px 12px 0 0;
-    border: 1px solid #e1e8f5;
-    border-bottom: none;
-    overflow: hidden;
+    background-color: transparent;
+    margin-bottom: -1px; /* 讓作用中的標籤與下方卡片邊框完美融合 */
+    padding-left: 10px;
 }
 
 .tab-btn {
-    flex: 1;
-    padding: 16px;
+    padding: 14px 28px;
     text-align: center;
-    background-color: #f8fafc;
-    color: #555;
-    font-size: 16px;
+    background-color: #e2e8f0; /* 非作用中的灰色底 */
+    color: #475569;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    border: none;
-    border-bottom: 3px solid transparent;
+    border: 1px solid #cbd5e1;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    margin-right: 6px;
     transition: all 0.2s ease;
 }
 
-.tab-btn:not(:last-child) {
-    border-right: 1px solid #e1e8f5;
-}
-
 .tab-btn:hover {
-    background-color: #f0f4f8;
+    background-color: #cbd5e1;
     color: #1a73e8;
 }
 
-/* 作用中的分頁標籤 (藍色字體與底部藍條) */
+/* 當前選中的年份標籤 */
 .tab-btn.active {
     background-color: #ffffff;
     color: #1a73e8;
-    border-bottom: 3px solid #1a73e8;
+    border-top: 3px solid #1a73e8; /* 頂部加粗藍條 */
+    padding-top: 12px;
 }
 
 /* ==========================================
-   內容面板
+   下方主要內容白底面板
    ========================================== */
 .content-panel {
     background-color: #ffffff;
-    border-radius: 0 0 12px 12px;
-    border: 1px solid #e1e8f5;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    border-radius: 0 12px 12px 12px;
+    border: 1px solid #cbd5e1;
+    padding: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-/* 分頁內容預設隱藏 */
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.page-title {
-    font-size: 24px;
+/* 動態標題樣式 */
+.section-subtitle {
+    font-size: 21px;
     font-weight: bold;
-    color: #333;
+    color: #1e293b;
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid #1a73e8;
-    display: inline-block;
+    display: block;
 }
 
 /* ==========================================
-   篩選工具列 (圖二樣式)
-   ========================================== */
-.filter-section {
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.filter-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #666;
-}
-
-.input-search, .select-box {
-    padding: 8px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
-    background-color: #fff;
-}
-
-.input-search { width: 240px; }
-.select-box { width: 110px; }
-
-/* 現代化扁平套用按鈕 */
-.btn-apply {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    padding: 9px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-apply:hover {
-    background-color: #155cb8;
-}
-
-/* ==========================================
-   資料表格與下載按鈕 (整合圖二、圖三)
+   相關論文表格樣式
    ========================================== */
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
     text-align: left;
 }
 
@@ -200,10 +134,12 @@ body {
     vertical-align: middle;
 }
 
-.data-table tr:hover {
+/* 懸浮列變色效果 */
+.data-table tbody tr:hover {
     background-color: #fcfdfe;
 }
 
+/* 藍色可點擊連結 */
 .clickable-link {
     color: #1a73e8;
     text-decoration: none;
@@ -215,13 +151,13 @@ body {
     text-decoration: underline;
 }
 
-/* PDF 下載按鈕 (圖三樣式) */
+/* 論文下載 PDF 樣式 */
 .btn-download {
     display: inline-flex;
     align-items: center;
-    color: #e02424;
+    color: #ef4444;
     background-color: #fdf2f2;
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 6px;
     text-decoration: none;
     font-size: 13px;
@@ -233,9 +169,6 @@ body {
     background-color: #fde8e8;
 }
 
-/* 下方動態載入的論文二級區塊 */
-.sub-paper-section {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 2px dashed #e1e8f5;
+.pdf-icon {
+    margin-right: 6px;
 }
