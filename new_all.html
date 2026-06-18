@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +7,11 @@
     <link rel="stylesheet" href="newall.css">
     <link rel="stylesheet" href="nav.css">
 </head>
-
 <body>
     <div class="page">
         <aside class="sidebar">
             <nav class="nav">
-                <a href="index.html" >首頁</a>
+                <a href="index.html">首頁</a>
                 <a href="new_all.html" class="active">最新消息</a>
                 <a href="about.html">關於學會</a>
                 <a href="publish.html">研究與出版品</a>
@@ -29,9 +27,7 @@
             </div>
         </aside>
 
-        <!-- 右側內容 -->
         <main class="main">
-
             <section class="tab-buttons">
                 <a href="new_all.html" class="tab active">所有消息</a>
                 <a href="new_IM.html" class="tab">資訊管理學會</a>
@@ -40,163 +36,273 @@
             </section>
 
             <div class="tab-content">
-                    <div class="filter-bar">
-                        <div class="filter-item search-box">
+                <div class="filter-bar">
+                    <div class="filter-item search-box">
+                        <span class="filter-label">搜尋</span>
+                        <div>
                             <i data-lucide="search" class="icon-left"></i>
-                            <input type="text" placeholder="搜尋標題、關鍵字...">
-                        </div>
-
-                        <div class="filter-item date-range">
-                            <span class="filter-label">搜尋日期</span>
-                            <div class="date-input-group">
-                                <div class="date-input-wrapper">
-                                    <i data-lucide="calendar" class="icon-left"></i>
-                                    <input type="text" placeholder="開始日期">
-                                </div>
-                                <span class="date-separator">~</span>
-                                <div class="date-input-wrapper">
-                                    <i data-lucide="calendar" class="icon-left"></i>
-                                    <input type="text" placeholder="結束日期">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="filter-item select-group">
-                            <span class="filter-label">類別篩選</span>
-                            <div class="select-wrapper">
-                                <select>
-                                    <option>全部類別</option>
-                                </select>
-                                <i data-lucide="chevron-down" class="icon-right"></i>
-                            </div>
-                        </div>
-
-                        <div class="filter-item select-group">
-                            <span class="filter-label">排序方式</span>
-                            <div class="select-wrapper">
-                                <select>
-                                    <option>最新發布</option>
-                                </select>
-                                <i data-lucide="chevron-down" class="icon-right"></i>
-                            </div>
-                        </div>
-
-                        <div class="filter-item reset-group">
-                            <button class="btn-reset">
-                                <i data-lucide="refresh-cw"></i>
-                                <span>重設</span>
-                            </button>
+                            <input type="text" id="searchInput" placeholder="搜尋標題、關鍵字...">
                         </div>
                     </div>
 
-                    <div class="list-wrapper">
+                    <div class="filter-item date-range">
+                        <span class="filter-label">搜尋日期</span>
+                        <div class="date-input-group">
+                            <div class="date-input-wrapper">
+                                
+                                <input type="date" placeholder="開始日期">
+                            </div>
+                            <span class="date-separator">~</span>
+                            <div class="date-input-wrapper">
+                                
+                                <input type="date" placeholder="結束日期">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-item select-group">
+                        <span class="filter-label">排序方式</span>
+                        <div class="select-wrapper">
+                            <select>
+                                <option>最新發布</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="icon-right"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="list-wrapper">
+                    <div class="scroll-page" id="page-1">
                         <div class="card group-blue">
                             <div class="card-main">
                                 <div class="category-block">
-                                    <div class="badge-icon">
-                                        <i data-lucide="users"></i>
-                                    </div>
+                                    <div class="badge-icon"><i data-lucide="users"></i></div>
                                     <span class="category-text">資訊管理學會</span>
                                 </div>
                                 <div class="content-block">
-                                    <h3 class="card-title">【最後延長徵稿】ICIM 2026暨 育秀AI數位科技論文獎徵選辦法</h3>
-                                    <p class="card-summary">壹、活動宗旨隨著人工智慧 (AI) 等新興數位科技快速演進，AI 已成為驅動產業升級與社會創新的核心引擎。為回應智慧化時代...</p>
+                                    <h3 class="card-title">【最後延長徵稿】ICIM 2026暨 育秀AI數位科技論文獎徵選辦法 (第1條)</h3>
+                                    <p class="card-summary">壹、活動宗旨隨著人工智慧 (AI) 等新興數位科技快速演進，AI 已成為驅動產業升級與社會創新的核心引擎。</p>
                                 </div>
                             </div>
                             <div class="card-side">
-                                <span class="date-info">
-                                    <i data-lucide="calendar"></i>
-                                    <span>2026-02-05</span>
-                                </span>
-                                <a href="#" class="more-link">
-                                    <span>閱讀更多</span>
-                                    <i data-lucide="arrow-right"></i>
-                                </a>
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-02-05</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
                             </div>
                         </div>
 
                         <div class="card group-emerald">
                             <div class="card-main">
                                 <div class="category-block">
-                                    <div class="badge-icon">
-                                        <i data-lucide="landmark"></i>
-                                    </div>
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
                                     <span class="category-text">學校</span>
                                 </div>
                                 <div class="content-block">
-                                    <h3 class="card-title">【徵稿公告】2026第六屆數位醫療與醫療...</h3>
-                                    <p class="card-summary">由國立高雄科技大學、高雄醫學大會、英國雪菲爾爾大學 (The University of Sheffield) 及醫療系統聯盟聯合主辦之「2026第六屆數位醫療與醫療數據分析國際研討會 (DHA 2026)」，由以下五位教授擔任大會主席：...</p>
+                                    <h3 class="card-title">【徵稿公告】2026第六屆數位醫療與醫療... (第2條)</h3>
+                                    <p class="card-summary">由國立高雄科技大學、高雄醫學大會、英國雪菲爾爾大學及醫療系統聯盟聯合主辦之「2026第...</p>
                                 </div>
                             </div>
                             <div class="card-side">
-                                <span class="date-info">
-                                    <i data-lucide="calendar"></i>
-                                    <span>2026-02-04</span>
-                                </span>
-                                <a href="#" class="more-link">
-                                    <span>閱讀更多</span>
-                                    <i data-lucide="arrow-right"></i>
-                                </a>
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-02-04</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
                             </div>
                         </div>
 
                         <div class="card group-indigo">
                             <div class="card-main">
                                 <div class="category-block">
-                                    <div class="badge-icon">
-                                        <i data-lucide="briefcase"></i>
-                                    </div>
+                                    <div class="badge-icon"><i data-lucide="briefcase"></i></div>
                                     <span class="category-text">業界</span>
                                 </div>
                                 <div class="content-block">
-                                    <h3 class="card-title">【徵聘教師】臺科大資工系聘專任導理教授...</h3>
-                                    <p class="card-summary">國立臺灣科技大學資訊工程學系誠徵專任教師公告 一、職稱：專任助理教授職級（含）以上。二、擬聘員額：專任教師2名，本職缺得視成績增列候補人員1名，候補期間自甄選結果確定之翌日起3個月內有效，...</p>
+                                    <h3 class="card-title">【徵聘教師】臺科大資工系聘專任助理教授... (第3條)</h3>
+                                    <p class="card-summary">國立臺灣科技大學資訊工程學系誠徵專任教師公告 一、職稱：專任助理教授職級（含）以上。</p>
                                 </div>
                             </div>
                             <div class="card-side">
-                                <span class="date-info">
-                                    <i data-lucide="calendar"></i>
-                                    <span>2026-01-15</span>
-                                </span>
-                                <a href="#" class="more-link">
-                                    <span>閱讀更多</span>
-                                    <i data-lucide="arrow-right"></i>
-                                </a>
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-15</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
                             </div>
                         </div>
-                        
+
+                        <div class="card group-indigo">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="briefcase"></i></div>
+                                    <span class="category-text">業界</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【徵聘教師】臺科大資工系聘專任助理教授... (第4條)</h3>
+                                    <p class="card-summary">國立臺灣科技大學資訊工程學系誠徵專任教師公告 一、職稱：專任助理教授職級（含）以上。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-15</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="pagination">
-                        <button class="page-num active">1</button>
-                        <button class="page-num">2</button>
-                        <button class="page-num">3</button>
-                        <button class="page-num">4</button>
-                        <button class="page-num">5</button>
-                        <button class="page-num">6</button>
-                        <button class="page-num">7</button>
-                        <button class="page-num">8</button>
-                        <button class="page-num">9</button>
-                        <span class="page-dots">...</span>
-                        <button class="page-btn">
-                            <span>下一頁</span>
-                            <i data-lucide="chevron-right"></i>
-                        </button>
-                        <button class="page-btn">
-                            <span>最後一頁</span>
-                            <i data-lucide="chevrons-right"></i>
-                        </button>
+                    <div class="scroll-page" id="page-2">
+                        <div class="card group-blue">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="users"></i></div>
+                                    <span class="category-text">資訊管理學會</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 5】這是第五條 (已自動滾動分頁)</h3>
+                                    <p class="card-summary">測試純前端分頁邏輯是否正常運作，當超過四個卡片時應該會被分配到下一頁。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-10</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 6】這是第六條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 7】這是第七條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 8】這是第八條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
                     </div>
+                    <div class="scroll-page" id="page-3">
+                        <div class="card group-blue">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="users"></i></div>
+                                    <span class="category-text">資訊管理學會</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 9】這是第五條消息 (已自動滾動分頁)</h3>
+                                    <p class="card-summary">測試純前端分頁邏輯是否正常運作，當超過四個卡片時應該會被分配到下一頁。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-10</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 6】這是第六條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 7】這是第七條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="card group-emerald">
+                            <div class="card-main">
+                                <div class="category-block">
+                                    <div class="badge-icon"><i data-lucide="landmark"></i></div>
+                                    <span class="category-text">學校</span>
+                                </div>
+                                <div class="content-block">
+                                    <h3 class="card-title">【測試卡片 8】這是第八條消息</h3>
+                                    <p class="card-summary">測試純前端分頁與平滑磁吸滾動效果是否完美銜接。</p>
+                                </div>
+                            </div>
+                            <div class="card-side">
+                                <span class="date-info"><i data-lucide="calendar"></i><span>2026-01-09</span></span>
+                                <a href="#" class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-num active" data-target="1">1</button>
+                    <button class="page-num" data-target="2">2</button>
+                    <button class="page-num" data-target="3">3</button>
+                    <button class="page-num" data-target="4">4</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn id-next">
+                        <span>下一頁</span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                    <button class="page-btn id-last">
+                        <span>最後一頁</span>
+                        <i data-lucide="chevrons-right"></i>
+                    </button>
+                </div>
             </div>
-
         </main>
-
     </div>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    <script src="main.js"></script>
 </body>
-
 </html>
