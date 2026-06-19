@@ -4,12 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於學會</title>
+    <title>學會組織</title>
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="nav.css">
 
     <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+
+    <style>
+        /* ==================== 基礎與容器設定 ==================== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .cards {
+            max-width: 950px;
+            margin: 2rem auto;
+        }
+
+        /* ==================== 大方塊外框 (固定不動) ==================== */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            padding: 2rem;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #0284c7;
+            padding-left: 12px;
+        }
+
+        /* ==================== ➡️ 核心：極速滑入動畫設定 ➡️ ==================== */
+
+        /* 初始狀態：微調位移距離為 30px（距離變短，視覺上會顯得更快、更精準） */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateX(30px);
+            /* ⚡ 持續時間縮短為 0.3 秒，使用更加乾脆的 cubic-bezier 曲線 */
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        /* 觸發顯現 */
+        .scroll-animate.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ⚡ 大幅縮短交錯進場的延遲間隔（每階僅隔 0.04 秒），讓文字緊湊滑出 */
+        .scroll-animate:nth-child(1) {
+            transition-delay: 0.02s;
+        }
+
+        .scroll-animate:nth-child(2) {
+            transition-delay: 0.06s;
+        }
+
+        .scroll-animate:nth-child(3) {
+            transition-delay: 0.10s;
+        }
+
+        .scroll-animate:nth-child(4) {
+            transition-delay: 0.14s;
+        }
+
+        .scroll-animate:nth-child(5) {
+            transition-delay: 0.18s;
+        }
+
+        .scroll-animate:nth-child(6) {
+            transition-delay: 0.22s;
+        }
+
+        .scroll-animate:nth-child(7) {
+            transition-delay: 0.26s;
+        }
+
+        .scroll-animate:nth-child(8) {
+            transition-delay: 0.30s;
+        }
+
+        /* ==================== 成員與名單美化排版 ==================== */
+        .member-block {
+            background: #f8fafc;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #cbd5e1;
+        }
+
+        .role-section {
+            margin-top: 2rem;
+        }
+
+        .role-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0284c7;
+            background: #e0f2fe;
+            padding: 6px 14px;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .name-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 0.5rem 2.5rem;
+        }
+
+        .name-item {
+            margin: 0;
+            padding: 10px 0;
+            color: #334155;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            .name-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -39,161 +177,236 @@
             <section class="tab-buttons">
                 <a href="about.html" class="tab">關於學會</a>
                 <a href="about1.html" class="tab active">學會組織</a>
-                <a href="about2.html" class="tab">學術活動</a>
-                <a href="about3.html" class="tab">會員專區</a>
+                <a href="about2.html" class="tab">申請入會</a>
+                <a href="about3.html" class="tab">會議資料</a>
             </section>
 
             <div class="tab-content">
                 <!-- 學會簡介 -->
                 <section class="intro">
-                    <h2>學會簡介</h2>
+                    <h2>學會組織</h2>
                     <div class="small-line"></div>
-                    <p>
-                        本學會成立於民國九十年，以促進學術研究、提升學術水準、
-                        推動學術交流及服務社會為宗旨。<br>
-                        本會結合國內外學術資源，舉辦各類學術研討會、專題演講與研究計畫，
-                        致力於營造優質的學術環境。
-                    </p>
+                    <p>本會以會員(會員代表)大會為最高權力機構，會員(會員代表)大會閉會期間由理事會代行職權；監事會為監察機構。</p>
+                    <p>理事會理事長對內綜理督導會務，對外代表學會，並擔任會員(會員代表)大會、理事會主席。</p>
+                    <p>本會置秘書長一人，處理本會事務。</p>
                 </section>
 
-                <!-- 四張卡片（手風琴式） -->
-                <section class="cards" aria-label="學會資訊手風琴">
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">簡介</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>● 中華民國資訊管理學會成立於民國 79年，係集合群國大專院校資訊管理學門之學者專家與部分資訊業界之精英組合而成。</p>
-                            <p>● 為內政部登記的學術研究性社團法人。學會主要成員是全國所有資訊管理系教授。</p>
-                            <p>● 全國大專院校中，計有119所資訊管理系所。</p>
-                            <p>● 全國大專院校資訊管理學系每年約有 2萬多名畢業生。</p>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">宗旨</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>● 本會之宗旨為促進資訊管理學術之研究發展，推廣資訊管理學術之實務應用，整合資訊管理學術之理論及實務，與提昇資訊管理學域之教育水準。</p>
-                        </div>
-                    </div>
+                <script>
+                    // Accordion behavior for about page cards
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Make static cards' bodies visible
+                        document.querySelectorAll('.card--static .card-body').forEach(b => {
+                            b.hidden = false;
+                            b.style.maxHeight = 'none';
+                        });
 
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">願景</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>● 使資管學會成為最具活力及影響力的學術團體。</p>
-                            <p>● 強化資訊管理學域之可視度，提升資管人才的學術，專技與產學互動達到最優良的品質。</p>
-                        </div>
-                    </div>
+                        // For non-static cards: clicking anywhere on the card toggles it.
+                        const cards = document.querySelectorAll('.card:not(.card--static)');
 
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">任務</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>● 從事資訊管理學術及實務之整合研究；</p>
-                            <p>● 舉辦及參加國內外資訊管理之相關學術會議及活動；</p>
-                            <p>● 建議資訊管理之課程架構；</p>
-                            <p>● 辦理資訊管理進修教育；</p>
-                            <p>● 發行期刊及著譯叢書；</p>
-                            <p>● 接受政府及民間之委託，辦理與資訊管理之相關研究、諮詢與服務；</p>
-                            <p>● 符合本會宗旨之其他事項。</p>
-                        </div>
-                    </div>
+                        cards.forEach(card => {
+                            const toggle = card.querySelector('.card-toggle');
+                            const body = card.querySelector('.card-body');
 
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">裡任理事長</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>● 《79~80 年》第一屆 中央大學資訊管理系 宋鎧 教授</p>
-                            <p>● 《80~82 年》第二屆 中央大學資訊管理系 宋鎧 教授</p>
-                            <p>● 《82~84 年》第三屆 中央大學資訊管理系 范錚強 教授</p>
-                            <p>● 《84~86 年》第四屆 中央大學資訊管理系 范錚強 教授</p>
-                            <p>● 《86~88 年》第五屆 元智工學院資訊學院 鄭鳳生 教授</p>
-                            <p>● 《88~90 年》第六屆 政治大學資訊管理系 周宣光 教授</p>
-                            <p>● 《90~92 年》第七屆 政治大學資訊管理系 周宣光 教授</p>
-                            <p>● 《92~94 年》第八屆 淡江大學資訊管理系 黃明達 教授</p>
-                            <p>● 《94~96 年》第九屆 淡江大學資訊管理系 黃明達 教授</p>
-                            <p>● 《96~98 年》第十屆 輔仁大學資訊管理系 楊銘賢 教授</p>
-                            <p>● 《98~100 年》第十一屆 輔仁大學資訊管理系 楊銘賢 教授</p>
-                            <p>● 《100~102 年》第十二屆 台灣大學工管系 游張松 教授
-                            <p>● 《102~104 年》第十三屆 台灣大學工管系 游張松 教授
-                            <p>● 《104~106 年》第十四屆 臺北科技大學資訊與財金管理系 翁頌舜 教授
-                            <p>● 《106~108年》第十五屆 臺北科技大學資訊與財金管理系 翁頌舜 教授
-                            <p>● 《108~110年》第十六屆 中正大學資訊管理學系暨研究所 廖則竣 教授
-                            <p>● 《110~112年》第十七屆 銘傳大學資訊管理學系暨研究所 廖則竣 教授
-                            <p>● 《112~至今》第十八屆 淡江大學資訊管理學系 蕭瑞祥 教授兼總務長</p>
-                        </div>
-                    </div>
+                            // ensure body starts collapsed
+                            if (body) {
+                                if (body.hidden === false) {
+                                    // keep as-is
+                                } else {
+                                    body.hidden = true;
+                                    body.style.maxHeight = null;
+                                }
+                            }
 
-                    <div class="card">
-                        <button class="card-toggle" aria-expanded="false">
-                            <span class="card-title">活動</span>
-                            <span class="card-icon" aria-hidden="true">▼</span>
-                        </button>
-                        <div class="card-body" hidden>
-                            <p>學會除透過十二個委員會推動會務外，學會之常態活動計有：</p>
-                            <p>1. 國際資訊管理學術研討會 (CSIM ICIM)：</p>
-                            <p>已舉辦三十四屆。最近幾年，研討會的投稿論文已成長到400~500篇，錄取率約50~60%，參與盛會的各界人士近800人。</p>
-                            <p>2. 資訊管理暨實務研討會 (CSIM IMP)：</p>
-                            <p>已舉辦二十八屆。最近幾年，研討會的投稿論文已成長到350~400篇，錄取率約60~70%，參與盛會的各界人士近600人。</p>
-                            <p>3. 全國大專院校資訊服務創新競賽暨資訊管理專題競賽：</p>
-                            <p>已舉辦二十八屆。於111年，參賽的各校校隊隊數已達250隊。</p>
-                            <p>4. 海峽兩岸資訊管理發展與策略學術研討會(每年八月份舉行)</p>
-                            <p>已舉辦二十六屆。最近幾年，兩岸三地投稿論文約120~250篇(台灣、大陸、港澳三地，四年為週期輪流主辦，亦即兩年在大陸，一年在台灣，一年在港澳的模式舉行)，大陸地區參與人數約100人致150人，台灣參與人數約50人~150人不等。</p>
-                        </div>
-                    </div>
+                            // Click on the whole card toggles (but ignore clicks on interactive elements)
+                            card.addEventListener('click', (e) => {
+                                // ignore clicks on interactive elements so links/buttons still work
+                                if (e.target.closest('a, button, input, textarea, select, label')) return;
 
-                </section>
+                                const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
 
-            </div>
+                                if (isExpanded) {
+                                    // collapse this card
+                                    card.classList.remove('expanded');
+                                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                                    if (body) { body.style.maxHeight = null; body.hidden = true; }
+                                } else {
+                                    // collapse others first
+                                    document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                        c.classList.remove('expanded');
+                                        const t = c.querySelector('.card-toggle');
+                                        const b = c.querySelector('.card-body');
+                                        if (t) t.setAttribute('aria-expanded', 'false');
+                                        if (b) { b.style.maxHeight = null; b.hidden = true; }
+                                    });
 
-        </main>
+                                    // expand this one
+                                    card.classList.add('expanded');
+                                    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                                    if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                                }
+                            });
 
-    </div>
+                            // keep toggle button behavior accessible and prevent double-handling
+                            if (toggle) {
+                                toggle.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
 
-    <script>
-        // Accordion behavior for about page cards
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggles = document.querySelectorAll('.card-toggle');
-
-            toggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    const card = toggle.closest('.card');
-                    const body = card.querySelector('.card-body');
-                    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-
-                    // collapse all
-                    document.querySelectorAll('.card').forEach(c => {
-                        c.classList.remove('expanded');
-                        const t = c.querySelector('.card-toggle');
-                        const b = c.querySelector('.card-body');
-                        if (t) t.setAttribute('aria-expanded', 'false');
-                        if (b) {
-                            b.style.maxHeight = null;
-                            b.hidden = true;
-                        }
+                                    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                                    if (expanded) {
+                                        card.classList.remove('expanded');
+                                        toggle.setAttribute('aria-expanded', 'false');
+                                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                                    } else {
+                                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                            c.classList.remove('expanded');
+                                            const t = c.querySelector('.card-toggle');
+                                            const b = c.querySelector('.card-body');
+                                            if (t) t.setAttribute('aria-expanded', 'false');
+                                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                                        });
+                                        card.classList.add('expanded');
+                                        toggle.setAttribute('aria-expanded', 'true');
+                                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                                    }
+                                });
+                            }
+                        });
                     });
+                </script>
+                <section class="cards" aria-label="學會資訊看板">
 
-                    if (!expanded) {
-                        card.classList.add('expanded');
-                        toggle.setAttribute('aria-expanded', 'true');
-                        body.hidden = false;
-                        body.style.maxHeight = body.scrollHeight + 'px';
-                    }
-                });
-            });
-        });
-    </script>
+                    <div class="card">
+                        <h2>核心成員</h2>
+
+                        <div class="member-block scroll-animate">
+                            <strong style="color: #0284c7; font-size: 1.05rem;">理事長：蕭瑞祥（淡江大學資訊管理學系 教授兼總務長）</strong>
+                            <p style="margin: 6px 0 0 0; color: #64748b; font-size: 0.95rem;">
+                                總理與督導會務，同時代表學會擔任會員大會、理事會主席。</p>
+                        </div>
+
+                        <div class="member-block scroll-animate">
+                            <strong style="color: #0284c7; font-size: 1.05rem;">秘書長：鄭哲斌（淡江大學資訊管理學系 副教授）</strong>
+                            <p style="margin: 6px 0 0 0; color: #64748b; font-size: 0.95rem;">監督及處理學會人事行政及會計事務。</p>
+                        </div>
+
+                        <div class="member-block scroll-animate">
+                            <strong style="color: #0284c7; font-size: 1.05rem;">專員：楊先生、林小姐</strong>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>中華民國資訊管理學會第十八屆理監事委員會</h2>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">理事長</div>
+                            <div class="name-grid">
+                                <p class="name-item">蕭瑞祥 淡江大學資訊管理學系 教授兼總務長</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">常務理事 (6席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">廖則竣 銘傳大學資訊管理學系 教授</p>
+                                <p class="name-item">翁頌舜 國立臺北科技大學資訊與財金管理系 教授</p>
+                                <p class="name-item">黃明達 淡江大學資訊管理學系 榮譽教授</p>
+                                <p class="name-item">廖文華 國立臺北商業大學資訊與決策科學研究所 教授兼所長</p>
+                                <p class="name-item">王貞淑 國立臺北科技大學資訊與財金管理系 教授兼副教務長</p>
+                                <p class="name-item">林宜隆 大同大學資訊工程學系 教授</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">常務監事 (1席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">余強生 實踐大學資訊科技與管理學系 教授</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">理事 (14席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">游張松 國立台灣大學工商管理學系暨商學研究所教授</p>
+                                <p class="name-item">徐國鈞 國立臺北商業大學資訊管理學系 副教授兼資訊與網路中心主任</p>
+                                <p class="name-item">陳振東 國立聯合大學資訊管理學系 教授</p>
+                                <p class="name-item">施東河 國立雲林科技大學資訊管理學系 特聘教授</p>
+                                <p class="name-item">汪志堅 國立台北大學資訊管理研究所 特聘教授</p>
+                                <p class="name-item">黃正魁 國立中正大學企業管理學系 教授兼研究發展處企劃服務組組長</p>
+                                <p class="name-item">江志卿 國立東華大學資訊管理學系 副教授兼國際處副處長</p>
+                                <p class="name-item">林豪鏘 國立臺南大學數位學習科技學系 教授兼系主任</p>
+                                <p class="name-item">楊亨利 國立政治大學資訊管理學系 教授</p>
+                                <p class="name-item">林至中 銘傳大學資訊管理學系 教授兼系主任</p>
+                                <p class="name-item">羅濟群 國立交通大學資訊管理研究所 兼任教授</p>
+                                <p class="name-item">張宏義 國立嘉義大學資訊管理學系 教授兼系主任</p>
+                                <p class="name-item">朱惠中 華梵大學資訊管理學系 特聘教授</p>
+                                <p class="name-item">古政元 國立陽明交通大學資訊管理研究所 教授</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">監事 (6席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">陶蓓麗 國立嘉義大學資訊管理學系 教授</p>
+                                <p class="name-item">蘇致遠 嘉南藥理大學多媒體與遊戲發展系教授兼系主任</p>
+                                <p class="name-item">楊建民 國立政治大學資訊管理學系 兼任教授</p>
+                                <p class="name-item">廖奕雯 國立高雄科技大學智慧商務系副教授</p>
+                                <p class="name-item">林東清 東海大學資訊管理學系 教授</p>
+                                <p class="name-item">張銀益 輔仁大學資訊管理學系 副教授</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">候補理事 (7席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">劉忠峰 奇美醫療財團法人奇美醫院醫學中心/AI中心主任</p>
+                                <p class="name-item">陳宇佐 國立聯合大學資訊管理學系助理教授</p>
+                                <p class="name-item">洪新原 國立中正大學資訊管理學系 特聘教授兼副校長</p>
+                                <p class="name-item">黃興進 國立陽明交通大學資訊管理研究所 教授</p>
+                                <p class="name-item">吳金山 東海大學資訊管理學系 教授兼EMBA主任</p>
+                                <p class="name-item">張碩毅 國立中正大學會計與資訊科技學系 教授兼管理學院院長</p>
+                                <p class="name-item">李有仁 國立中正大學資訊管理學系講座教授兼全球企業電子化中心主任</p>
+                            </div>
+                        </div>
+
+                        <div class="role-section scroll-animate">
+                            <div class="role-title">候補監事 (2席)</div>
+                            <div class="name-grid">
+                                <p class="name-item">蕭 鉢 國立雲林科技大學資訊管理系 教授兼系主任</p>
+                                <p class="name-item">蕭文龍 長庚大學資訊管理學系 教授</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const animatedElements = document.querySelectorAll('.scroll-animate');
+
+                        const observerOptions = {
+                            root: null,
+                            rootMargin: '0px 0px -50px 0px', // 稍微提早觸發點，滑到前 50px 就開始動
+                            threshold: 0.05 // 只要碰到 5% 就觸發
+                        };
+
+                        const observer = new IntersectionObserver((entries, observer) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('appear');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, observerOptions);
+
+                        animatedElements.forEach(el => observer.observe(el));
+                    });
+                </script>
+
+
+
+
 
 </body>
 
