@@ -645,7 +645,8 @@ body {
 }
 
 .article-nav a {
-    flex: 1;
+    /* behave as two balanced boxes (roughly half-width each) */
+    flex: 1 1 48%;
     border: 1px solid #dce5ef;
     border-radius: 20px;
     padding: 22px;
@@ -680,5 +681,19 @@ body {
 }
 
 .article-nav .next {
-    text-align: left;
+    /* align next to the right side of its box */
+    text-align: right;
+    align-items: flex-end;
+}
+
+/* If there's only a single link (no next/prev pair), keep it from stretching full width */
+.article-nav a:only-child {
+    max-width: 760px;
+}
+
+/* Mobile: stack the nav blocks vertically */
+@media (max-width: 768px) {
+    .article-nav { flex-direction: column; }
+    .article-nav a { flex-basis: auto; width: 100%; }
+    .article-nav .next { text-align: left; align-items: flex-start; }
 }

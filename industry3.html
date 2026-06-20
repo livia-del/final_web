@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【徵聘教師】靜宜大學 資料科學暨大數據分析與應用學系誠徵專任教師公告</title>
+    <title>【徵才】國立陽明交通大學傳播研究所 誠徵專任教師1名</title>
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="nav.css">
 
@@ -40,16 +40,13 @@
                 <div class="announcement-tools">
                     <a href="#" class="back-link">←　返回消息列表</a>
 
-                    <div class="tool-buttons">
-                        <button>⎙</button>
-                        <button>⌯</button>
-                    </div>
+                    
                 </div>
 
-                <h1>【徵聘教師】靜宜大學 資料科學暨大數據分析與應用學系誠徵專任教師公告</h1>
+                <h1>【徵才】國立陽明交通大學傳播研究所 誠徵專任教師1名</h1>
 
                 <div class="announcement-meta">
-                    <span>由 csim 在 三, 2026/06/03 - 13:52 發表</span>
+                    <span>由 csim 在 二, 2025/04/08 - 14:19 發表</span>
                 </div>
 
                 <span class="category-tag">學術活動</span>
@@ -58,23 +55,35 @@
 
                 <div class="announcement-content">
                     <!--start-->
-                     
-                    <!--end-->
+                    <p>國立陽明交通傳播研究所現公開徵聘專任助理教授（含）以上職級教師1名，預計起聘日期為2025年8月1日或2026年2月1日。
+                       本次徵才主要面向傳播學及相關領域，誠摯邀請具有卓越學術成就和教學熱情的專家學者加入我們的團隊。
+                    </p>
+                    <p>期待在以下領域擁有專業知識的學者加入：</p>
+
+                    <p>· 職稱：專任助理教授（含）以上</p>
+
+                    <p>· 特殊需求：</p>
+
+                    <p>1.策略傳播：包括行銷科技（MarTech）、整合行銷傳播、廣告及公關等；</p>
+
+                    <p>2.侵害傳播：包括大數據分析、機器學習、社會網絡分析、文字探勘等；</p>
+
+                    <p>3.其他以新媒體為核心之傳播領域：包括風險傳播、健康傳播及組織傳播。</p>
+
+                    <p>· 資格條件：</p>
+
+                    <p>1.具有教育部認可之藥品；</p>
+
+                    <p>2.具備英語授課能力（新進教師每學年至少需授開英語課程）。</p>
+
+                    <p>· 申請起始日：2025年4月30日</p>
+                    <p>申請所需資料請參考以下公告完整內容：</p>
+
+                    <p style="color: blue;">國立陽明交通大學傳播研究所官網資訊鏈接</p>
+                        <!--end-->
                 </div>
 
-                <div class="article-nav">
-
-                    <!--<a href="IM6.html">
-                        <small>← 上一篇</small>
-                        <span>【會員代表選舉公告】有關社團法人中華民國資訊管理學會第十八屆會員代表「南區」選票備註標示錯誤之更正說明</span>
-                    </a>
-                    -->
-
-                    <a href="school2.html" class="next">
-                        <small>下一篇 →</small>
-                        <span>【徵聘院長候選人】國立中央大學公開徵求管理學院院長候選人</span>
-                    </a
-                </div>
+                
 
             </section>
 
@@ -84,89 +93,7 @@
 
 
 
-    <script>
-        // Accordion behavior for about page cards
-        document.addEventListener('DOMContentLoaded', function () {
-            // Make static cards' bodies visible
-            document.querySelectorAll('.card--static .card-body').forEach(b => {
-                b.hidden = false;
-                b.style.maxHeight = 'none';
-            });
-
-            // For non-static cards: clicking anywhere on the card toggles it.
-            const cards = document.querySelectorAll('.card:not(.card--static)');
-
-            cards.forEach(card => {
-                const toggle = card.querySelector('.card-toggle');
-                const body = card.querySelector('.card-body');
-
-                // ensure body starts collapsed
-                if (body) {
-                    if (body.hidden === false) {
-                        // keep as-is
-                    } else {
-                        body.hidden = true;
-                        body.style.maxHeight = null;
-                    }
-                }
-
-                // Click on the whole card toggles (but ignore clicks on interactive elements)
-                card.addEventListener('click', (e) => {
-                    // ignore clicks on interactive elements so links/buttons still work
-                    if (e.target.closest('a, button, input, textarea, select, label')) return;
-
-                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
-
-                    if (isExpanded) {
-                        // collapse this card
-                        card.classList.remove('expanded');
-                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-                        if (body) { body.style.maxHeight = null; body.hidden = true; }
-                    } else {
-                        // collapse others first
-                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
-                            c.classList.remove('expanded');
-                            const t = c.querySelector('.card-toggle');
-                            const b = c.querySelector('.card-body');
-                            if (t) t.setAttribute('aria-expanded', 'false');
-                            if (b) { b.style.maxHeight = null; b.hidden = true; }
-                        });
-
-                        // expand this one
-                        card.classList.add('expanded');
-                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
-                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
-                    }
-                });
-
-                // keep toggle button behavior accessible and prevent double-handling
-                if (toggle) {
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                        if (expanded) {
-                            card.classList.remove('expanded');
-                            toggle.setAttribute('aria-expanded', 'false');
-                            if (body) { body.style.maxHeight = null; body.hidden = true; }
-                        } else {
-                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
-                                c.classList.remove('expanded');
-                                const t = c.querySelector('.card-toggle');
-                                const b = c.querySelector('.card-body');
-                                if (t) t.setAttribute('aria-expanded', 'false');
-                                if (b) { b.style.maxHeight = null; b.hidden = true; }
-                            });
-                            card.classList.add('expanded');
-                            toggle.setAttribute('aria-expanded', 'true');
-                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+    
 
 
 

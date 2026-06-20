@@ -40,10 +40,7 @@
                 <div class="announcement-tools">
                     <a href="#" class="back-link">←　返回消息列表</a>
 
-                    <div class="tool-buttons">
-                        <button>⎙</button>
-                        <button>⌯</button>
-                    </div>
+                    
                 </div>
 
                 <h1>【徵聘教師】國立臺灣科技大學資訊工程系誠徵專任教師公告</h1>
@@ -105,21 +102,7 @@
                     <!--end-->
                 </div>
 
-                <div class="article-nav">
-
-                    <a href="school2.html">
-                        <small>← 上一篇</small>
-                        <span>【徵聘院長候選人】國立中央大學公開徵求管理學院院長候選人</span>
-                    </a>
-
-
-                    <a href="school4.html" class="next">
-                        <small>下一篇 →</small>
-                        <span>【徵聘教師】國立屏東科技大學資訊管理系誠徵助理教授(含)以上專任教師1名</span>
-                    </a>
-
-
-                </div>
+                
 
             </section>
 
@@ -129,89 +112,7 @@
 
 
 
-    <script>
-        // Accordion behavior for about page cards
-        document.addEventListener('DOMContentLoaded', function () {
-            // Make static cards' bodies visible
-            document.querySelectorAll('.card--static .card-body').forEach(b => {
-                b.hidden = false;
-                b.style.maxHeight = 'none';
-            });
-
-            // For non-static cards: clicking anywhere on the card toggles it.
-            const cards = document.querySelectorAll('.card:not(.card--static)');
-
-            cards.forEach(card => {
-                const toggle = card.querySelector('.card-toggle');
-                const body = card.querySelector('.card-body');
-
-                // ensure body starts collapsed
-                if (body) {
-                    if (body.hidden === false) {
-                        // keep as-is
-                    } else {
-                        body.hidden = true;
-                        body.style.maxHeight = null;
-                    }
-                }
-
-                // Click on the whole card toggles (but ignore clicks on interactive elements)
-                card.addEventListener('click', (e) => {
-                    // ignore clicks on interactive elements so links/buttons still work
-                    if (e.target.closest('a, button, input, textarea, select, label')) return;
-
-                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
-
-                    if (isExpanded) {
-                        // collapse this card
-                        card.classList.remove('expanded');
-                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-                        if (body) { body.style.maxHeight = null; body.hidden = true; }
-                    } else {
-                        // collapse others first
-                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
-                            c.classList.remove('expanded');
-                            const t = c.querySelector('.card-toggle');
-                            const b = c.querySelector('.card-body');
-                            if (t) t.setAttribute('aria-expanded', 'false');
-                            if (b) { b.style.maxHeight = null; b.hidden = true; }
-                        });
-
-                        // expand this one
-                        card.classList.add('expanded');
-                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
-                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
-                    }
-                });
-
-                // keep toggle button behavior accessible and prevent double-handling
-                if (toggle) {
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                        if (expanded) {
-                            card.classList.remove('expanded');
-                            toggle.setAttribute('aria-expanded', 'false');
-                            if (body) { body.style.maxHeight = null; body.hidden = true; }
-                        } else {
-                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
-                                c.classList.remove('expanded');
-                                const t = c.querySelector('.card-toggle');
-                                const b = c.querySelector('.card-body');
-                                if (t) t.setAttribute('aria-expanded', 'false');
-                                if (b) { b.style.maxHeight = null; b.hidden = true; }
-                            });
-                            card.classList.add('expanded');
-                            toggle.setAttribute('aria-expanded', 'true');
-                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+    
 
 
 
