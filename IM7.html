@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【會員代表選舉公告】 第十八屆會員代表候選人登記(含聯署)事宜</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
+
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</head>
+
+<body>
+    <div class="page">
+        <aside class="sidebar">
+            <nav class="nav">
+                <a href="index.html" class="active">首頁</a>
+                <a href="#">最新消息</a>
+                <a href="#">關於學會</a>
+                <a href="#">研究與出版品</a>
+                <a href="#">學術活動</a>
+                <a href="#">聯絡我們</a>
+            </nav>
+            <div class="login-box">
+                <label>使用者名稱</label>
+                <input type="text" placeholder="請輸入使用者名稱">
+                <label>密碼</label>
+                <input type="password" placeholder="請輸入密碼">
+                <button>登入 / 註冊</button>
+            </div>
+        </aside>
+
+        <!-- 右側內容 -->
+        <main class="main">
+
+            <section class="announcement-page">
+
+                <div class="announcement-tools">
+                    <a href="#" class="back-link">←　返回消息列表</a>
+
+                    <div class="tool-buttons">
+                        <button>⎙</button>
+                        <button>⌯</button>
+                    </div>
+                </div>
+
+                <h1>【會員代表選舉公告】 第十八屆會員代表候選人登記(含聯署)事宜</h1>
+
+                <div class="announcement-meta">
+                    <span>由 csim 在 週五, 2025/03/21 - 17:11 發表</span>
+                </div>
+
+                <span class="category-tag">學術活動</span>
+
+                <div class="line"></div>
+
+                <div class="announcement-content">
+                    <!--start-->
+                    <p>主旨: 第十八屆會員代表候選人登記(含聯署)事宜</p>
+                    <p>說明：</p>
+                    <h3>一、依據人民團體法、人民團體選舉辦法、社團法人中華民國資訊管理學會會員代表大會代表選舉辦法及理監事會議相關決議辦理。</h3>
+                    <h3>二、本會預計於114年3月20日至6月30日期間辦理第十八屆會員代表通訊投票選舉事宜，為使選舉順利，特對所有會員徵求實施第十八屆會員代表候選人登記(含聯署)作業。</h3>
+                    <h3>三、本會第十七屆會員代表為第十八屆會員代表之當然候選人，其他非前屆會員代表之候選人登記方式：須由本會正會員或團體會員代表人三人(含)以上聯署推薦，每位會員限聯署一人，登記(含聯署)表如附件。</h3>
+                    <h3>四、本會榮譽理事周宣光會員代表為了讓新人有更多的機會，主動退出候選人名單，希望能夠促進更多優秀人才的發揮與成長。</h3>
+                    <h3>五、有意願參選登記者，敬請填寫登記表並完成至少三人聯署後， 114年4月9日前掃描電子檔，email寄至本學會信箱 csim.service@gmail.com。</h3>
+                    <h3>六、上述個人資料，僅作會員代表行政處理使用，並遵守個資相關規定辦理。</h3>
+                    <p>社團法人中華民國資訊管理學會</p>
+
+                    <p>秘書處 敬啟</p>
+                    <!--end-->
+                </div>
+
+                <div class="article-nav">
+
+                    <a href="IM6.html">
+                        <small>← 上一篇</small>
+                        <span>【會員代表選舉公告】有關社團法人中華民國資訊管理學會第十八屆會員代表「南區」選票備註標示錯誤之更正說明</span>
+                    </a>
+
+                    <!--
+                    <a href="#" class="next">
+                        <small>下一篇 →</small>
+                        <span>本會新任理監事名單公告</span>
+                    </a>
+                    -->
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make static cards' bodies visible
+            document.querySelectorAll('.card--static .card-body').forEach(b => {
+                b.hidden = false;
+                b.style.maxHeight = 'none';
+            });
+
+            // For non-static cards: clicking anywhere on the card toggles it.
+            const cards = document.querySelectorAll('.card:not(.card--static)');
+
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const body = card.querySelector('.card-body');
+
+                // ensure body starts collapsed
+                if (body) {
+                    if (body.hidden === false) {
+                        // keep as-is
+                    } else {
+                        body.hidden = true;
+                        body.style.maxHeight = null;
+                    }
+                }
+
+                // Click on the whole card toggles (but ignore clicks on interactive elements)
+                card.addEventListener('click', (e) => {
+                    // ignore clicks on interactive elements so links/buttons still work
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+
+                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // collapse this card
+                        card.classList.remove('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                    } else {
+                        // collapse others first
+                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                            c.classList.remove('expanded');
+                            const t = c.querySelector('.card-toggle');
+                            const b = c.querySelector('.card-body');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                        });
+
+                        // expand this one
+                        card.classList.add('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                    }
+                });
+
+                // keep toggle button behavior accessible and prevent double-handling
+                if (toggle) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            card.classList.remove('expanded');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            if (body) { body.style.maxHeight = null; body.hidden = true; }
+                        } else {
+                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                c.classList.remove('expanded');
+                                const t = c.querySelector('.card-toggle');
+                                const b = c.querySelector('.card-body');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                                if (b) { b.style.maxHeight = null; b.hidden = true; }
+                            });
+                            card.classList.add('expanded');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

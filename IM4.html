@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【論文徵稿】IMP 2025第30屆國際資訊管理暨實務研討會暨育秀AI數位科技研創論⽂獎</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
+
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</head>
+
+<body>
+    <div class="page">
+        <aside class="sidebar">
+            <nav class="nav">
+                <a href="index.html" class="active">首頁</a>
+                <a href="#">最新消息</a>
+                <a href="#">關於學會</a>
+                <a href="#">研究與出版品</a>
+                <a href="#">學術活動</a>
+                <a href="#">聯絡我們</a>
+            </nav>
+            <div class="login-box">
+                <label>使用者名稱</label>
+                <input type="text" placeholder="請輸入使用者名稱">
+                <label>密碼</label>
+                <input type="password" placeholder="請輸入密碼">
+                <button>登入 / 註冊</button>
+            </div>
+        </aside>
+
+        <!-- 右側內容 -->
+        <main class="main">
+
+            <section class="announcement-page">
+
+                <div class="announcement-tools">
+                    <a href="#" class="back-link">←　返回消息列表</a>
+
+                    <div class="tool-buttons">
+                        <button>⎙</button>
+                        <button>⌯</button>
+                    </div>
+                </div>
+
+                <h1>【選舉公告】中華民國資訊管理學會第十九屆理事、監事選舉自即日起開始接受候選人推薦登記</h1>
+
+                <div class="announcement-meta">
+                    <span>由 csim 在 週五, 2025/09/26 - 00:32 發表</span>
+                </div>
+
+                <span class="category-tag">學術活動</span>
+
+                <div class="line"></div>
+
+                <div class="announcement-content">
+                    <p>『IMP 2025第30屆國際資訊管理暨實務研討會暨育秀AI數位科技研創論⽂獎』</p>
+                    <p>The 30th International Conference on Information Management & Practice</p>
+                    <h3>一、研討會日期：2025 年 12 ⽉ 20 ⽇ ( 六 ) 08 30-17:50</h3>
+                    <p>研討會地點：⻑庚⼤學⼯學院六樓會議廳 (⼆)</p>
+                    <h3>二、論文徵稿重要日程:</h3>
+                    <p> 1. 註冊使⽤ AI 教研助理：2025 年 10 ⽉ 20 ⽇ ( ⼀ )</p>
+                    <p>**報名使⽤AI助理，請掃描 QRcode</p>
+                    <p><del>2. 論文截稿日期：原2025 年 11 ⽉ 16 ⽇ ( ⽇ )</del></p>
+                    <p style="color: red;">論文截稿日期：延長至2025 年 11 ⽉ 23 ⽇ ( ⽇ )</p>
+                    <p>3. 論文接受通知：2025 年 12 ⽉ 1 ⽇ ( ⼀ )</p>
+                    <p>4. 註冊繳費時間：2025 年 12 ⽉ 14 ⽇ ( ⽇ )</p>
+
+                    <h3>三、投稿須知：本研討會接受以全⽂投稿，論⽂全⽂⻑度不超過15⾴。
+                        凡投稿⾄本次研討會者，均列⼊育秀AI數位科技研創論⽂獎的評審範圍。
+                        論⽂全⽂和摘要請上傳 Word 檔 (doc, docx) 。
+                    </h3>
+
+                    <h3>四、研討會及輪文徵稿相關訊息請逕至https://sites.google.com/view/imp2025</h3>
+
+                </div>
+
+                <div class="article-nav">
+
+                    <a href="IM3.html">
+                        <small>← 上一篇</small>
+                        <span>【選舉公告】中華民國資訊管理學會第十九屆理事、監事選舉自即日起開始接受候選人推薦登記</span>
+                    </a>
+
+                    <a href="IM5.html" class="next">
+                        <small>下一篇 →</small>
+                        <span>【會員代表當選公告】社團法人中華民國資訊管理學會第十八屆會員代表選舉 會員代表當選名單</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make static cards' bodies visible
+            document.querySelectorAll('.card--static .card-body').forEach(b => {
+                b.hidden = false;
+                b.style.maxHeight = 'none';
+            });
+
+            // For non-static cards: clicking anywhere on the card toggles it.
+            const cards = document.querySelectorAll('.card:not(.card--static)');
+
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const body = card.querySelector('.card-body');
+
+                // ensure body starts collapsed
+                if (body) {
+                    if (body.hidden === false) {
+                        // keep as-is
+                    } else {
+                        body.hidden = true;
+                        body.style.maxHeight = null;
+                    }
+                }
+
+                // Click on the whole card toggles (but ignore clicks on interactive elements)
+                card.addEventListener('click', (e) => {
+                    // ignore clicks on interactive elements so links/buttons still work
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+
+                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // collapse this card
+                        card.classList.remove('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                    } else {
+                        // collapse others first
+                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                            c.classList.remove('expanded');
+                            const t = c.querySelector('.card-toggle');
+                            const b = c.querySelector('.card-body');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                        });
+
+                        // expand this one
+                        card.classList.add('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                    }
+                });
+
+                // keep toggle button behavior accessible and prevent double-handling
+                if (toggle) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            card.classList.remove('expanded');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            if (body) { body.style.maxHeight = null; body.hidden = true; }
+                        } else {
+                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                c.classList.remove('expanded');
+                                const t = c.querySelector('.card-toggle');
+                                const b = c.querySelector('.card-body');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                                if (b) { b.style.maxHeight = null; b.hidden = true; }
+                            });
+                            card.classList.add('expanded');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>
