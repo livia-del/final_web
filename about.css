@@ -23,6 +23,7 @@ body {
 
 /* 側邊欄 (雖然 HTML 內有 sidebar，但原 CSS 漏掉寬度等基礎設定，這裡保留結構位置) */
 .sidebar {
+    width: 260px;
     /* 依據你的 .main margin-left，側邊欄寬度應為 260px */
 }
 
