@@ -31,263 +31,279 @@
         <main class="main">
 
 
-<div class="main-content">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國際資訊管理學術研討會論文查詢系統</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <div class="tabs-container">
-        <button type="button" class="tab-btn" id="tab-2008" onclick="switchConference('2008')">
-            第十九屆國際資訊管理學術研討會(2008)
-        </button>
-        <button type="button" class="tab-btn active" id="tab-2004" onclick="switchConference('2004')">
-            第十五屆國際資訊管理學術研討會(2004)
-        </button>
+    <div class="main-content">
+
+        <div class="tabs-container">
+            <button type="button" class="tab-btn" id="tab-2008" onclick="switchConference('2008')">
+                第十九屆國際資訊管理學術研討會(2008)
+            </button>
+            <button type="button" class="tab-btn active" id="tab-2004" onclick="switchConference('2004')">
+                第十五屆國際資訊管理學術研討會(2004)
+            </button>
+        </div>
+
+        <div class="content-panel">
+            
+            <h3 class="section-subtitle" id="dynamic-title">
+                相關論文 
+            </h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 75%;">論文名稱</th>
+                        <th style="width: 25%;">論文下載</th>
+                    </tr>
+                </thead>
+                <tbody id="paper-list-body">
+                    </tbody>
+            </table>
+            
+        </div>
     </div>
 
-    <div class="content-panel">
-        
-        <h3 class="section-subtitle" id="dynamic-title">
-            相關論文 
-        </h3>
+    <script>
+        // 論文完整資料庫
+        const paperDatabase = {
+            "2008": {
+                fullName: "第十九屆國際資訊管理學術研討會(2008)",
+                papers: [
+                    { 
+                        id: "p2008_1", 
+                        title: "併購企業資訊系統整合自製與委外決策模式研究", 
+                        area: "資訊管理", 
+                        keywords: "併購企業, 資訊整合, 自製與委外決策模式", 
+                        author: "盧春芳, 黃世禎, 傅上珍", 
+                        file: "20080002.pdf",
+                        abstract: "併購為目前國內外流行的議題與企業經營的策略。成功的併購是企業能夠採 行有效的資源管理措施,在各個環節上相互配合,才能達到併購一加一大於二的 綜效。綜效意指善用資訊科技,為併購雙方架構出完善的溝通管道與創造獲利的 可能性,因此在併購企業中資訊整合將扮演極為重要的角色。然而併購會增添資 訊整合的複雜度,在資訊整合過程中秏時越長,對併購企業預期綜效產生的負面 影響也越大,獲得綜效的可能性將更低。本研究主要目的是提出企業併購環境下之資訊系統整合自製與委外的決策 模式,協助併購企業中的高階主管,對資訊系統整合自製與委外的決策做出理想 的判斷。本研究首先依據併購企業的綜效與成功關鍵因素,將資訊系統整合的需 求進行歸類,再由文獻分析彙整出在企業併購環境下資訊系統整合自製或委外應 考慮之構面與評估效標,進而建立併購企業資訊系統整合自製與委外的決策模 式。本研究亦經由個案公司的資訊系統整合三個案例來說明如何應用本研究所建 立的決策模式來輔助自製或委外決策的制訂。"
+                    },
+                    { 
+                        id: "p2008_2", 
+                        title: "知識鏈之探討: 以顧客、供應商與競爭者", 
+                        area: "資訊管理", 
+                        keywords: "知識鏈, 顧客知識, 供應商知識, 競爭者知識", 
+                        author: "曾淑美,吳俊儀", 
+                        file: "20080001.pdf",
+                        abstract: "由於通訊科技的迅速發展,帶來了經濟的改變,也提升了知識的重要性。許多企業為了增強在全球市場的競爭力,紛紛將許多例行的作業予以自動化或委外,而將員工的專業技能應用在更高價值的工作上,經由有效的利用個人知識與組織知識來產生新的工作能力,使員工得以從事更複雜、更精緻化的工作。同時企業也已認知到唯有持續不斷的創造與運用具競爭力的知識,企業才得以生存與成功。由此可見,知識對企業的重要性。但是很少實證研究企業在與所處的環境互動後,如何將吸收的資訊轉化為其自身的知識。因此,本研究擬以顧客、供應商與競爭者知識為例,藉由知識鏈模式,以質性研究之個案研究法來探討企業如何將外部取得的顧客、供應商與競爭者知識,透過企業的知識鏈活動,以過濾、 濃縮與萃取出有價值的企業內部知識,以提升企業之競爭力。"
+                    }
+                ]
+            },
+            "2004": {
+                fullName: "第十五屆國際資訊管理學術研討會(2004)",
+                papers: [
+                    { 
+                        id: "p2004_1", 
+                        title: "Web Service與定位技術的整合及應用", 
+                        area: "通訊網路技術", 
+                        keywords: "Context Awareness, Web Service, 位置資訊", 
+                        author: "卓忠志, 潘志勝, 古東明", 
+                        file: "20040011.pdf",
+                        abstract: "假如行動裝置可以知道持有人的位置座標,再加上預先建立的週遭環境資訊,就可以將目前的情境主動提供給使用者,這樣的人機互動就可以稱為 Context Awareness。因此位置資訊若能應用在 Context Awareness 上,將可以改善人類的生活。本研究試著將定位技術與 Web Service 結合,嘗試開發一成本低廉、適合室內外環境且易於與企業整合的位置服務系統。"
+                    },
+                    { 
+                        id: "p2004_2", 
+                        title: "無線區域網路之位置導向服務品質監測", 
+                        area: "通訊網路技術", 
+                        keywords: "無線區域網路, 服務品質, 效能管理, SNMP", 
+                        author: "陳彥錚, 陳秋彰", 
+                        file: "20040010.pdf",
+                        abstract: "近年來 IEEE 802.11 無線區域網路蓬勃發展,無線區域網路管理因而日益重要。無線區域網路之網路建置、無線通訊環境、使用者移動性有別於傳統有線網路,也因此無線區域網路實際的服務品質可能因基地台架設位置、周遭訊號干擾、使用者位置、使用者人數而有所不同,如何有效監測無線區域網路服務品質更是無線區域網路效能管理重要的研究課題。本論文提出一個位置導向的無線區域網路服務品質監測機制,利用無線區域網路基地台本身的 SNMP 網管功能,提供網管人員以 WWW 連線的方式在無線區域網路訊號涵蓋範圍依各區域位置進行訊號品質量測;此機制並利用對 IEEE 802.11 連線服務的即時監測,自動蒐集及分析一般使用者無線上網時的傳輸速率、訊號品質、訊號強度等連線資料。這些與位置及使用者相依的服務品質監測,是無線區域網路效能管理一大特色,依據這些監測資料,網管人員可進一步調整基地台位置、增減基地台數目、更動通訊頻道,以改善無線區域網路效能。"
+                    },
+                    { 
+                        id: "p2004_3", 
+                        title: "非集中式點對點環境下之快速與低頻寬需求之服務搜尋方法設計", 
+                        area: "通訊網路技術", 
+                        keywords: "點對點, 網域名稱伺服器, 非集中式點對點網路, 服務搜尋", 
+                        author: "陳青文, 楊朝翔, 顏佩詩", 
+                        file: "20040009.pdf",
+                        abstract: "隨著網際網路的發展與普及,在網路上搜尋所需的檔案或服務已經是一個普遍的現象。在廣闊網路環境中尋找所需的服務大都是透過集中式伺服器來取得服務,但集中式伺服器有潛在的缺點,如擴充性、額外的費用等等,但在點對點架構中因不具集中式伺服器所以無上述問題產生。儘管如此,點對點仍有許多問題存在,如提供服務者之所在位置和提供哪些服務等問題。在本篇我們採用非集中式的架構,經由網域名稱伺服器(Domain Name Server)原有的階層式架構,利用此特性來輔助尋找提供服務者,以達到快速搜尋目的。不僅如此,階層式的架構在融入點對點系統後,將能保證提供服務者是距離較近的點(peer)。在實際的模擬中可以確定,在點對點系統中,透過網域名稱伺服器的輔助,在整體的搜尋上,所需執行時間確實有明顯的縮短,對整體網路品質而言,少量封包的傳輸將不會造成網路的擁塞。由此可知,執行時間的縮短 and 降低大量封包的傳輸將可以讓點對點系統運作更暢,資料傳輸更快速。"
+                    },
+                    { 
+                        id: "p2004_4", 
+                        title: "在多重通道隨意網路上利用控制與資料通道頻寬比例使效能最大化之策略", 
+                        area: "通訊網路技術", 
+                        keywords: "無線隨意網路, 媒體存取層, 效能, 資料通道, 控制通道", 
+                        author: "陳青文, 方清宏, 賴俊良, 洪瑞聰", 
+                        file: "20040008.pdf",
+                        abstract: "在無線隨意網路 (Wireless Ad Hoc Network) 中媒體存取層 (MAC Layer) 的功用是負責把資料可靠並有效率地傳送出去。故在媒體存取層中建立一個可靠並且有效率的廣播通訊協定是很重要的。但如何維持高的效能 (Throughput) 卻是媒體存取層重要的考量。多重頻道 (Multiple Channel) 的好處是可以減輕媒體競爭和降低傳輸封包的碰撞機率,故近來有些學者提出用多重頻道來增加資料頻道 (Data Channel) 的頻寬以提高整體的效能。但卻沒考慮到控制信號 (Control Messages) 的超載問題即資料頻道增加到一個程度後效能就不會再提高反而會下降。因此我們針對資料頻道與控制頻道 (Control Channel) 的頻寬比例做深入的探討,提出了調整資料頻道與控制頻道的頻寬最佳比例,讓資料頻道使用率達到最佳進而提高效能。所以只要告知協定的定義就可透過我們的理論算出資料頻道與控制頻道之最佳比例,再以這比例為基礎不管應用在多重頻道或是其他減少碰撞的方法上,相信都能有最大的效能。經過我們的模擬結果,證使我們提出的方法能有最大的效能。"
+                    },
+                    { 
+                        id: "p2004_5", 
+                        title: "Misuse Detection Of New Malicious Emails", 
+                        area: "通訊網路技術", 
+                        keywords: "email virus detection, self-organizing maps, network security", 
+                        author: "Dong-Her Shih, Chun-Pin Chang, Hsiu-Sen Chiang", 
+                        file: "20040007.pdf",
+                        abstract: "A serious security threat today is malicious emails, arriving as email attachments. An email virus is an email that can infect other programs by modifying them to include a replication of it. When the infected emails are opened, the email virus spreads itself to others. Today's society has seen a dramatic increase in the use of emails. We present a novel approach to detect misuse emails by gathering and maintaining knowledge of the behavior of the malicious emails rather than anticipating attacks by unknown assailants. Our approach is based on building and maintaining a profile of the malicious emails through analyzing its static activity. Any new activity of the email is compared to the malicious profile to detect a potential misuse. Comparison results show that our proposed methods outperformed than anti-virus software."
+                    },
+                    { 
+                        id: "p2004_6", 
+                        title: "協同過濾技術在商品推薦系統上之應用與成效評估", 
+                        area: "通訊網路技術", 
+                        keywords: "電子商務, 消費者行為, 協同過濾, 推薦系統", 
+                        author: "吳肇銘, 金志聿, 林怡秀", 
+                        file: "20040006.pdf",
+                        abstract: "本研究嘗試將「協同過濾」技術實際應用在商品推薦上,希望藉由「協同過濾」方法有效地推薦出網站使用者所喜愛的商品,以減少消費者在網路上所浪費的時間。本研究之進行主要可以分成兩部分,第一部份乃是以「協同過濾」方法實際開發一套線上商品推薦系統;第二部分則是實施一實地實驗,透過本研究開發之推薦系統來驗證、比較「協同過濾」之推薦成效。由於本研究選擇「手機」作為商品推薦之標的物,因此,在設計「協同過濾」運算時,特別採用「性別-最適合男生使用」、「性別-最適合女生使用」、「外型」、「功能」、「娛樂」和「鈴聲」作為「協同過濾」之分群過濾變數。透過本研究希望可以：(1)發展一個適用在電子商務上的推薦機制;(2)探討「協同過濾」在線上商品推薦的效果;(3)探討在「協同過濾」方法中,採用不同分群變數時,其商品推薦成效是否有所差異性;(4)比較「協同過濾」與一般「票選排行榜」推薦機制的推薦成效;(5)探討當使用者具有不同屬性時,「協同過濾」方法所採用的分群變數,其商品推薦成效是否會受到影響。本研究主要結論有：(1)「協同過濾」方法在線上商品推薦上,確實有其成效;(2)透過不同分群變數來進行「協同過濾」,其商品推薦成效會有所不同;(3)「協同過濾」的商品推薦成效優於「票選排行榜」之推薦成效;(4)當使用者屬性不同時,「協同過濾」的商品推薦成效會受到影響。"
+                    },
+                    { 
+                        id: "p2004_7", 
+                        title: "結合IC卡之校園安全網頁系統之設計與實現", 
+                        area: "通訊網路技術", 
+                        keywords: "IC卡, WWW, AES, RSA, PHP", 
+                        author: "陳軒正, 楊中皇", 
+                        file: "20040005.pdf",
+                        abstract: "在危機四伏的網路世界中,一般的網頁系統已難以保護網頁資料及使用者資料的安全,因此本研究主要目的在設計一套校園安全網頁系統(Secure Campus-wide Website System),將學校網頁中較為機密或敏感的資料,透過資料庫及伺服器端網頁語言機制加密儲存起來,並依使用者權限加以分級管理。教職員每人發給一張IC卡,做為身份識別及加解密之用,如此充分保障電子資料傳遞與儲存之安全,也不怕因伺服器遭受入侵而洩漏機密資料。校園安全網頁系統主要採三層式架構設計,分別為伺服器層、資料庫層與使用者層,其中前兩者以自由軟體開發,支援多種作業系統,且軟體建置成本接近於零;使用者層採用Windows平台,方便一般使用者操作,並支援更多種類的IC卡讀卡機。本系統也使用著名的RSA及AES密碼學,以確保資料之安全。"
+                    },
+                    { 
+                        id: "p2004_8", 
+                        title: "以電力能源為基礎的蜂巢式階層管理", 
+                        area: "通訊網路技術", 
+                        keywords: "隱密式無線網路, 無基礎建設的網路結構, 蜂巢式階層管理架構, 行動代理人, 行動設備", 
+                        author: "王淑卿, 嚴國慶, 周雨韻", 
+                        file: "20040004.pdf",
+                        abstract: "近年來,由於人類對無線網路服務的需求愈來愈多,希望在任何時間、任何地點都能隨時取得新的資訊。因此,造就隨意式無線網路(Mobile Ad-Hoc Network, MANET)的誕生。在MANET環境下,如何善用有限的電力能源來建立以及穩定傳輸路徑是非常重要的課題。本研究以電力能源(power-based)為基礎來選派行動代理人(Mobile Agent, MA),透過行動代理人來改善蜂巢式階層管理架構,協助管理範圍中的行動設備(Mobile Host, MH),藉以期望減輕管理者負載並加強MANET的拓樸生命週期。"
+                    },
+                    { 
+                        id: "p2004_9", 
+                        title: "行動商務應用之動態使用者查詢系統", 
+                        area: "通訊網路技術", 
+                        keywords: "定位化服務, 動態查詢, 查詢系統, 行動服務", 
+                        author: "翁頌舜, 周尹禎", 
+                        file: "20040003.pdf",
+                        abstract: "本研究運用「移動中的物體」、「座標位置」與「時間」三個主軸,提出一個移動物體對靜態資料動態查詢的系統架構—動態使用者查詢系統(Dynamic User Query System)。在本系統中,所有靜止或移動中的物體都可以自行決定起始查詢地點的位置、速度、時間區間、距離及想查詢的項目,成為下查詢指令的使用者,並且可以支援：(1)多重動態查詢;(2)移動式查詢範圍;本研究的實驗應用領域為行動服務業,藉由動態使用者查詢系統支援移動中的物體依當時的需求進行動態查詢,以期獲得更精確的查詢結果。本研究實做領域為手機通訊,藉由手機的普遍性及可攜帶性,落實讓使用者動態查詢的行動服務目的。"
+                    },
+                    {
+                        id: "p2004_10",
+                        title: "Resilient and Robust Key Management for Mobile Ad Hoc Networks",
+                        area: "通訊網路技術",
+                        keywords: "Mobile ad hoc network, Security, Key management, Threshold cryptography",
+                        author: "Hua-Yi Lin, Yueh-Min Huang",
+                        file: "20040002.pdf",
+                        abstract: "A mobile ad hoc network (MANET) is an autonomous system of mobile routers and associated hosts connected by wireless links, the union of which forms an arbitrary graph. Security is a crucial requirement in MANET. However, the infrastructureless property of MANET makes key management a challenging task. In this paper, we propose a resilient and robust key management scheme for MANETs. The proposed scheme distributes the service of key management to a set of nodes based on threshold cryptography. Our scheme can tolerate the compromised nodes and maintains the network connectivity even when the network topology changes frequently. Performance analysis and simulation results demonstrate that the proposed scheme is efficient and robust against various attacks."
+                    },
+                    {
+                        id: "p2004_11",
+                        title: "行動網路環境下付款機制之研究",
+                        area: "通訊網路技術",
+                        keywords: "預付服務, 行動付款, 無線智慧網路",
+                        author: "羅濟群, 黃俊龍",
+                        file: "20040001.pdf",
+                        abstract: "由於無線區域網路的快速成長及普及,使得無線區域網路的管理變得日益重要。在本篇論文中,我們設計並實現了一個適用於校園環境的無線區域網路管理系統。本系統採用網頁介面,使得管理人員能夠在任何時間、任何地點透過網路瀏覽器對無線區域網路的基地台(AP)進行遠端監控及設定。系統功能包括使用者認證、流量監測、AP狀態查詢以及安全警示等等。透過此系統的建立,不但能有效提高無線區域網路的管理效率,更可保障校園網路的整體安全。"
+                    }
+                ]
+            }
+        };
 
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th style="width: 75%;">論文名稱 </th>
-                    <th style="width: 25%;">論文下載</th>
-                </tr>
-            </thead>
-            <tbody id="paper-list-body">
-                </tbody>
-        </table>
-        
-    </div>
-</div>
+        // 1. 切換分頁年份
+        function switchConference(year) {
+            // 清除現有頁籤的 active 狀態
+            document.querySelectorAll('.tabs-container .tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // 點活當前按鈕
+            const targetTab = document.getElementById(`tab-${year}`);
+            if (targetTab) targetTab.classList.add('active');
 
-<script>
-    // 論文資料庫
-    const paperDatabase = {
-        "2008": {
-            fullName: "第十九屆國際資訊管理學術研討會(2008)",
-            papers: [
-                { 
-                    id: "p2008_1", 
-                    title: "併購企業資訊系統整合自製與委外決策模式研究", 
-                    area: "資訊管理", 
-                    keywords: "併購企業, 資訊整合, 自製與委外決策模式", 
-                    author: "盧春芳, 黃世禎, 傅上珍", 
-                    file: "20080002.pdf",
-                    abstract: "併購為目前國內外流行的議題與企業經營的策略。成功的併購是企業能夠採 行有效的資源管理措施,在各個環節上相互配合,才能達到併購一加一大於二的 綜效。綜效意指善用資訊科技,為併購雙方架構出完善的溝通管道與創造獲利的 可能性,因此在併購企業中資訊整合將扮演極為重要的角色。然而併購會增添資 訊整合的複雜度,在資訊整合過程中秏時越長,對併購企業預期綜效產生的負面 影響也越大,獲得綜效的可能性將更低。本研究主要目的是提出企業併購環境下之資訊系統整合自製與委外的決策 模式,協助併購企業中的高階主管,對資訊系統整合自製與委外的決策做出理想 的判斷。本研究首先依據併購企業的綜效與成功關鍵因素,將資訊系統整合的需 求進行歸類,再由文獻分析彙整出在企業併購環境下資訊系統整合自製或委外應 考慮之構面與評估效標,進而建立併購企業資訊系統整合自製與委外的決策模 式。本研究亦經由個案公司的資訊系統整合三個案例來說明如何應用本研究所建 立的決策模式來輔助自製或委外決策的制訂。"
-                },
-                { 
-                    id: "p2008_2", 
-                    title: "知識鏈之探討: 以顧客、供應商與競爭者", 
-                    area: "資訊管理", 
-                    keywords: "知識鏈, 顧客知識, 供應商知識, 競爭者知識", 
-                    author: "曾淑美,吳俊儀", 
-                    file: "20080001.pdf",
-                    abstract: "由於通訊科技的迅速發展,帶來了經濟的改變,也提升了知識的重要性。許多企業為了增強在全球市場的競爭力,紛紛將許多例行的作業予以自動化或委外,而將員工的專業技能應用在更高價值的工作上,經由有效的利用個人知識與組織知識來產生新的工作能力,使員工得以從事更複雜、更精緻化的工作。同時企業也已認知到唯有持續不斷的創造與運用具競爭力的知識,企業才得以生存與成功。由此可見,知識對企業的重要性。但是很少實證研究企業在與所處的環境互動後,如何將吸收的資訊轉化為其自身的知識。因此,本研究擬以顧客、供應商與競爭者知識為例,藉由知識鏈模式,以質性研究之個案研究法來探討企業如何將外部取得的顧客、供應商與競爭者知識,透過企業的知識鏈活動,以過濾、 濃縮與萃取出有價值的企業內部知識,以提升企業之競爭力。"
-                }
-            ]
-        },
-        "2004": {
-            fullName: "第十五屆國際資訊管理學術研討會(2004)",
-            papers: [
-                { 
-                    id: "p2004_1", 
-                    title: "Web Service與定位技術的整合及應用", 
-                    area: "通訊網路技術", 
-                    keywords: "Context Awareness, Web Service, 位置資訊", 
-                    author: "卓忠志, 潘志勝, 古東明", 
-                    file: "20040011.pdf",
-                    abstract: "假如行動裝置可以知道持有人的位置座標,再加上預先建立的週遭環境資訊,就可以將目前的情境主動提供給使用者,這樣的人機互動就可以稱為 Context Awareness。因此位置資訊若能應用在 Context Awareness 上,將可以改善人類的生活。本研究試著將定位技術與 Web Service 結合,嘗試開發一成本低廉、適合室內外環境且易於與企業整合的位置服務系統。"
-                },
-                { 
-                    id: "p2004_2", 
-                    title: "無線區域網路之位置導向服務品質監測", 
-                    area: "通訊網路技術", 
-                    keywords: "無線區域網路, 服務品質, 效能管理, SNMP", 
-                    author: "陳彥錚, 陳秋彰", 
-                    file: "20040010.pdf",
-                    abstract: "近年來 IEEE 802.11 無線區域網路蓬勃發展,無線區域網路管理因而日益重要。無線區域網路之網路建置、無線通訊環境、使用者移動性有別於傳統有線網路,也因此無線區域網路實際的服務品質可能因基地台架設位置、周遭訊號干擾、使用者位置、使用者人數而有所不同,如何有效監測無線區域網路服務品質更是無線區域網路效能管理重要的研究課題。本論文提出一個位置導向的無線區域網路服務品質監測機制,利用無線區域網路基地台本身的 SNMP 網管功能,提供網管人員以 WWW 連線的方式在無線區域網路訊號涵蓋範圍依各區域位置進行訊號品質量測;此機制並利用對 IEEE 802.11 連線服務的即時監測,自動蒐集及分析一般使用者無線上網時的傳輸速率、訊號品質、訊號強度等連線資料。這些與位置及使用者相依的服務品質監測,是無線區域網路效能管理一大特色,依據這些監測資料,網管人員可進一步調整基地台位置、增減基地台數目、更動通訊頻道,以改善無線區域網路效能。"
-                },
-                { 
-                    id: "p2004_3", 
-                    title: "非集中式點對點環境下之快速與低頻寬需求之服務搜尋方法設計", 
-                    area: "通訊網路技術", 
-                    keywords: "點對點, 網域名稱伺服器, 非集中式點對點網路, 服務搜尋", 
-                    author: "陳青文, 楊朝翔, 顏佩詩", 
-                    file: "20040009.pdf",
-                    abstract: "隨著網際網路的發展與普及,在網路上搜尋所需的檔案或服務已經是一個普遍的現象。在廣闊網路環境中尋找所需的服務大都是透過集中式伺服器來取得服務,但集中式伺服器有潛在的缺點,如擴充性、額外的費用等等,但在點對點架構中因不具集中式伺服器所以無上述問題產生。儘管如此,點對點仍有許多問題存在,如提供服務者之所在位置和提供哪些服務等問題。在本篇我們採用非集中式的架構,經由網域名稱伺服器(Domain Name Server)原有的階層式架構,利用此特性來輔助尋找提供服務者,以達到快速搜尋目的。不僅如此,階層式的架構在融入點對點系統後,將能保證提供服務者是距離較近的點(peer)。在實際的模擬中可以確定,在點對點系統中,透過網域名稱伺服器的輔助,在整體的搜尋上,所需執行時間確實有明顯的縮短,對整體網路品質而言,少量封包的傳輸將不會造成網路的擁塞。由此可知,執行時間的縮短和降低大量封包的傳輸將可以讓點對點系統運作更暢,資料傳輸更快速。"
-                },
-                { 
-                    id: "p2004_4", 
-                    title: "在多重通道隨意網路上利用控制與資料通道頻寬比例使效能最大化之策略", 
-                    area: "通訊網路技術", 
-                    keywords: "無線隨意網路, 媒體存取層, 效能, 資料通道, 控制通道", 
-                    author: "陳青文, 方清宏, 賴俊良, 洪瑞聰", 
-                    file: "20040008.pdf",
-                    abstract: "在無線隨意網路 (Wireless Ad Hoc Network) 中媒體存取層 (MAC Layer) 的功用是負責把資料可靠並有效率地傳送出去。故在媒體存取層中建立一個可靠並且有效率的廣播通訊協定是很重要的。但如何維持高的效能 (Throughput) 卻是媒體存取層重要的考量。多重頻道 (Multiple Channel) 的好處是可以減輕媒體競爭和降低傳輸封包的碰撞機率,故近來有些學者提出用多重頻道來增加資料頻道 (Data Channel) 的頻寬以提高整體的效能。但卻沒考慮到控制信號 (Control Messages) 的超載問題即資料頻道增加到一個程度後效能就不會再提高反而會下降。因此我們針對資料頻道與控制頻道 (Control Channel) 的頻寬比例做深入的探討,提出了調整資料頻道與控制頻道的頻寬最佳比例,讓資料頻道使用率達到最佳進而提高效能。所以只要告知協定的定義就可透過我們的理論算出資料頻道與控制頻道之最佳比例,再以這比例為基礎不管應用在多重頻道或是其他減少碰撞的方法上,相信都能有最大的效能。經過我們的模擬結果,證使我們提出的方法能有最大的效能。"
-                },
-                { 
-                    id: "p2004_5", 
-                    title: "Misuse Detection Of New Malicious Emails", 
-                    area: "通訊網路技術", 
-                    keywords: "email virus detection, self-organizing maps, network security", 
-                    author: "Dong-Her Shih, Chun-Pin Chang, Hsiu-Sen Chiang", 
-                    file: "20040007.pdf",
-                    abstract: "A serious security threat today is malicious emails, arriving as email attachments. An email virus is an email that can infect other programs by modifying them to include a replication of it. When the infected emails are opened, the email virus spreads itself to others. Today's society has seen a dramatic increase in the use of emails. We present a novel approach to detect misuse emails by gathering and maintaining knowledge of the behavior of the malicious emails rather than anticipating attacks by unknown assailants. Our approach is based on building and maintaining a profile of the malicious emails through analyzing its static activity. Any new activity of the email is compared to the malicious profile to detect a potential misuse. Comparison results show that our proposed methods outperformed than anti-virus software."
-                },
-                { 
-                    id: "p2004_6", 
-                    title: "協同過濾技術在商品推薦系統上之應用與成效評估", 
-                    area: "通訊網路技術", 
-                    keywords: "電子商務, 消費者行為, 協同過濾, 推薦系統", 
-                    author: "吳肇銘, 金志聿, 林怡秀", 
-                    file: "20040006.pdf",
-                    abstract: "本研究嘗試將「協同過濾」技術實際應用在商品推薦上,希望藉由「協同過濾」方法有效地推薦出網站使用者所喜愛的商品,以減少消費者在網路上所浪費的時間。本研究之進行主要可以分成兩部分,第一部份乃是以「協同過濾」方法實際開發一套線上商品推薦系統;第二部分則是實施一實地實驗,透過本研究開發之推薦系統來驗證、比較「協同過濾」之推薦成效。由於本研究選擇「手機」作為商品推薦之標的物,因此,在設計「協同過濾」運算時,特別採用「性別-最適合男生使用」、「性別-最適合女生使用」、「外型」、「功能」、「娛樂」和「鈴聲」作為「協同過濾」之分群過濾變數。透過本研究希望可以：(1)發展一個適用在電子商務上的推薦機制;(2)探討「協同過濾」在線上商品推薦的效果;(3)探討在「協同過濾」方法中,採用不同分群變數時,其商品推薦成效是否有所差異性;(4)比較「協同過濾」與一般「票選排行榜」推薦機制的推薦成效;(5)探討當使用者具有不同屬性時,「協同過濾」方法所採用的分群變數,其商品推薦成效是否會受到影響。本研究主要結論有：(1)「協同過濾」方法在線上商品推薦上,確實有其成效;(2)透過不同分群變數來進行「協同過濾」,其商品推薦成效會有所不同;(3)「協同過濾」的商品推薦成效優於「票選排行榜」之推薦成效;(4)當使用者屬性不同時,「協同過濾」的商品推薦成效會受到影響。"
-                },
-                { 
-                    id: "p2004_7", 
-                    title: "結合IC卡之校園安全網頁系統之設計與實現", 
-                    area: "通訊網路技術", 
-                    keywords: "IC卡, WWW, AES, RSA, PHP", 
-                    author: "陳軒正, 楊中皇", 
-                    file: "20040005.pdf",
-                    abstract: "在危機四伏的網路世界中,一般的網頁系統已難以保護網頁資料及使用者資料的安全,因此本研究主要目的在設計一套校園安全網頁系統(Secure Campus-wide Website System),將學校網頁中較為機密或敏感的資料,透過資料庫及伺服器端網頁語言機制加密儲存起來,並依使用者權限加以分級管理。教職員每人發給一張IC卡,做為身份識別及加解密之用,如此充分保障電子資料傳遞與儲存之安全,也不怕因伺服器遭受入侵而洩漏機密資料。校園安全網頁系統主要採三層式架構設計,分別為伺服器層、資料庫層與使用者層,其中前兩者以自由軟體開發,支援多種作業系統,且軟體建置成本接近於零;使用者層採用Windows平台,方便一般使用者操作,並支援更多種類的IC卡讀卡機。本系統也使用著名的RSA及AES密碼學,以確保資料之安全。"
-                },
-                { 
-                    id: "p2004_8", 
-                    title: "以電力能源為基礎的蜂巢式階層管理", 
-                    area: "通訊網路技術", 
-                    keywords: "隱密式無線網路, 無基礎建設的網路結構, 蜂巢式階層管理架構, 行動代理人, 行動設備", 
-                    author: "王淑卿, 嚴國慶, 周雨韻", 
-                    file: "20040004.pdf",
-                    abstract: "近年來,由於人類對無線網路服務的需求愈來愈多,希望在任何時間、任何地點都能隨時取得新的資訊。因此,造就隨意式無線網路(Mobile Ad-Hoc Network, MANET)的誕生。在MANET環境下,如何善用有限的電力能源來建立以及穩定傳輸路徑是非常重要的課題。本研究以電力能源(power-based)為基礎來選派行動代理人(Mobile Agent, MA),透過行動代理人來改善蜂巢式階層管理架構,協助管理範圍中的行動設備(Mobile Host, MH),藉以期望減輕管理者負載並加強MANET的拓樸生命週期。"
-                },
-                { 
-                    id: "p2004_9", 
-                    title: "行動商務應用之動態使用者查詢系統", 
-                    area: "通訊網路技術", 
-                    keywords: "定位化服務, 動態查詢, 查詢系統, 行動服務", 
-                    author: "翁頌舜, 周尹禎", 
-                    file: "20040003.pdf",
-                    abstract: "本研究運用「移動中的物體」、「座標位置」與「時間」三個主軸,提出一個移動物體對靜態資料動態查詢的系統架構—動態使用者查詢系統(Dynamic User Query System)。在本系統中,所有靜止或移動中的物體都可以自行決定起始查詢地點的位置、速度、時間區間、距離及想查詢的項目,成為下查詢指令的使用者,並且可以支援：(1)多重動態查詢;(2)移動式查詢範圍;本研究的實驗應用領域為行動服務業,藉由動態使用者查詢系統支援移動中的物體依當時的需求進行動態查詢,以期獲得更精確的查詢結果。本研究實做領域為手機通訊,藉由手機的普遍性及可攜帶性,落實讓使用者動態查詢的行動服務目的。"
-                },
-                {
-                    id: "p2004_10",
-                    title: "Resilient and Robust Key Management for Mobile Ad Hoc Networks",
-                    area: "通訊網路技術",
-                    keywords: "Mobile ad hoc network, Security, Key management, Threshold cryptography",
-                    author: "Hua-Yi Lin, Yueh-Min Huang",
-                    file: "20040002.pdf",
-                    abstract: "A mobile ad hoc network (MANET) is an autonomous system of mobile routers and associated hosts connected by wireless links, the union of which forms an arbitrary graph. Security is a crucial requirement in MANET. However, the infrastructureless property of MANET makes key management a challenging task. In this paper, we propose a resilient and robust key management scheme for MANETs. The proposed scheme distributes the service of key management to a set of nodes based on threshold cryptography. Our scheme can tolerate the compromised nodes and maintains the network connectivity even when the network topology changes frequently. Performance analysis and simulation results demonstrate that the proposed scheme is efficient and robust against various attacks."
-                },
-                {
-                    id: "p2004_11",
-                    title: "行動網路環境下付款機制之研究",
-                    area: "通訊網路技術",
-                    keywords: "預付服務, 行動付款, 無線智慧網路",
-                    author: "羅濟群, 黃俊龍",
-                    file: "20040001.pdf",
-                    abstract: "由於無線區域網路的快速成長及普及,使得無線區域網路的管理變得日益重要。在本篇論文中,我們設計並實現了一個適用於校園環境的無線區域網路管理系統。本系統採用網頁介面,使得管理人員能夠在任何時間、任何地點透過網路瀏覽器對無線區域網路的基地台(AP)進行遠端監控及設定。系統功能包括使用者認證、流量監測、AP狀態查詢以及安全警示等等。透過此系統的建立,不但能有效提高無線區域網路的管理效率,更可保障校園網路的整體安全。"
-                }
-            ]
+            const targetData = paperDatabase[year];
+            if (!targetData) return;
+
+            // 動態更新面板內的副標題為大會全名
+            document.getElementById('dynamic-title').innerText = targetData.fullName;
+
+            const tbody = document.getElementById('paper-list-body');
+            tbody.innerHTML = ''; // 清空舊資料
+
+            // 開始遍歷並渲染資料
+            targetData.papers.forEach(paper => {
+                
+                // 動態切分關鍵字字串，包覆 CSS `.clickable-keyword` 樣式標籤
+                const keywordHTML = paper.keywords.split(',').map(kw => {
+                    return `<a href="#" class="clickable-keyword" onclick="alert('點擊關鍵字: ${kw.trim()}'); return false;">${kw.trim()}</a>`;
+                }).join(', ');
+
+                // 建立 主要論文列 <tr> (新增專屬 id 供 JS 控制標題行的動畫類別)
+                const mainTr = document.createElement('tr');
+                mainTr.id = `main-${paper.id}`;
+                mainTr.className = 'main-row';
+                mainTr.innerHTML = `
+                    <td>
+                        <span class="clickable-title" onclick="toggleAccordion('${paper.id}')">
+                             ${paper.title}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="#" class="btn-download" onclick="alert('開始下載: ${paper.file}'); return false;">
+                            📄 PDF 下載
+                        </a>
+                    </td>
+                `;
+
+                // 建立 展開細節列 <tr> (完全依循新 CSS 架構，乾淨無內置 Style)
+                const detailTr = document.createElement('tr');
+                detailTr.id = `detail-${paper.id}`;
+                detailTr.className = 'detail-row';
+                detailTr.innerHTML = `
+                    <td colspan="2">
+                        <div class="detail-box">
+                            <div class="detail-item">
+                                <span class="detail-label">應用領域：</span>
+                                <span class="detail-value">${paper.area}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">關鍵字：</span>
+                                <span class="detail-value">${keywordHTML}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">作者：</span>
+                                <span class="detail-value">${paper.author}</span>
+                            </div>
+                            <div class="abstract-box">
+                                <span class="abstract-title">摘要：</span>
+                                <p>${paper.abstract}</p>
+                            </div>
+                        </div>
+                    </td>
+                `;
+
+                tbody.appendChild(mainTr);
+                tbody.appendChild(detailTr);
+            });
         }
-    };
 
-    // 1. 切換分頁年份
-    function switchConference(year) {
-        // 【修正】將 .tab-btn 改為 .tab，對應 HTML 的 class
-        document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-        
-        const targetTab = document.getElementById(`tab-${year}`);
-        if (targetTab) targetTab.classList.add('active');
+        // 2. 手風琴展開與收合控制核心
+        function toggleAccordion(id) {
+            const targetMainRow = document.getElementById(`main-${id}`);
+            const targetDetailRow = document.getElementById(`detail-${id}`);
+            
+            // 檢查點擊的目標目前是不是已經處於開啟狀態
+            const isCurrentlyOpen = targetDetailRow.classList.contains('open');
 
-        const targetData = paperDatabase[year];
-        if (!targetData) return;
+            // 【重置機制】點擊時，先收合所有其他已展開的項目，確保畫面簡潔
+            document.querySelectorAll('.main-row').forEach(row => row.classList.remove('is-open'));
+            document.querySelectorAll('.detail-row').forEach(row => row.classList.remove('open'));
 
-        // 【新增】動態更新大標題
-        document.getElementById('dynamic-title').innerText = targetData.fullName;
-
-        const tbody = document.getElementById('paper-list-body');
-        tbody.innerHTML = '';
-
-        targetData.papers.forEach(paper => {
-            // 主要論文列
-            const mainTr = document.createElement('tr');
-            mainTr.className = 'main-row';
-            mainTr.innerHTML = `
-                <td>
-                    <span class="clickable-title" style="cursor:pointer;" onclick="toggleAccordion('${paper.id}')">
-                         ${paper.title}
-                    </span>
-                </td>
-                <td>
-                    <a href="#" class="btn-download" onclick="alert('開始下載: ${paper.file}'); return false;">
-                        📄 ${paper.file}
-                    </a>
-                </td>
-            `;
-
-            // 手風琴詳細內文面板
-            const detailTr = document.createElement('tr');
-            detailTr.id = `detail-${paper.id}`;
-            detailTr.className = 'detail-row';
-            // 預設先用 CSS 控制隱藏，或是此處保持原邏輯
-            detailTr.innerHTML = `
-                <td colspan="2">
-                    <div class="detail-box" style="padding: 10px; background-f9f9f9;">
-                        <div class="detail-item">
-                            <span class="detail-label"><strong>應用領域：</strong></span>
-                            <span class="detail-value">${paper.area}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label"><strong>關鍵字：</strong></span>
-                            <span class="detail-value">${paper.keywords}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label"><strong>作者：</strong></span>
-                            <span class="detail-value">${paper.author}</span>
-                        </div>
-                        <hr style="border:0; border-top:1px solid #eee; margin:10px 0;">
-                        <div class="abstract-box">
-                            <strong>摘要：</strong><br>
-                            <p style="text-align:justify; text-indent: 2em; margin-top:5px;">${paper.abstract}</p>
-                        </div>
-                    </div>
-                </td>
-            `;
-
-            tbody.appendChild(mainTr);
-            tbody.appendChild(detailTr);
-        });
-    }
-
-    // 2. 展開與收合控制
-    function toggleAccordion(id) {
-        const targetRow = document.getElementById(`detail-${id}`);
-        const isCurrentlyOpen = targetRow.classList.contains('open');
-
-        // 先收合網頁上其他打開的面板
-        document.querySelectorAll('.detail-row').forEach(row => {
-            row.classList.remove('open');
-            row.style.display = 'none'; // 如果 CSS 沒寫，可用 JS 強制輔助隱藏
-        });
-
-        // 再次點擊規則切換
-        if (!isCurrentlyOpen) {
-            targetRow.classList.add('open');
-            targetRow.style.display = 'table-row'; // 顯示 TR 元素
-        } else {
-            targetRow.classList.remove('open');
-            targetRow.style.display = 'none';
+            // 如果原本是收合的，此時就將它展開（連動主列的箭頭與細節列的顯示）
+            if (!isCurrentlyOpen) {
+                targetMainRow.classList.add('is-open');   // 觸發 CSS: 三角形 ▶ 旋轉 90 度
+                targetDetailRow.classList.add('open');     // 觸發 CSS: 細節行 display 轉為可視
+            }
         }
-    }
 
-    // 預設載入 2004 年資料展示
-    window.onload = function() {
-        switchConference('2004');
-    };
-</script>
+        // 初始化預設網頁載入時秀出 2004 年的論文清單
+        window.onload = function() {
+            switchConference('2004');
+        };
+    </script>
+
      </main>
 
 </body>

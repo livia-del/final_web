@@ -300,7 +300,7 @@ body {
     }
     
     .detail-row.open {
-        display: block;
+        display: block; /* 激活時顯示區塊堆疊 */
     }
     
     .detail-row td {
