@@ -29,10 +29,7 @@
             </div>
         </aside>
 
-        <!-- 右側內容 -->
         <main class="main">
-
-            <!-- 四個切換按鈕 -->
             <section class="tab-buttons">
                 <a href="new_all.html" class="tab">所有消息</a>
                 <a href="new_IM.html" class="tab">資訊管理學會</a>
@@ -41,88 +38,76 @@
             </section>
 
             <div class="tab-content">
-                <!-- 學會簡介 -->
-                <section class="intro">
-                    <h2>學會簡介</h2>
-                    <div class="small-line"></div>
-                    <p>
-                        本學會成立於民國九十年，以促進學術研究、提升學術水準、
-                        推動學術交流及服務社會為宗旨。<br>
-                        本會結合國內外學術資源，舉辦各類學術研討會、專題演講與研究計畫，
-                        致力於營造優質的學術環境。
-                    </p>
-                </section>
-
-                <!-- 四張卡片 -->
-                <section class="cards">
-                    <div class="card">
-                        <div class="icon">◎</div>
-                        <h3>宗旨</h3>
-                        <p>推動學術研究發展，促進學術交流合作，提升學術研究品質。</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">◉</div>
-                        <h3>願景</h3>
-                        <p>成為國內外具影響力的學術團體，引領學術創新。</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">◇</div>
-                        <h3>價值</h3>
-                        <p>專業、創新、合作、服務、永續發展。</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon">♙</div>
-                        <h3>對象</h3>
-                        <p>學者專家、研究人員、學生及對學術研究有興趣之社會人士。</p>
-                    </div>
-                </section>
-
-                <!-- 發展歷程 -->
-                <section class="timeline-section">
-                    <h2>發展歷程</h2>
-                    <div class="small-line"></div>
-
-                    <div class="timeline">
-                        <div class="item">
-                            <span></span>
-                            <h4>2001年</h4>
-                            <p>學會籌備成立，開始推動學術交流與合作。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2005年</h4>
-                            <p>正式立案成立，舉辦第一屆學術研討會。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2010年</h4>
-                            <p>擴大國際學術交流，建立合作關係。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2015年</h4>
-                            <p>成立學術期刊，推廣研究成果。</p>
-                        </div>
-
-                        <div class="item">
-                            <span></span>
-                            <h4>2020年</h4>
-                            <p>持續創新與成長，邁向國際化發展。</p>
+                <div class="filter-bar">
+                    <div class="filter-item search-box">
+                        <span class="filter-label">搜尋</span>
+                        <div class="search-input-wrap">
+                            <i data-lucide="search" class="icon-left"></i>
+                            <input type="text" id="searchInput" placeholder="搜尋標題、關鍵字...">
                         </div>
                     </div>
-                </section>
+
+                    <div class="filter-item date-range">
+                        <span class="filter-label">搜尋日期</span>
+                        <div class="date-input-group">
+                            <div class="date-input-wrapper">
+                                <input type="date" id="startDate" placeholder="開始日期">
+                            </div>
+                            <span class="date-separator">~</span>
+                            <div class="date-input-wrapper">
+                                <input type="date" id="endDate" placeholder="結束日期">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-item select-group">
+                        <span class="filter-label">排序方式</span>
+                        <div class="select-wrapper">
+                            <select id="sortSelect">
+                                <option value="latest">最新發布 (由新到舊)</option>
+                                <option value="oldest">最舊發布 (由舊到新)</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="icon-right"></i>
+                        </div>
+                    </div>
+                    <div class="filter-item reset-group">
+                        <span class="filter-label">重設</span>
+                        <button class="btn-reset" id="resetBtn">
+                            <i data-lucide="refresh-cw"></i>清除篩選
+                        </button>
+                    </div>
+                </div>
+
+                <div class="list-wrapper" id="newsListContainer">
+                </div>
+
+                <div id="cardTemplate" style="display: none;">
+                    <a href="#" class="card">
+                        <div class="card-main">
+                            <div class="category-block">
+                                <div class="badge-icon"><i data-lucide="users"></i></div>
+                                <span class="category-text">分類</span>
+                            </div>
+                            <div class="content-block">
+                                <h3 class="card-title">標題</h3>
+                                <p class="card-summary">摘要</p>
+                            </div>
+                        </div>
+                        <div class="card-side">
+                            <span class="date-info"><i data-lucide="calendar"></i><span
+                                    class="date-text">2026-01-01</span></span>
+                            <span class="more-link"><span>閱讀更多</span><i data-lucide="arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="pagination" id="paginationContainer"></div>
             </div>
-
         </main>
-
     </div>
 
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

@@ -496,6 +496,11 @@ body {
     box-shadow: 0 15px 35px rgba(30, 64, 175, 0.09);
 }
 
+.side-cards > a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
 .info-card {
     background: /*linear-gradient(135deg, #f0f7ff 0%, #e1effe 100%);*/ #ffffff;
@@ -509,8 +514,8 @@ body {
     background: /*linear-gradient(135deg, #fff2f4 0%, #ffe3e6 100%);*/ #ffffff;
     border: 1px solid rgba(255, 70, 101, 0.12);
 }
-.school-card .news-tag { background: #ff4665; color: white; }
-.school-card .small-btn { color: #ff4665; }
+.school-card .news-tag { background: #d51c3b; color: white; }
+.school-card .small-btn { color: #d51c3b; }
 
 
 .industry-card {
