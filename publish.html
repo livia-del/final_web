@@ -37,7 +37,7 @@
         <button type="button" class="tab-btn" id="tab-2008" onclick="switchConference('2008')">
             第十九屆國際資訊管理學術研討會(2008)
         </button>
-        <button type="button" class="tab-btn active" id="tab-2004" onclick="switchConference('2004')">
+        <button type="button" class="tab-btn" id="tab-2004" onclick="switchConference('2004')">
             第十五屆國際資訊管理學術研討會(2004)
         </button>
     </div>
@@ -51,7 +51,7 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th style="width: 75%;">論文名稱 </th>
+                    <th style="width: 75%;">論文名稱</th>
                     <th style="width: 25%;">論文下載</th>
                 </tr>
             </thead>
@@ -84,7 +84,7 @@
                     keywords: "知識鏈, 顧客知識, 供應商知識, 競爭者知識", 
                     author: "曾淑美, 吳俊儀", 
                     file: "20080001.pdf",
-                    abstract: "由於通訊科技的迅速發展,帶來了經濟的改變,也提升了知識的重要性。許多企業為了增強在全球市場的競爭力,紛紛將許多例行的作業予以自動化或委外,而將員工的專業技能應用在更高價值的工作上,經由有效的利用個人知識與組織知識來產生新的工作能力,使員工得以從事更複雜、更精緻化的工作。同時企業也已認知到唯有持續不斷的創造與運用具競爭力的知識,企業才得以生存與成功。由此可見,知識對企業的重要性。但是很少實證研究企業在與所處的環境互動後,如何將吸收的資訊轉化為其自身的知識。因此,本研究擬以顧客、供應商與競爭者知識為例,藉由知識鏈模式,以質性研究之個案研究法來探討企業如何將外部取得的顧客、供應商與競爭者知識,透過企業的知識鏈活動,以過濾、 濃縮與萃取出有價值的企業內部知識,以提升企業之競爭力。"
+                    abstract: "由於通訊科技的迅速發展,帶來了經濟的改變,也提升了知識的重要性。許多企業為了增強在全球市場的競爭力,紛紛將許多例行的作業予以自動化或委外,而將員工的專業技能應用在更高價值的工作上,經由有效的利用個人知識與組織知識來產生新的工作能力,使員工得以從事更複雜、更精緻化的工作。同時企業也已認知到唯有持續不斷的創造與運用具競爭力的知識,企業才得以生存與成功。由此可見,知識對企業的重要性。但是很少實證研究企業在與所處的環境互動後,如何將吸收的資訊轉化為其自身的知識。因此,本研究擬以顧客、供應商與競爭者知識為例,藉由知識鏈模式,以質性研究之個案研究法來探討企業如何將外部取得的顧客、供應商與競爭者知識,透過企業的知識鏈活動,以過濾、 濃縮與萃取出有價值的企業内部知識,以提升企業之競爭力。"
                 }
             ]
         },
@@ -152,7 +152,7 @@
                     keywords: "IC卡, WWW, AES, RSA, PHP", 
                     author: "陳軒正, 楊中皇", 
                     file: "20040005.pdf",
-                    abstract: "在危機四伏的網路世界中,一般的網頁系統已難以保護網頁資料及使用者資料的安全,因此本研究主要目的在設計一套校園安全網頁系統(Secure Campus-wide Website System),將學校網頁中較為機密或敏感的資料,透過資料庫及伺服器端網頁語言機制加密儲存起來,並依使用者權限加以分級管理。教職員每人發給一張IC卡,做為身份識別及加解密之用,如此充分保障電子資料傳遞與儲存之安全,也不怕因伺服器遭受入侵而洩漏機密資料。校園安全網頁系統主要採三層式架構設計,分別為伺服器層、資料庫層與使用者層,其中前兩者以自由軟體開發,支援多種作業系統,且軟體建置成本接近於零;使用者層採用Windows平台,方便一般使用者操作,並支援更多種類的IC卡讀卡機。本系統也使用著名的RSA及AES密碼學,以確保資料之安全。"
+                    abstract: "在危機四伏的網路世界中,一般的網頁系統已難意保護網頁資料及使用者資料的安全,因此本研究主要目的在設計一套校園安全網頁系統(Secure Campus-wide Website System),將學校網頁中較為機密或敏感的資料,透過資料庫及伺服器端網頁語言機制加密儲存起來,並依使用者權限加以分級管理。教職員每人發給一張IC卡,做為身份識別及加解密之用,如此充分保障電子資料傳遞與儲存之安全,也不怕因伺服器遭受入侵而洩漏機密資料。校園安全網頁系統主要採三層式架構設計,分別為伺服器層、資料庫層與使用者層,其中前兩者以自由軟體開發,支援多種作業系統,且軟體建置成本接近於零;使用者層採用Windows平台,方便一般使用者操作,並支援更多種類的IC卡讀卡機。本系統也使用著名的RSA及AES密碼學,以確保資料之安全。"
                 },
                 { 
                     id: "p2004_8", 
@@ -203,27 +203,47 @@
         const targetData = paperDatabase[year];
         if (!targetData) return;
 
+        // 連動修改標題
+        document.getElementById('dynamic-title').innerText = `${targetData.fullName} - 相關論文`;
+
         const tbody = document.getElementById('paper-list-body');
         tbody.innerHTML = '';
 
         targetData.papers.forEach(paper => {
+            // 【關鍵字處理】分割成陣列，給予獨立點擊範圍與樣式
+            const keywordHTML = paper.keywords.split(',').map(kw => {
+                const trimmedKw = kw.trim();
+                return `<span class="clickable-keyword" onclick="event.stopPropagation(); alert('點擊了關鍵字: ${trimmedKw}')">${trimmedKw}</span>`;
+            }).join(', ');
+
             // 主要論文列
             const mainTr = document.createElement('tr');
             mainTr.className = 'main-row';
+            mainTr.id = `main-${paper.id}`; // 配套給三角形箭頭旋轉的識別 ID
+            mainTr.style.cursor = 'pointer';
+            
+            // 綁定整列點擊
+            mainTr.onclick = function(e) {
+                // 如果點到的是下載按鈕或點擊關鍵字，則防呆不進行摺疊切換
+                if (!e.target.closest('.btn-download') && !e.target.closest('.clickable-keyword')) {
+                    toggleAccordion(paper.id);
+                }
+            };
+
             mainTr.innerHTML = `
                 <td>
-                    <span class="clickable-title" onclick="toggleAccordion('${paper.id}')">
+                    <span class="clickable-title">
                         ${paper.title}
                     </span>
                 </td>
                 <td>
-                    <a href="#" class="btn-download" onclick="alert('開始下載: ${paper.file}')">
+                    <a href="javascript:void(0);" class="btn-download" onclick="alert('開始下載: ${paper.file}')">
                         📄 ${paper.file}
                     </a>
                 </td>
             `;
 
-            // 手風琴詳細內文面板 (已修正對齊與標題名稱)
+            // 手風琴詳細內文面板
             const detailTr = document.createElement('tr');
             detailTr.id = `detail-${paper.id}`;
             detailTr.className = 'detail-row';
@@ -236,7 +256,7 @@
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">關鍵字：</span>
-                            <span class="detail-value">${paper.keywords}</span>
+                            <span class="detail-value">${keywordHTML}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">作者：</span>
@@ -258,25 +278,28 @@
     // 2. 展開與收合控制
     function toggleAccordion(id) {
         const targetRow = document.getElementById(`detail-${id}`);
+        const targetMainRow = document.getElementById(`main-${id}`);
+        if (!targetRow || !targetMainRow) return;
+        
         const isCurrentlyOpen = targetRow.classList.contains('open');
 
-        // 先收合網頁上其他打開的面板
-        document.querySelectorAll('.detail-row').forEach(row => {
-            row.classList.remove('open');
-        });
+        // 先收合網頁上其他打開的面板與主列箭頭類別
+        document.querySelectorAll('.detail-row').forEach(row => row.classList.remove('open'));
+        document.querySelectorAll('.main-row').forEach(row => row.classList.remove('is-open'));
 
-        // 再次點擊規則切換
+        // 如果原先不是開的，則將當前點擊列展開，並觸發箭頭旋轉
         if (!isCurrentlyOpen) {
             targetRow.classList.add('open');
+            targetMainRow.classList.add('is-open');
         }
     }
 
-    // 預設載入 2004 年資料展示
+    // 預設載入 2004 年展示
     window.onload = function() {
         switchConference('2004');
     };
 </script>
-        </main>
+</main>
 
     </div>
 

@@ -83,6 +83,8 @@ body {
     color: #1a73e8;
     border-top: 3px solid #1a73e8;
     padding-top: 12px;
+    position: relative; /* 確保遮擋下方面板的邊框破綻 */
+    z-index: 2;
 }
 
 /* ==========================================
@@ -90,10 +92,12 @@ body {
    ========================================== */
 .content-panel {
     background-color: #ffffff;
-    border-radius: 12px; /* 全圓角設計，切換分頁時邊角依然完美 */
+    border-radius: 12px; /* 全圓角設計 */
     border: 1px solid #cbd5e1;
     padding: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    position: relative;
+    z-index: 1;
 }
 
 .section-subtitle {
@@ -135,19 +139,36 @@ body {
     background-color: #f8fafc;
 }
 
-/* 藍色可點擊的論文名稱 */
+/* 藍色論文名稱（已修正：徹底去除點擊與懸停底線） */
 .clickable-title {
     color: #1a73e8;
-    text-decoration: none;
+    text-decoration: none; /* 預設無底線 */
     font-weight: bold;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     transition: color 0.2s;
 }
 
 .clickable-title:hover {
-    text-decoration: underline;
-    color: #114fa3;
+    text-decoration: none; /* 移除 hover 底線 */
+    color: #114fa3;        /* 僅透過顏色加深提供懸停反饋 */
+}
+
+/* 論文名稱前的三角形箭頭符號與旋轉動畫 */
+.main-row .clickable-title::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 12px;
+    color: #64748b; /* 預設深灰色 */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* 當該行處於開展狀態 (is-open) 時，箭頭旋轉 90 度並變色 */
+.main-row.is-open .clickable-title::before {
+    transform: rotate(90deg);
+    color: #1a73e8;
 }
 
 /* 紅標 PDF 下載按鈕 */
@@ -179,7 +200,6 @@ body {
     display: table-row; /* 激活時顯示 */
 }
 
-/* 針對展開行內的 td 設定獨立內距，推開灰色面板 */
 .detail-row td {
     padding: 0 16px 16px 16px;
     background-color: #ffffff;
@@ -203,7 +223,6 @@ body {
     margin-bottom: 0;
 }
 
-/* 寬度設為 auto，讓後方內容緊貼著冒號 */
 .detail-label {
     display: inline-block;
     font-weight: bold;
@@ -219,6 +238,20 @@ body {
     vertical-align: top;
 }
 
+/* 關鍵字可點擊樣式 (淺藍色) */
+.clickable-keyword {
+    color: #3b82f6;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.clickable-keyword:hover {
+    color: #1d4ed8;
+    text-decoration: underline; /* 僅關鍵字懸停出現底線 */
+}
+
 /* 論文本文摘要專用樣式 */
 .abstract-box {
     margin-top: 12px;
@@ -226,11 +259,10 @@ body {
     border-top: 1px dashed #cbd5e1;
     color: #4a5568;
     text-align: justify;
-    text-indent: 0; /* 取消空兩格，達成左邊完美對齊 */
+    text-indent: 0;
     line-height: 1.6;
 }
 
-/* 摘要粗體標題 */
 .abstract-title {
     font-weight: bold;
     color: #475569;
@@ -238,3 +270,49 @@ body {
     margin-bottom: 4px;
 }
 
+/* ==========================================
+   RWD 手機板自適應優化
+   ========================================== */
+@media (max-width: 768px) {
+    /* 破除表格排版，在手機上改為區塊垂直堆疊 */
+    .data-table, 
+    .data-table thead, 
+    .data-table tbody, 
+    .data-table th, 
+    .data-table tr, 
+    .data-table td { 
+        display: block; 
+        width: 100%;
+    }
+    
+    .data-table thead {
+        display: none; /* 手機版隱藏表頭 */
+    }
+    
+    .main-row {
+        padding: 12px 0;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .main-row td {
+        border: none;
+        padding: 6px 0;
+    }
+    
+    .detail-row.open {
+        display: block;
+    }
+    
+    .detail-row td {
+        padding: 0 0 12px 0;
+    }
+
+    .detail-label,
+    .detail-value {
+        display: block;
+        width: 100%;
+    }
+    .detail-label {
+        margin-bottom: 4px;
+    }
+}
