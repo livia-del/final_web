@@ -4,18 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於學會</title>
+    <title>會議資料</title>
     <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>中華民國資訊管理學會 CSIM</title>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <link rel="stylesheet" href="a.css">
-        <link rel="stylesheet" href="nav.css">
-    </head>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</head>
 
 <body>
     <div class="page">
@@ -40,106 +35,154 @@
         <!-- 右側內容 -->
         <main class="main">
 
-            <!-- Hero 圖片區 -->
-            <section class="hero">
-                <div class="hero-text">
-                    <h1>關於學會</h1>
-                    <div class="line"></div>
-                    <p>
-                        本會之宗旨為促進資訊管理學術之研究發展，推廣資訊管理學術之實務應用，
-                        整合資訊管理學術之理論及實務，與提昇資訊管理學域之教育水準。
-                    </p>
-                </div>
-            </section>
-
             <!-- 四個切換按鈕 -->
             <section class="tab-buttons">
                 <a href="about.html" class="tab">關於學會</a>
                 <a href="about1.html" class="tab">學會組織</a>
-                <a href="about2.html" class="tab">學術活動</a>
-                <a href="about3.html" class="tab active">會員專區</a>
+                <a href="about2.html" class="tab">申請入會</a>
+                <a href="about3.html" class="tab active">會議資料</a>
             </section>
 
-            <!-- 學會簡介 -->
-            <section class="intro">
-                <h2>學會簡介</h2>
-                <div class="small-line"></div>
-                <p>
-                    本學會成立於民國九十年，以促進學術研究、提升學術水準、
-                    推動學術交流及服務社會為宗旨。<br>
-                    本會結合國內外學術資源，舉辦各類學術研討會、專題演講與研究計畫，
-                    致力於營造優質的學術環境。
-                </p>
-            </section>
+            <div class="tab-content">
+                <!-- 學會簡介 -->
+                <section class="intro">
+                    <h2>會議資料</h2>
+                </section>
 
-            <!-- 四張卡片 -->
-            <section class="cards">
-                <div class="card">
-                    <div class="icon">◎</div>
-                    <h3>宗旨</h3>
-                    <p>推動學術研究發展，促進學術交流合作，提升學術研究品質。</p>
-                </div>
-
-                <div class="card">
-                    <div class="icon">◉</div>
-                    <h3>願景</h3>
-                    <p>成為國內外具影響力的學術團體，引領學術創新。</p>
-                </div>
-
-                <div class="card">
-                    <div class="icon">◇</div>
-                    <h3>價值</h3>
-                    <p>專業、創新、合作、服務、永續發展。</p>
-                </div>
-
-                <div class="card">
-                    <div class="icon">♙</div>
-                    <h3>對象</h3>
-                    <p>學者專家、研究人員、學生及對學術研究有興趣之社會人士。</p>
-                </div>
-            </section>
-
-            <!-- 發展歷程 -->
-            <section class="timeline-section">
-                <h2>發展歷程</h2>
-                <div class="small-line"></div>
-
-                <div class="timeline">
-                    <div class="item">
-                        <span></span>
-                        <h4>2001年</h4>
-                        <p>學會籌備成立，開始推動學術交流與合作。</p>
+                <!-- 四張卡片（手風琴式） -->
+                <section class="cards" aria-label="學會資訊手風琴">
+                    <div class="card card--static">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">會議記錄</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title">會議記錄</h3>
+                            <p style="color: #0284c7">▸第十三屆第二次理監事聯席會議會議紀錄(2013-10-14)</p>
+                            <p style="color: #0284c7">▸第十二屆第十一次監事會議會議紀錄</p>
+                            <p style="color: #0284c7">▸第十三屆第一次理監事聯席會議會議紀錄</p>
+                        </div>
                     </div>
 
-                    <div class="item">
-                        <span></span>
-                        <h4>2005年</h4>
-                        <p>正式立案成立，舉辦第一屆學術研討會。</p>
+                    <div class="card card--static">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">資料下載</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title">資料下載</h3>
+                            <p style="color: #0284c7">▸入會申請表-個人用-102年度</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 入會申請表-團體用-102年度</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 社團法人中華民國資訊管理學會會員代表大會代表選舉辦法</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 社團法人中華民國資訊管理學會傑出貢獻獎實施辦法</p>
+                            <p style="color: #0284c7">▸PDF icon 資訊管理學報編輯委員會組織章程（20120304修訂通過）</p>
+                            <p style="color: #0284c7">▸檔案 第13屆會員代表選舉出席暨投票委託書</p>
+                            <p style="color: #0284c7">▸檔案 中華民國資訊管理學會第十七屆理事、監事選舉公告，並自即日起開始接受候選人推薦登記</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第十七屆理事、監事候選人推薦登記表</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第十七屆會員代表選舉投票委託書</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第18屆理監事候選人推薦登記表</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 會員代表大會出席委託書</p>
+                        </div>
                     </div>
 
-                    <div class="item">
-                        <span></span>
-                        <h4>2010年</h4>
-                        <p>擴大國際學術交流，建立合作關係。</p>
-                    </div>
 
-                    <div class="item">
-                        <span></span>
-                        <h4>2015年</h4>
-                        <p>成立學術期刊，推廣研究成果。</p>
-                    </div>
+                </section>
 
-                    <div class="item">
-                        <span></span>
-                        <h4>2020年</h4>
-                        <p>持續創新與成長，邁向國際化發展。</p>
-                    </div>
-                </div>
-            </section>
+            </div>
 
         </main>
 
     </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make static cards' bodies visible
+            document.querySelectorAll('.card--static .card-body').forEach(b => {
+                b.hidden = false;
+                b.style.maxHeight = 'none';
+            });
+
+            // For non-static cards: clicking anywhere on the card toggles it.
+            const cards = document.querySelectorAll('.card:not(.card--static)');
+
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const body = card.querySelector('.card-body');
+
+                // ensure body starts collapsed
+                if (body) {
+                    if (body.hidden === false) {
+                        // keep as-is
+                    } else {
+                        body.hidden = true;
+                        body.style.maxHeight = null;
+                    }
+                }
+
+                // Click on the whole card toggles (but ignore clicks on interactive elements)
+                card.addEventListener('click', (e) => {
+                    // ignore clicks on interactive elements so links/buttons still work
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+
+                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // collapse this card
+                        card.classList.remove('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                    } else {
+                        // collapse others first
+                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                            c.classList.remove('expanded');
+                            const t = c.querySelector('.card-toggle');
+                            const b = c.querySelector('.card-body');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                        });
+
+                        // expand this one
+                        card.classList.add('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                    }
+                });
+
+                // keep toggle button behavior accessible and prevent double-handling
+                if (toggle) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            card.classList.remove('expanded');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            if (body) { body.style.maxHeight = null; body.hidden = true; }
+                        } else {
+                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                c.classList.remove('expanded');
+                                const t = c.querySelector('.card-toggle');
+                                const b = c.querySelector('.card-body');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                                if (b) { b.style.maxHeight = null; b.hidden = true; }
+                            });
+                            card.classList.add('expanded');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+
 
 </body>
 

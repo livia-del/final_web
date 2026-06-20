@@ -1,110 +1,188 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動折疊格子範例</title>
-    <style>
+    <title>會議資料</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
 
-        /* 2. 放置表格的展開容器 */
-        .accordion-content {
-            padding: 0 24px 24px 24px;
-            /* 留出內距 */
-        }
-
-        /* 3. 滾動格子本體（寬度 100% 自適應） */
-        .scroll-container {
-            width: 100%;
-            height: 250px;
-            /* 固定高度，超出就會有拉桿 */
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow-y: auto;
-            /* 開啟垂直捲軸 */
-            background-color: #ffffff;
-        }
-
-        /* 表格樣式 */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 15px;
-        }
-
-        /* 固定不動的表頭 */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            background-color: #2563eb;
-            /* 改為跟你網頁搭配的藍色系 */
-            color: white;
-            z-index: 10;
-        }
-
-        .sticky-header th {
-            padding: 14px 16px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        /* 資料列樣式 */
-        .data-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #334155;
-        }
-
-        /* 斑馬線效果 */
-        .data-table tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-    </style>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
 </head>
 
 <body>
+    <div class="page">
+        <aside class="sidebar">
+            <nav class="nav">
+                <a href="index.html" class="active">首頁</a>
+                <a href="#">最新消息</a>
+                <a href="#">關於學會</a>
+                <a href="#">研究與出版品</a>
+                <a href="#">學術活動</a>
+                <a href="#">聯絡我們</a>
+            </nav>
+            <div class="login-box">
+                <label>使用者名稱</label>
+                <input type="text" placeholder="請輸入使用者名稱">
+                <label>密碼</label>
+                <input type="password" placeholder="請輸入密碼">
+                <button>登入 / 註冊</button>
+            </div>
+        </aside>
 
-    <div class="accordion-content">
+        <!-- 右側內容 -->
+        <main class="main">
 
-        <div class="scroll-container">
-            <table class="data-table">
-                <thead class="sticky-header">
-                    <tr>
-                        <th>日期</th>
-                        <th>名稱</th>
-                        <th>備註</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2026-07-10</td>
-                        <td>夏季學術研討會</td>
-                        <td>第一會議廳</td>
-                    </tr>
-                    <tr>
-                        <td>2026-08-15</td>
-                        <td>專題演講：AI與學術研究</td>
-                        <td>線上視訊</td>
-                    </tr>
-                    <tr>
-                        <td>2026-09-20</td>
-                        <td>會員大會暨聚餐</td>
-                        <td>大飯店 B1</td>
-                    </tr>
-                    <tr>
-                        <td>2026-10-05</td>
-                        <td>論文投稿截止</td>
-                        <td>官方網站系統</td>
-                    </tr>
-                    <tr>
-                        <td>2026-11-12</td>
-                        <td>秋季成果發表展</td>
-                        <td>第二展覽館</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <!-- 四個切換按鈕 -->
+            <section class="tab-buttons">
+                <a href="about.html" class="tab active">關於學會</a>
+                <a href="about1.html" class="tab">學會組織</a>
+                <a href="about2.html" class="tab">申請入會</a>
+                <a href="about3.html" class="tab">會議資料</a>
+            </section>
+
+            <div class="tab-content">
+                <!-- 學會簡介 -->
+                <section class="intro">
+                    <h2>會議資料</h2>
+                </section>
+
+                <!-- 四張卡片（手風琴式） -->
+                <section class="cards" aria-label="學會資訊手風琴">
+                    <div class="card card--static">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">會議記錄</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title">會議記錄</h3>
+                            <p style="color: #0284c7">▸第十三屆第二次理監事聯席會議會議紀錄(2013-10-14)</p>
+                            <p style="color: #0284c7">▸第十二屆第十一次監事會議會議紀錄</p>
+                            <p style="color: #0284c7">▸第十三屆第一次理監事聯席會議會議紀錄</p>
+                        </div>
+                    </div>
+
+                    <div class="card card--static">
+                        <button class="card-toggle" aria-expanded="false">
+                            <span class="card-title">資料下載</span>
+                            <span class="card-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title">資料下載</h3>
+                            <p style="color: #0284c7">▸入會申請表-個人用-102年度</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 入會申請表-團體用-102年度</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 社團法人中華民國資訊管理學會會員代表大會代表選舉辦法</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 社團法人中華民國資訊管理學會傑出貢獻獎實施辦法</p>
+                            <p style="color: #0284c7">▸PDF icon 資訊管理學報編輯委員會組織章程（20120304修訂通過）</p>
+                            <p style="color: #0284c7">▸檔案 第13屆會員代表選舉出席暨投票委託書</p>
+                            <p style="color: #0284c7">▸檔案 中華民國資訊管理學會第十七屆理事、監事選舉公告，並自即日起開始接受候選人推薦登記</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第十七屆理事、監事候選人推薦登記表</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第十七屆會員代表選舉投票委託書</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 第18屆理監事候選人推薦登記表</p>
+                            <p style="color: #0284c7">▸Microsoft Office document icon 會員代表大會出席委託書</p>
+                        </div>
+                    </div>
+
+
+                </section>
+
+            </div>
+
+        </main>
+
     </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make static cards' bodies visible
+            document.querySelectorAll('.card--static .card-body').forEach(b => {
+                b.hidden = false;
+                b.style.maxHeight = 'none';
+            });
+
+            // For non-static cards: clicking anywhere on the card toggles it.
+            const cards = document.querySelectorAll('.card:not(.card--static)');
+
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const body = card.querySelector('.card-body');
+
+                // ensure body starts collapsed
+                if (body) {
+                    if (body.hidden === false) {
+                        // keep as-is
+                    } else {
+                        body.hidden = true;
+                        body.style.maxHeight = null;
+                    }
+                }
+
+                // Click on the whole card toggles (but ignore clicks on interactive elements)
+                card.addEventListener('click', (e) => {
+                    // ignore clicks on interactive elements so links/buttons still work
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+
+                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // collapse this card
+                        card.classList.remove('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                    } else {
+                        // collapse others first
+                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                            c.classList.remove('expanded');
+                            const t = c.querySelector('.card-toggle');
+                            const b = c.querySelector('.card-body');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                        });
+
+                        // expand this one
+                        card.classList.add('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                    }
+                });
+
+                // keep toggle button behavior accessible and prevent double-handling
+                if (toggle) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            card.classList.remove('expanded');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            if (body) { body.style.maxHeight = null; body.hidden = true; }
+                        } else {
+                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                c.classList.remove('expanded');
+                                const t = c.querySelector('.card-toggle');
+                                const b = c.querySelector('.card-body');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                                if (b) { b.style.maxHeight = null; b.hidden = true; }
+                            });
+                            card.classList.add('expanded');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+
 
 </body>
 

@@ -23,6 +23,7 @@ body {
 
 /* 側邊欄 (雖然 HTML 內有 sidebar，但原 CSS 漏掉寬度等基礎設定，這裡保留結構位置) */
 .sidebar {
+    width: 260px;
     /* 依據你的 .main margin-left，側邊欄寬度應為 260px */
 }
 
@@ -149,6 +150,17 @@ body {
     box-shadow: 0 6px 16px rgba(0, 40, 100, 0.04);
 }
 
+/* indicate the card is clickable when it's interactive (not static) */
+.card:not(.card--static) {
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card:not(.card--static):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 40, 100, 0.06);
+}
+
 .card-toggle {
     width: 100%;
     text-align: left;
@@ -188,6 +200,135 @@ body {
     opacity: 1;
 }
 
+/* static cards: always show body and hide toggle */
+.card--static .card-body { max-height: none; opacity: 1; padding-top: 18px; }
+.card--static .card-toggle { display: none; }
+.card--static .card-title { display: block; margin-top: 6px; margin-bottom: 10px; font-size: 20px; }
+
+.icon {
+    font-size: 42px;
+    color: #005bea;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #06245c;
+}
+
+/* Ensure images inside cards fit and are cropped nicely */
+.card-img {
+    width: 100%;
+    height: auto; /* show full image without cropping */
+    object-fit: contain; /* scale the image to fit, no crop */
+    object-position: center center;
+    display: block;
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 800px; /* prevent extremely tall images from pushing layout too far */
+}
+
+@media (max-width: 768px) {
+    .card-img { max-height: 400px; }
+}
+
+/* larger-but-not-cropped modifier for key images (e.g., pic5, pic6) */
+.card-img--large {
+    max-height: 1100px; /* bigger but still constrained */
+    object-fit: contain; /* ensure the whole image is visible */
+}
+
+@media (max-width: 768px) {
+    .card-img--large { max-height: 600px; }
+}
+
+.tab {
+    flex: 1 1 0;
+    display: inline-block;
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #172554;
+    cursor: pointer;
+    position: relative;
+    background: #f3f7fb;
+    /* light tab background */
+    border: 1px solid #d5dfed;
+    border-bottom: 0;
+    /* visually connect to content */
+    border-radius: 10px 10px 0px 0px;
+    /* will set corners on first/last */
+    box-shadow: 0 2px 0 rgba(0, 30, 90, 0.03);
+}
+
+/* separator line between tabs (single-pixel) */
+.tab:not(:first-child) {
+    border-left: 1px solid #d5dfed;
+}
+
+/* rounded corners on the leftmost and rightmost tabs */
+.tab:first-child { border-radius: 10px 10px 0 0; }
+.tab:last-child { border-radius: 10px 10px 0 0; }
+
+/* Horizontal timeline: prefer flex + overflow for slider control */
+.timeline {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 10px 12px 6px 12px;
+    margin-top: 35px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: #b9d3f5;
+}
+
+.timeline .item { min-width: 220px; background: #f7f7f7; border-radius: 6px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+
+/* slider styles */
+.timeline-slider-wrap { margin-top: 10px; padding: 0 6px; }
+.timeline-range { width: 100%; }
+
+.item {
+    position: relative;
+    padding-top: 40px;
+}
+
+.item span {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background: #006eff;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 8px #e3f0ff;
+}
+
+.item h4 {
+    font-size: 20px;
+    color: #005bea;
+    margin-bottom: 10px;
+}
+
+.item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #222;
+}
+
+/* 2. 放置表格的展開容器 */
 /* ==========================================
    7. 歷任理事長表格區 (Table Container)
    ========================================== */
@@ -197,9 +338,12 @@ body {
 
 .scroll-container {
     width: 100%;
+    /* make default scroll-container flexible; specific card instances can override */
+    height: auto;
     height: 250px; /* 固定高度，超出時觸發拉桿 */
     border: 1px solid #e2e8f0;
     border-radius: 8px;
+    overflow: visible;
     overflow-y: auto;
     background-color: #ffffff;
 }
@@ -209,6 +353,9 @@ body {
     border-collapse: collapse;
     font-size: 15px;
 }
+
+/* When the table is inside a card (活動), allow full height and visible overflow */
+.card .scroll-container .data-table { width: 100%; }
 
 .sticky-header {
     position: sticky;
