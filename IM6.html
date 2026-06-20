@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【會員代表選舉公告】有關社團法人中華民國資訊管理學會第十八屆會員代表「南區」選票備註標示錯誤之更正說明</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="nav.css">
+
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</head>
+
+<body>
+    <div class="page">
+        <aside class="sidebar">
+            <nav class="nav">
+                <a href="index.html" class="active">首頁</a>
+                <a href="#">最新消息</a>
+                <a href="#">關於學會</a>
+                <a href="#">研究與出版品</a>
+                <a href="#">學術活動</a>
+                <a href="#">聯絡我們</a>
+            </nav>
+            <div class="login-box">
+                <label>使用者名稱</label>
+                <input type="text" placeholder="請輸入使用者名稱">
+                <label>密碼</label>
+                <input type="password" placeholder="請輸入密碼">
+                <button>登入 / 註冊</button>
+            </div>
+        </aside>
+
+        <!-- 右側內容 -->
+        <main class="main">
+
+            <section class="announcement-page">
+
+                <div class="announcement-tools">
+                    <a href="#" class="back-link">←　返回消息列表</a>
+
+                    <div class="tool-buttons">
+                        <button>⎙</button>
+                        <button>⌯</button>
+                    </div>
+                </div>
+
+                <h1>【會員代表選舉公告】有關社團法人中華民國資訊管理學會第十八屆會員代表「南區」選票備註標示錯誤之更正說明</h1>
+
+                <div class="announcement-meta">
+                    <span>由 csim 在 二, 2025/06/10 - 14:18 發表</span>
+                </div>
+
+                <span class="category-tag">學術活動</span>
+
+                <div class="line"></div>
+
+                <div class="announcement-content">
+                    <!--start-->
+                    <p>主旨：有關社團法人中華民國資訊管理學會第十八屆會員代表「南區」選票備註標示錯誤之更正說明</p>
+                    <p>公告事項：</p>
+
+                    <h3>一、本學會於第十八屆會員代表選舉期間，已依程序寄發通訊投票選票予會員辦理投票事宜。經查，部分「
+                        南區」通訊選票之備註說明欄誤植為「北區」，係因印製階段標示錯誤所致。儘管選票標題與候選人名單皆
+                        正確標示為「南區」，為確保選務之公正透明、釐清疑義並保障會員投票權益，特此說明如下：
+                    </h3>
+                    <p>(一)該批選票之選票標題與候選人名單均正確為「南區」，備註誤植僅屬標示錯誤，不影響辨識。</p>
+                    <p>(二)本次備註欄標示錯誤不影響選票之有效性與內容，亦不影響候選人資訊及投票效力。</p>
+                    <p>(三)秘書處於開票作業時，將依選票標題與候選人名單確認各區歸屬，不以備註欄為唯一判定依據。</p>
+                    <p>(四)請會員依原定方式填寫並寄回選票，該選票將正常列入計票，視為有效票。</p>
+                    <h3>二、為維持選務公平性與透明度，本會亦將於開票作業中製作紀錄，載明此項處理，並由監票人員共同確認選票有效性。</h3>
+                    <h3>三、本次選舉相關公告，登載於資管學會網頁(http://www.csim.org.tw/ )。</h3>
+                    <h3>四、聯絡人：鄭哲斌秘書長(Email: james@mail.tku.edu.tw 及電話：02-26215656分機2865)。</h3>
+                    <p>社團法人中華民國資訊管理學會</p>
+                    <!--end-->
+                </div>
+
+                <div class="article-nav">
+
+                    <a href="IM5.html">
+                        <small>← 上一篇</small>
+                        <span>【會員代表當選公告】社團法人中華民國資訊管理學會第十八屆會員代表選舉 會員代表當選名單</span>
+                    </a>
+
+                    <a href="IM7.html" class="next">
+                        <small>下一篇 →</small>
+                        <span>【會員代表選舉公告】 第十八屆會員代表候選人登記(含聯署)事宜</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <script>
+        // Accordion behavior for about page cards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Make static cards' bodies visible
+            document.querySelectorAll('.card--static .card-body').forEach(b => {
+                b.hidden = false;
+                b.style.maxHeight = 'none';
+            });
+
+            // For non-static cards: clicking anywhere on the card toggles it.
+            const cards = document.querySelectorAll('.card:not(.card--static)');
+
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const body = card.querySelector('.card-body');
+
+                // ensure body starts collapsed
+                if (body) {
+                    if (body.hidden === false) {
+                        // keep as-is
+                    } else {
+                        body.hidden = true;
+                        body.style.maxHeight = null;
+                    }
+                }
+
+                // Click on the whole card toggles (but ignore clicks on interactive elements)
+                card.addEventListener('click', (e) => {
+                    // ignore clicks on interactive elements so links/buttons still work
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+
+                    const isExpanded = toggle && toggle.getAttribute('aria-expanded') === 'true';
+
+                    if (isExpanded) {
+                        // collapse this card
+                        card.classList.remove('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                        if (body) { body.style.maxHeight = null; body.hidden = true; }
+                    } else {
+                        // collapse others first
+                        document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                            c.classList.remove('expanded');
+                            const t = c.querySelector('.card-toggle');
+                            const b = c.querySelector('.card-body');
+                            if (t) t.setAttribute('aria-expanded', 'false');
+                            if (b) { b.style.maxHeight = null; b.hidden = true; }
+                        });
+
+                        // expand this one
+                        card.classList.add('expanded');
+                        if (toggle) toggle.setAttribute('aria-expanded', 'true');
+                        if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                    }
+                });
+
+                // keep toggle button behavior accessible and prevent double-handling
+                if (toggle) {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            card.classList.remove('expanded');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            if (body) { body.style.maxHeight = null; body.hidden = true; }
+                        } else {
+                            document.querySelectorAll('.card:not(.card--static)').forEach(c => {
+                                c.classList.remove('expanded');
+                                const t = c.querySelector('.card-toggle');
+                                const b = c.querySelector('.card-body');
+                                if (t) t.setAttribute('aria-expanded', 'false');
+                                if (b) { b.style.maxHeight = null; b.hidden = true; }
+                            });
+                            card.classList.add('expanded');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            if (body) { body.hidden = false; body.style.maxHeight = body.scrollHeight + 'px'; }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

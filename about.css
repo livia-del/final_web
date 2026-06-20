@@ -48,7 +48,8 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: 0;
-    margin-bottom: -1px; /* 讓按鈕列貼底，蓋掉下方內容框的頂線 */
+    margin-bottom: -1px;
+    /* 讓按鈕列貼底，蓋掉下方內容框的頂線 */
     position: relative;
     z-index: 2;
 }
@@ -124,7 +125,8 @@ body {
     height: 4px;
     background: #1479ff;
     border-radius: 99px;
-    margin: 14px auto 18px; /* 置中對齊 */
+    margin: 14px auto 18px;
+    /* 置中對齊 */
 }
 
 .intro p {
@@ -201,9 +203,22 @@ body {
 }
 
 /* static cards: always show body and hide toggle */
-.card--static .card-body { max-height: none; opacity: 1; padding-top: 18px; }
-.card--static .card-toggle { display: none; }
-.card--static .card-title { display: block; margin-top: 6px; margin-bottom: 10px; font-size: 20px; }
+.card--static .card-body {
+    max-height: none;
+    opacity: 1;
+    padding-top: 18px;
+}
+
+.card--static .card-toggle {
+    display: none;
+}
+
+.card--static .card-title {
+    display: block;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
 
 .icon {
     font-size: 42px;
@@ -220,27 +235,36 @@ body {
 /* Ensure images inside cards fit and are cropped nicely */
 .card-img {
     width: 100%;
-    height: auto; /* show full image without cropping */
-    object-fit: contain; /* scale the image to fit, no crop */
+    height: auto;
+    /* show full image without cropping */
+    object-fit: contain;
+    /* scale the image to fit, no crop */
     object-position: center center;
     display: block;
     border-radius: 8px;
     max-width: 100%;
-    max-height: 800px; /* prevent extremely tall images from pushing layout too far */
+    max-height: 800px;
+    /* prevent extremely tall images from pushing layout too far */
 }
 
 @media (max-width: 768px) {
-    .card-img { max-height: 400px; }
+    .card-img {
+        max-height: 400px;
+    }
 }
 
 /* larger-but-not-cropped modifier for key images (e.g., pic5, pic6) */
 .card-img--large {
-    max-height: 1100px; /* bigger but still constrained */
-    object-fit: contain; /* ensure the whole image is visible */
+    max-height: 1100px;
+    /* bigger but still constrained */
+    object-fit: contain;
+    /* ensure the whole image is visible */
 }
 
 @media (max-width: 768px) {
-    .card-img--large { max-height: 600px; }
+    .card-img--large {
+        max-height: 600px;
+    }
 }
 
 .tab {
@@ -270,8 +294,13 @@ body {
 }
 
 /* rounded corners on the leftmost and rightmost tabs */
-.tab:first-child { border-radius: 10px 10px 0 0; }
-.tab:last-child { border-radius: 10px 10px 0 0; }
+.tab:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.tab:last-child {
+    border-radius: 10px 10px 0 0;
+}
 
 /* Horizontal timeline: prefer flex + overflow for slider control */
 .timeline {
@@ -293,11 +322,23 @@ body {
     background: #b9d3f5;
 }
 
-.timeline .item { min-width: 220px; background: #f7f7f7; border-radius: 6px; padding: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.timeline .item {
+    min-width: 220px;
+    background: #f7f7f7;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
 
 /* slider styles */
-.timeline-slider-wrap { margin-top: 10px; padding: 0 6px; }
-.timeline-range { width: 100%; }
+.timeline-slider-wrap {
+    margin-top: 10px;
+    padding: 0 6px;
+}
+
+.timeline-range {
+    width: 100%;
+}
 
 .item {
     position: relative;
@@ -340,7 +381,8 @@ body {
     width: 100%;
     /* make default scroll-container flexible; specific card instances can override */
     height: auto;
-    height: 250px; /* 固定高度，超出時觸發拉桿 */
+    height: 250px;
+    /* 固定高度，超出時觸發拉桿 */
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     overflow: visible;
@@ -355,7 +397,9 @@ body {
 }
 
 /* When the table is inside a card (活動), allow full height and visible overflow */
-.card .scroll-container .data-table { width: 100%; }
+.card .scroll-container .data-table {
+    width: 100%;
+}
 
 .sticky-header {
     position: sticky;
@@ -412,13 +456,15 @@ body {
         margin-left: 0;
         width: 100%;
         padding: 32px;
-        position: static; /* 手機端取消 fixed 固定定位，改回正常流動 */
+        position: static;
+        /* 手機端取消 fixed 固定定位，改回正常流動 */
         height: auto;
     }
 
     .tab-buttons {
         position: static;
-        display: block; /* 手機上直式排列 */
+        display: block;
+        /* 手機上直式排列 */
         height: auto;
         padding: 18px 24px;
         background: transparent;
@@ -429,10 +475,210 @@ body {
         display: block;
         padding: 14px 0;
         border-bottom: 1px solid #eef3fb;
-        border-radius: 0; /* 移除圓角 */
+        border-radius: 0;
+        /* 移除圓角 */
     }
 
     .cards {
         padding: 25px;
     }
+}
+
+.main {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding: 30px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+}
+
+.announcement-page {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    background: #ffffff;
+    border: 1px solid #d7e3f1;
+    border-radius: 24px;
+    padding: 40px 55px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 32px rgba(16, 35, 68, 0.06);
+}
+
+.announcement-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-link {
+    color: #006be6;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.tool-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.tool-buttons button {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #d7e3f1;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    background: #fff;
+    color: #102344;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.announcement-page h1 {
+    margin: 32px 0 12px;
+    font-size: 32px;
+    color: #102344;
+    letter-spacing: 1px;
+}
+
+.announcement-meta {
+    display: flex;
+    gap: 22px;
+    color: #334762;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #dceeff;
+    color: #0070df;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.line {
+    height: 1px;
+    background: #d9e3ef;
+    margin: 24px 0;
+}
+
+.announcement-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #172a45;
+}
+
+.announcement-content p {
+    margin: 12px 0;
+}
+
+.announcement-content h3 {
+    margin: 22px 0 8px;
+    padding-left: 12px;
+    border-left: 5px solid #0074e8;
+    color: #0066d4;
+    font-size: 17px;
+}
+
+.announcement-content ul {
+    margin: 6px 0 18px 24px;
+    padding: 0;
+}
+
+.file-card {
+    margin-top: 28px;
+    border: 1px solid #d5e1ef;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafcff;
+}
+
+.file-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.file-icon {
+    font-size: 28px;
+    color: #102344;
+}
+
+.file-card strong {
+    display: block;
+    color: #102344;
+}
+
+.file-card span {
+    display: block;
+    color: #78899e;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.download-btn {
+    border: none;
+    border-radius: 999px;
+    background: #006be6;
+    color: white;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.article-nav {
+    margin-top: 28px;
+    display: flex;
+    gap: 20px;
+}
+
+.article-nav a {
+    flex: 1;
+    border: 1px solid #dce5ef;
+    border-radius: 20px;
+    padding: 22px;
+    background: #fafcff;
+    text-decoration: none;
+    transition: 0.25s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+.article-nav a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(16, 35, 68, 0.08);
+}
+
+.article-nav small {
+    display: block;
+    color: #7b8796;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.article-nav span {
+    color: #12315f;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.article-nav .next {
+    text-align: left;
 }
