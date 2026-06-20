@@ -73,7 +73,10 @@ body {
     transition: all 0.2s ease;
 }
 
-
+.tab-btn:hover {
+    background-color: #cbd5e1;
+    color: #1a73e8;
+}
 
 .tab-btn.active {
     background-color: #ffffff;
@@ -136,7 +139,7 @@ body {
     background-color: #f8fafc;
 }
 
-/* 藍色論文名稱（無點擊與懸停底線） */
+/* 藍色論文名稱（已修正：徹底去除點擊與懸停底線） */
 .clickable-title {
     color: #1a73e8;
     text-decoration: none; /* 預設無底線 */
@@ -235,18 +238,18 @@ body {
     vertical-align: top;
 }
 
-/* 關鍵字樣式：已修正為純文字黑色，完全移除點擊、變色與懸停底線效果 */
+/* 關鍵字可點擊樣式 (淺藍色) */
 .clickable-keyword {
-    color: #334155;        /* 改回與標準內文相同的深黑色/深灰色 */
-    cursor: default;       /* 游標維持一般箭頭，不變手指 */
-    text-decoration: none; /* 確保無底線 */
+    color: #3b82f6;
+    cursor: pointer;
+    text-decoration: none;
     font-weight: 500;
-    transition: none;      /* 移除過渡動畫 */
+    transition: color 0.2s, text-decoration 0.2s;
 }
 
 .clickable-keyword:hover {
-    color: #334155;        /* 懸停不變色 */
-    text-decoration: none; /* 懸停不出現底線 */
+    color: #1d4ed8;
+    text-decoration: underline; /* 僅關鍵字懸停出現底線 */
 }
 
 /* 論文本文摘要專用樣式 */
@@ -267,21 +270,11 @@ body {
     margin-bottom: 4px;
 }
 
-.tab-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0;
-    padding: 0;           /* 💡 把底部 padding 設為 0，讓按鈕貼底 */
-    margin-bottom: -1px;  /* 💡 關鍵：讓整個按鈕列的外殼往下一像素，去疊在下方的邊框上 */
-    position: relative;
-    z-index: 2;           /* 💡 確保按鈕排在下方框框的上面，才能蓋掉線 */
-}
-
 /* ==========================================
    RWD 手機板自適應優化
    ========================================== */
 @media (max-width: 768px) {
+    /* 破除表格排版，在手機上改為區塊垂直堆疊 */
     .data-table, 
     .data-table thead, 
     .data-table tbody, 
@@ -293,7 +286,7 @@ body {
     }
     
     .data-table thead {
-        display: none;
+        display: none; /* 手機版隱藏表頭 */
     }
     
     .main-row {
