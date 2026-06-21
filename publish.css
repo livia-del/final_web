@@ -1,5 +1,6 @@
-/* 全域設定 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap');
+/* ==========================================
+   1. 全域初始化 & 基礎設定
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,20 +13,30 @@ body {
     color: #1f2937;
 }
 
+/* ==========================================
+   2. 版面主要外殼 (Layout)
+   ========================================== */
 .page {
     display: flex;
     min-height: 100vh;
 }
 
-/* main */
-.main {
-    margin-left: 260px; 
-    /* 提示：原本是 padding: 32px; 
-       請改用四個數字的寫法（順序是：上 右 下 左），特別把第四個數字（左邊）調小！ */
-    padding: 20px 20px 20px 10px; 
-    width: calc(100% - 260px);
+/* 側邊欄 (雖然 HTML 內有 sidebar，但原 CSS 漏掉寬度等基礎設定，這裡保留結構位置) */
+.sidebar {
+    width: 260px;
+    /* 依據你的 .main margin-left，側邊欄寬度應為 260px */
 }
 
+.main {
+    margin-left: 260px;
+    padding: 32px;
+    width: calc(100% - 260px);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
 
 
 

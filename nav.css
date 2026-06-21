@@ -111,6 +111,6 @@ body {
     transition: background-color 0.3s, transform 0.3s; /* 增加動畫感 */
 }
 .back-to-top:hover {
-    background-color: #0077ff; /* 變深的金色 */
+    background-color: #0077ff; 
     transform: scale(1.1);    /* 稍微放大一點 */
 }

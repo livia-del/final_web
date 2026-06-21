@@ -1,0 +1,297 @@
+/* ==========================================
+   1. 全域初始化 & 基礎設定
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f9ff, #eef4ff);
+    color: #1f2937;
+}
+
+/* ==========================================
+   2. 版面主要外殼 (Layout)
+   ========================================== */
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 側邊欄 (雖然 HTML 內有 sidebar，但原 CSS 漏掉寬度等基礎設定，這裡保留結構位置) */
+.sidebar {
+    width: 260px;
+    /* 依據你的 .main margin-left，側邊欄寬度應為 260px */
+}
+
+.main {
+    margin-left: 260px;
+    padding: 32px;
+    width: calc(100% - 260px);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.card--static .card-body {
+    max-height: none;
+    opacity: 1;
+    padding-top: 18px;
+}
+
+.card--static .card-toggle {
+    display: none;
+}
+
+.card--static .card-title {
+    display: block;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.card-img {
+    width: 100%;
+    height: auto; /* show full image without cropping */
+    object-fit: contain; /* scale the image to fit, no crop */
+    height: auto;
+    /* show full image without cropping */
+    object-fit: contain;
+    /* scale the image to fit, no crop */
+    object-position: center center;
+    display: block;
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 800px; /* prevent extremely tall images from pushing layout too far */
+    max-height: 800px;
+    /* prevent extremely tall images from pushing layout too far */
+}
+.main {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding: 30px;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+}
+
+.announcement-page {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    background: #ffffff;
+    border: 1px solid #d7e3f1;
+    border-radius: 24px;
+    padding: 40px 55px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 32px rgba(16, 35, 68, 0.06);
+}
+
+.announcement-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-link {
+    color: #006be6;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.tool-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.tool-buttons button {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #d7e3f1;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    background: #fff;
+    color: #102344;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.announcement-page h1 {
+    margin: 32px 0 12px;
+    font-size: 32px;
+    color: #102344;
+    letter-spacing: 1px;
+}
+
+.announcement-meta {
+    display: flex;
+    gap: 22px;
+    color: #334762;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #dceeff;
+    color: #0070df;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.line {
+    height: 1px;
+    background: #d9e3ef;
+    margin: 24px 0;
+}
+
+.announcement-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #172a45;
+}
+
+.announcement-content p {
+    margin: 12px 0;
+}
+
+.announcement-content h3 {
+    margin: 22px 0 8px;
+    padding-left: 12px;
+    border-left: 5px solid #0074e8;
+    color: #0066d4;
+    font-size: 17px;
+}
+
+.announcement-content ul {
+    margin: 6px 0 18px 24px;
+    padding: 0;
+}
+
+.file-card {
+    margin-top: 28px;
+    border: 1px solid #d5e1ef;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafcff;
+}
+
+.file-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.file-icon {
+    font-size: 28px;
+    color: #102344;
+}
+
+.file-card strong {
+    display: block;
+    color: #102344;
+}
+
+.file-card span {
+    display: block;
+    color: #78899e;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.download-btn {
+    border: none;
+    border-radius: 999px;
+    background: #006be6;
+    color: white;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.article-nav {
+    margin-top: 28px;
+    display: flex;
+    gap: 20px;
+}
+
+.article-nav a {
+    flex: 1;
+    border: 1px solid #dce5ef;
+    border-radius: 20px;
+    padding: 22px;
+    background: #fafcff;
+    text-decoration: none;
+    transition: 0.25s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+.article-nav a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(16, 35, 68, 0.08);
+}
+
+.article-nav small {
+    display: block;
+    color: #7b8796;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.article-nav span {
+    color: #12315f;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.article-nav .next {
+    text-align: left;
+}
+
+/* ==========================================
+    回到頂部按鈕 (Back to Top Button)
+   ========================================== */
+.back-btn {
+    font-family: 'Noto Serif TC', serif;
+    position: fixed;       /* 固定定位，不隨捲軸移動 */
+    bottom: 50px;          /* 距離底部*/
+    right: 70px;           /* 距離右側*/
+    width: 150px;           /* 寬度 */
+    height: 50px;          /* 高度 */
+    background-color:#4A90E2;
+    color: white;        
+    border: none;          /* 移除邊框 */
+    border-radius: 20px;
+    cursor: pointer;      /* 滑鼠移上去變手指 */
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 增加陰影感 */
+    z-index: 999;          /* 確保在所有圖層的最上方 */
+    transition: background-color 0.3s, transform 0.3s; /* 增加動畫感 */
+}
+
+
+.back-btn:hover {
+    background-color: #0077ff;
+    transform: scale(1.1);    /* 稍微放大一點 */
+}
