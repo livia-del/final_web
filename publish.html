@@ -234,9 +234,10 @@
                 const mainTr = document.createElement('tr');
                 mainTr.id = `main-${paper.id}`;
                 mainTr.className = 'main-row';
+                mainTr.setAttribute('tabindex', '0'); // make the whole row focusable for keyboard users
                 mainTr.innerHTML = `
                     <td>
-                        <span class="clickable-title" onclick="toggleAccordion('${paper.id}')">
+                        <span class="clickable-title">
                              ${paper.title}
                         </span>
                     </td>
@@ -273,6 +274,35 @@
                         </div>
                     </td>
                 `;
+
+                // Make the detail row clickable to close (ignore clicks on interactive elements inside)
+                detailTr.setAttribute('tabindex', '0');
+                detailTr.addEventListener('click', (e) => {
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+                    toggleAccordion(paper.id);
+                });
+                // Keyboard support for closing: Enter or Space
+                detailTr.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleAccordion(paper.id);
+                    }
+                });
+
+                // attach a click listener to the whole main row so anywhere on the row toggles
+                // Click anywhere on the row (except on real interactive controls) to toggle
+                mainTr.addEventListener('click', (e) => {
+                    if (e.target.closest('a, button, input, textarea, select, label')) return;
+                    toggleAccordion(paper.id);
+                });
+
+                // Keyboard accessibility: Enter or Space toggles the row when focused
+                mainTr.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleAccordion(paper.id);
+                    }
+                });
 
                 tbody.appendChild(mainTr);
                 tbody.appendChild(detailTr);

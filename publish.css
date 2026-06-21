@@ -164,8 +164,13 @@ body {
     background-color: #ffffff;
 }
 
+/* Make the whole row look and act clickable */
+.main-row {
+    cursor: pointer;
+}
+
 .main-row:hover td {
-    background-color: #f8fafc;
+    background-color: #f1f5f9; /* subtle hover to show interactivity */
 }
 
 /* 藍色論文名稱（已修正：徹底去除點擊與懸停底線） */
