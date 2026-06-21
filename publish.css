@@ -20,7 +20,9 @@ body {
 /* main */
 .main {
     margin-left: 260px; 
-    padding: 32px;
+    /* 提示：原本是 padding: 32px; 
+       請改用四個數字的寫法（順序是：上 右 下 左），特別把第四個數字（左邊）調小！ */
+    padding: 20px 20px 20px 10px; 
     width: calc(100% - 260px);
 }
 
@@ -42,8 +44,15 @@ body {
     color: #333;
 }
 
+/*.main-content {
+    /* 提示：將上方的內邊距縮得很小，左右也改小，畫面就會往上、往右推 */
+    /*padding: 10px 15px 30px 15px; */
+    /*background-color: #f2f6fc; */
+    /*min-height: 100vh;*/
+/*} */
 .main-content {
-    padding: 40px;
+    /* 調整：把 padding-top 改為 0，讓固定後的標籤能完全貼頂 */
+    padding: 0px 15px 30px 15px; 
     background-color: #f2f6fc;
     min-height: 100vh;
 }
@@ -53,9 +62,11 @@ body {
    ========================================== */
 .tabs-container {
     display: flex;
-    background-color: transparent;
+    background-color: transparent; /* 改回透明或原本的底色 */
     margin-bottom: -1px;
     padding-left: 10px;
+    
+    /* ⚠️ 請把原本加在這裡的 position: sticky; top: 0; z-index: 10; padding-top: 15px; 刪除 */
 }
 
 .tab-btn {
@@ -92,12 +103,19 @@ body {
    ========================================== */
 .content-panel {
     background-color: #ffffff;
-    border-radius: 12px; /* 全圓角設計 */
+    border-radius: 12px;
     border: 1px solid #cbd5e1;
     padding: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     position: relative;
     z-index: 1;
+
+    /* 💡 核心修改：讓外框自動長到最符合螢幕的大小，並保留內部滾動 */
+    /* 100vh 代表整個螢幕高度，扣掉 120px（包含上方 Tabs 的高度與預留的精緻留白） */
+    height: calc(100vh - 120px); 
+    
+    overflow-y: auto;      
+    overflow-x: hidden;    
 }
 
 .section-subtitle {
